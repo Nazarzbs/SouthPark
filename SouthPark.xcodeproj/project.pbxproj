@@ -9,21 +9,37 @@
 /* Begin PBXBuildFile section */
 		CE8F392B2A0D2FFC00BD8042 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F392A2A0D2FFC00BD8042 /* AppDelegate.swift */; };
 		CE8F392D2A0D2FFC00BD8042 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F392C2A0D2FFC00BD8042 /* SceneDelegate.swift */; };
-		CE8F392F2A0D2FFC00BD8042 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F392E2A0D2FFC00BD8042 /* ViewController.swift */; };
-		CE8F39322A0D2FFC00BD8042 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE8F39302A0D2FFC00BD8042 /* Main.storyboard */; };
+		CE8F392F2A0D2FFC00BD8042 /* SPTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F392E2A0D2FFC00BD8042 /* SPTabBarController.swift */; };
 		CE8F39342A0D2FFE00BD8042 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE8F39332A0D2FFE00BD8042 /* Assets.xcassets */; };
 		CE8F39372A0D2FFE00BD8042 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE8F39352A0D2FFE00BD8042 /* LaunchScreen.storyboard */; };
+		CE8F39462A0D322B00BD8042 /* SPCharacters.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F39452A0D322B00BD8042 /* SPCharacters.swift */; };
+		CE8F39482A0D323C00BD8042 /* SPEpisodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F39472A0D323C00BD8042 /* SPEpisodes.swift */; };
+		CE8F394A2A0D324F00BD8042 /* SPFamilies.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F39492A0D324F00BD8042 /* SPFamilies.swift */; };
+		CE8F394C2A0D326600BD8042 /* SPLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F394B2A0D326600BD8042 /* SPLocations.swift */; };
+		CE8F39522A0D33C800BD8042 /* SPCharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F39512A0D33C800BD8042 /* SPCharacterViewController.swift */; };
+		CE8F395B2A0D344900BD8042 /* SPEpisodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F395A2A0D344900BD8042 /* SPEpisodeViewController.swift */; };
+		CE8F395D2A0D345E00BD8042 /* SPFamilyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F395C2A0D345E00BD8042 /* SPFamilyViewController.swift */; };
+		CE8F395F2A0D346D00BD8042 /* SPLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F395E2A0D346D00BD8042 /* SPLocationViewController.swift */; };
+		CE8F39612A0D347D00BD8042 /* SPSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F39602A0D347D00BD8042 /* SPSettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CE8F39272A0D2FFC00BD8042 /* SouthPark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SouthPark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE8F392A2A0D2FFC00BD8042 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE8F392C2A0D2FFC00BD8042 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CE8F392E2A0D2FFC00BD8042 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		CE8F39312A0D2FFC00BD8042 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CE8F392E2A0D2FFC00BD8042 /* SPTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPTabBarController.swift; sourceTree = "<group>"; };
 		CE8F39332A0D2FFE00BD8042 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE8F39362A0D2FFE00BD8042 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE8F39382A0D2FFE00BD8042 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE8F39452A0D322B00BD8042 /* SPCharacters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPCharacters.swift; sourceTree = "<group>"; };
+		CE8F39472A0D323C00BD8042 /* SPEpisodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPEpisodes.swift; sourceTree = "<group>"; };
+		CE8F39492A0D324F00BD8042 /* SPFamilies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPFamilies.swift; sourceTree = "<group>"; };
+		CE8F394B2A0D326600BD8042 /* SPLocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPLocations.swift; sourceTree = "<group>"; };
+		CE8F39512A0D33C800BD8042 /* SPCharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPCharacterViewController.swift; sourceTree = "<group>"; };
+		CE8F395A2A0D344900BD8042 /* SPEpisodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPEpisodeViewController.swift; sourceTree = "<group>"; };
+		CE8F395C2A0D345E00BD8042 /* SPFamilyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPFamilyViewController.swift; sourceTree = "<group>"; };
+		CE8F395E2A0D346D00BD8042 /* SPLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPLocationViewController.swift; sourceTree = "<group>"; };
+		CE8F39602A0D347D00BD8042 /* SPSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPSettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +72,87 @@
 		CE8F39292A0D2FFC00BD8042 /* SouthPark */ = {
 			isa = PBXGroup;
 			children = (
-				CE8F392A2A0D2FFC00BD8042 /* AppDelegate.swift */,
-				CE8F392C2A0D2FFC00BD8042 /* SceneDelegate.swift */,
-				CE8F392E2A0D2FFC00BD8042 /* ViewController.swift */,
-				CE8F39302A0D2FFC00BD8042 /* Main.storyboard */,
-				CE8F39332A0D2FFE00BD8042 /* Assets.xcassets */,
-				CE8F39352A0D2FFE00BD8042 /* LaunchScreen.storyboard */,
+				CE8F39422A0D30EA00BD8042 /* Resources */,
+				CE8F39432A0D30F700BD8042 /* Managers */,
+				CE8F39442A0D310B00BD8042 /* APIClient */,
+				CE8F39412A0D30B700BD8042 /* ViewModels */,
+				CE8F39402A0D309F00BD8042 /* Views */,
+				CE8F393F2A0D308800BD8042 /* Models */,
+				CE8F393E2A0D306700BD8042 /* Controllers */,
 				CE8F39382A0D2FFE00BD8042 /* Info.plist */,
 			);
 			path = SouthPark;
+			sourceTree = "<group>";
+		};
+		CE8F393E2A0D306700BD8042 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CE8F394E2A0D334900BD8042 /* CoreNavigation */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		CE8F393F2A0D308800BD8042 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CE8F39452A0D322B00BD8042 /* SPCharacters.swift */,
+				CE8F39472A0D323C00BD8042 /* SPEpisodes.swift */,
+				CE8F39492A0D324F00BD8042 /* SPFamilies.swift */,
+				CE8F394B2A0D326600BD8042 /* SPLocations.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CE8F39402A0D309F00BD8042 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CE8F39412A0D30B700BD8042 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		CE8F39422A0D30EA00BD8042 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CE8F392A2A0D2FFC00BD8042 /* AppDelegate.swift */,
+				CE8F392C2A0D2FFC00BD8042 /* SceneDelegate.swift */,
+				CE8F39352A0D2FFE00BD8042 /* LaunchScreen.storyboard */,
+				CE8F39332A0D2FFE00BD8042 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		CE8F39432A0D30F700BD8042 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		CE8F39442A0D310B00BD8042 /* APIClient */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = APIClient;
+			sourceTree = "<group>";
+		};
+		CE8F394E2A0D334900BD8042 /* CoreNavigation */ = {
+			isa = PBXGroup;
+			children = (
+				CE8F392E2A0D2FFC00BD8042 /* SPTabBarController.swift */,
+				CE8F39512A0D33C800BD8042 /* SPCharacterViewController.swift */,
+				CE8F395A2A0D344900BD8042 /* SPEpisodeViewController.swift */,
+				CE8F395C2A0D345E00BD8042 /* SPFamilyViewController.swift */,
+				CE8F395E2A0D346D00BD8042 /* SPLocationViewController.swift */,
+				CE8F39602A0D347D00BD8042 /* SPSettingsViewController.swift */,
+			);
+			path = CoreNavigation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +215,6 @@
 			files = (
 				CE8F39372A0D2FFE00BD8042 /* LaunchScreen.storyboard in Resources */,
 				CE8F39342A0D2FFE00BD8042 /* Assets.xcassets in Resources */,
-				CE8F39322A0D2FFC00BD8042 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +225,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE8F392F2A0D2FFC00BD8042 /* ViewController.swift in Sources */,
+				CE8F395F2A0D346D00BD8042 /* SPLocationViewController.swift in Sources */,
+				CE8F394A2A0D324F00BD8042 /* SPFamilies.swift in Sources */,
+				CE8F395B2A0D344900BD8042 /* SPEpisodeViewController.swift in Sources */,
+				CE8F39522A0D33C800BD8042 /* SPCharacterViewController.swift in Sources */,
+				CE8F39612A0D347D00BD8042 /* SPSettingsViewController.swift in Sources */,
+				CE8F39462A0D322B00BD8042 /* SPCharacters.swift in Sources */,
+				CE8F39482A0D323C00BD8042 /* SPEpisodes.swift in Sources */,
+				CE8F394C2A0D326600BD8042 /* SPLocations.swift in Sources */,
+				CE8F392F2A0D2FFC00BD8042 /* SPTabBarController.swift in Sources */,
 				CE8F392B2A0D2FFC00BD8042 /* AppDelegate.swift in Sources */,
 				CE8F392D2A0D2FFC00BD8042 /* SceneDelegate.swift in Sources */,
+				CE8F395D2A0D345E00BD8042 /* SPFamilyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		CE8F39302A0D2FFC00BD8042 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CE8F39312A0D2FFC00BD8042 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		CE8F39352A0D2FFE00BD8042 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -292,7 +380,6 @@
 				INFOPLIST_FILE = SouthPark/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -320,7 +407,6 @@
 				INFOPLIST_FILE = SouthPark/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
