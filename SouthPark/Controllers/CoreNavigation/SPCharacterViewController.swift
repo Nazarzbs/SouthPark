@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Controller to show and search for Characters 
 final class SPCharacterViewController: UIViewController {
 
     override func viewDidLoad() {

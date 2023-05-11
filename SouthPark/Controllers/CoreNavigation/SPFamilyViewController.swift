@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Controller to show and search for Family
 final class SPFamilyViewController: UIViewController {
 
     override func viewDidLoad() {

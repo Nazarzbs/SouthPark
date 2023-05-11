@@ -6,7 +6,10 @@
 //
 
 import UIKit
+
 //final because it can't be subclassed
+
+/// Controller to house tabs and root tab controllers
 final class SPTabBarController: UITabBarController {
 
     override func viewDidLoad() {

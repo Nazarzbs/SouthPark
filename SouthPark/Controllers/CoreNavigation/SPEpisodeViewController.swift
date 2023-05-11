@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Controller to show and search for Episode
 final class SPEpisodeViewController: UIViewController {
 
     override func viewDidLoad() {

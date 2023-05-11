@@ -21,6 +21,9 @@
 		CE8F395D2A0D345E00BD8042 /* SPFamilyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F395C2A0D345E00BD8042 /* SPFamilyViewController.swift */; };
 		CE8F395F2A0D346D00BD8042 /* SPLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F395E2A0D346D00BD8042 /* SPLocationViewController.swift */; };
 		CE8F39612A0D347D00BD8042 /* SPSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F39602A0D347D00BD8042 /* SPSettingsViewController.swift */; };
+		CE8F39672A0D746700BD8042 /* SPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F39662A0D746700BD8042 /* SPService.swift */; };
+		CE8F39692A0D747E00BD8042 /* SPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F39682A0D747E00BD8042 /* SPRequest.swift */; };
+		CE8F396D2A0D78CC00BD8042 /* SPEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F396C2A0D78CC00BD8042 /* SPEndpoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +43,9 @@
 		CE8F395C2A0D345E00BD8042 /* SPFamilyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPFamilyViewController.swift; sourceTree = "<group>"; };
 		CE8F395E2A0D346D00BD8042 /* SPLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPLocationViewController.swift; sourceTree = "<group>"; };
 		CE8F39602A0D347D00BD8042 /* SPSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPSettingsViewController.swift; sourceTree = "<group>"; };
+		CE8F39662A0D746700BD8042 /* SPService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPService.swift; sourceTree = "<group>"; };
+		CE8F39682A0D747E00BD8042 /* SPRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPRequest.swift; sourceTree = "<group>"; };
+		CE8F396C2A0D78CC00BD8042 /* SPEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPEndpoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +144,9 @@
 		CE8F39442A0D310B00BD8042 /* APIClient */ = {
 			isa = PBXGroup;
 			children = (
+				CE8F39662A0D746700BD8042 /* SPService.swift */,
+				CE8F39682A0D747E00BD8042 /* SPRequest.swift */,
+				CE8F396C2A0D78CC00BD8042 /* SPEndpoint.swift */,
 			);
 			path = APIClient;
 			sourceTree = "<group>";
@@ -229,9 +238,12 @@
 				CE8F394A2A0D324F00BD8042 /* SPFamilies.swift in Sources */,
 				CE8F395B2A0D344900BD8042 /* SPEpisodeViewController.swift in Sources */,
 				CE8F39522A0D33C800BD8042 /* SPCharacterViewController.swift in Sources */,
+				CE8F39672A0D746700BD8042 /* SPService.swift in Sources */,
 				CE8F39612A0D347D00BD8042 /* SPSettingsViewController.swift in Sources */,
+				CE8F39692A0D747E00BD8042 /* SPRequest.swift in Sources */,
 				CE8F39462A0D322B00BD8042 /* SPCharacters.swift in Sources */,
 				CE8F39482A0D323C00BD8042 /* SPEpisodes.swift in Sources */,
+				CE8F396D2A0D78CC00BD8042 /* SPEndpoint.swift in Sources */,
 				CE8F394C2A0D326600BD8042 /* SPLocations.swift in Sources */,
 				CE8F392F2A0D2FFC00BD8042 /* SPTabBarController.swift in Sources */,
 				CE8F392B2A0D2FFC00BD8042 /* AppDelegate.swift in Sources */,

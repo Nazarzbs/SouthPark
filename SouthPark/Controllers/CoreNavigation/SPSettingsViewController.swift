@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Controller to show and search for Settings
 final class SPSettingsViewController: UIViewController {
 
     override func viewDidLoad() {
