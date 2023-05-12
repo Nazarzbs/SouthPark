@@ -24,6 +24,8 @@
 		CE8F39672A0D746700BD8042 /* SPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F39662A0D746700BD8042 /* SPService.swift */; };
 		CE8F39692A0D747E00BD8042 /* SPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F39682A0D747E00BD8042 /* SPRequest.swift */; };
 		CE8F396D2A0D78CC00BD8042 /* SPEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F396C2A0D78CC00BD8042 /* SPEndpoint.swift */; };
+		CE98A2F52A0E8364001E54F3 /* SPRelatives.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98A2F42A0E8364001E54F3 /* SPRelatives.swift */; };
+		CE98A2FB2A0E8700001E54F3 /* SPCharacterGender.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98A2FA2A0E8700001E54F3 /* SPCharacterGender.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,8 @@
 		CE8F39662A0D746700BD8042 /* SPService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPService.swift; sourceTree = "<group>"; };
 		CE8F39682A0D747E00BD8042 /* SPRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPRequest.swift; sourceTree = "<group>"; };
 		CE8F396C2A0D78CC00BD8042 /* SPEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPEndpoint.swift; sourceTree = "<group>"; };
+		CE98A2F42A0E8364001E54F3 /* SPRelatives.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPRelatives.swift; sourceTree = "<group>"; };
+		CE98A2FA2A0E8700001E54F3 /* SPCharacterGender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPCharacterGender.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +109,8 @@
 				CE8F39472A0D323C00BD8042 /* SPEpisodes.swift */,
 				CE8F39492A0D324F00BD8042 /* SPFamilies.swift */,
 				CE8F394B2A0D326600BD8042 /* SPLocations.swift */,
+				CE98A2F42A0E8364001E54F3 /* SPRelatives.swift */,
+				CE98A2FA2A0E8700001E54F3 /* SPCharacterGender.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -246,8 +252,10 @@
 				CE8F396D2A0D78CC00BD8042 /* SPEndpoint.swift in Sources */,
 				CE8F394C2A0D326600BD8042 /* SPLocations.swift in Sources */,
 				CE8F392F2A0D2FFC00BD8042 /* SPTabBarController.swift in Sources */,
+				CE98A2FB2A0E8700001E54F3 /* SPCharacterGender.swift in Sources */,
 				CE8F392B2A0D2FFC00BD8042 /* AppDelegate.swift in Sources */,
 				CE8F392D2A0D2FFC00BD8042 /* SceneDelegate.swift in Sources */,
+				CE98A2F52A0E8364001E54F3 /* SPRelatives.swift in Sources */,
 				CE8F395D2A0D345E00BD8042 /* SPFamilyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

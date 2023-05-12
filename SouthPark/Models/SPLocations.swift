@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+struct SPLocations: Codable {
+    let id: Int
+    let name: String
+    let created_at: String
+    let updated_at: String
+    let episodes: [String]
+}
