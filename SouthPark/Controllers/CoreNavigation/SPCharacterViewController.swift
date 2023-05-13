@@ -14,6 +14,13 @@ final class SPCharacterViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         title = "Characters"
-        // Do any additional setup after loading the view.
+        //Check & in queryParameters
+        let request = SPRequest(endpoint: .character, queryParameters: [URLQueryItem(name: "search", value: "eric")])
+        
+        print(request.url)
+        
+        SPService.shared.execute(request, expected: SPCharacter.self) { result in
+           
+        }
     }
 }

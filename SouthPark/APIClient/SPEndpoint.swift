@@ -11,7 +11,7 @@ import Foundation
 // use enum to model all endpoints with raw value type String (Endpoint.character.raw would be a String "character").
 
 /// Represents unique API endpoint
-@frozen enum RMEndpoint: String {
+@frozen enum SPEndpoint: String {
     //Endpoint to character info
     case character
     //Endpoint to location info
