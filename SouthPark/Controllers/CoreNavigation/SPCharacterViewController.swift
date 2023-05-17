@@ -10,17 +10,22 @@ import UIKit
 /// Controller to show and search for Characters 
 final class SPCharacterViewController: UIViewController {
 
+    private let characterListView = SPCharacterListView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         title = "Characters"
-        //Check & in queryParameters
-        let request = SPRequest(endpoint: .character, queryParameters: [URLQueryItem(name: "search", value: "eric")])
-        
-        print(request.url)
-        
-        SPService.shared.execute(request, expected: SPCharacter.self) { result in
-           
-        }
+        setUpView()
+    }
+    
+    private func setUpView() {
+        view.addSubview(characterListView)
+        NSLayoutConstraint.activate([
+            characterListView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            characterListView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
+            characterListView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
+            characterListView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
     }
 }

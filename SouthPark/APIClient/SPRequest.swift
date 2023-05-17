@@ -18,7 +18,7 @@ final class SPRequest {
     /// Desired endpoint
     private let endpoint: SPEndpoint
     /// Path components for API, if any
-    private let pathComponents: Set<String>
+    private let pathComponents: [String]
     /// Query arguments for API, if any
     private let queryParameters: [URLQueryItem]
     
@@ -65,9 +65,16 @@ final class SPRequest {
     ///  - pathComponents:  Collection of Path components
     ///  - queryParameters:  Collection of query parameters
     //[String] = [] because thats optional
-    init(endpoint: SPEndpoint, pathComponents: Set<String> = [], queryParameters: [URLQueryItem] = []) {
+    init(endpoint: SPEndpoint, pathComponents: [String] = [], queryParameters: [URLQueryItem] = []) {
         self.endpoint = endpoint
         self.pathComponents = pathComponents
         self.queryParameters = queryParameters
     }
 }
+
+
+extension SPRequest {
+    //Improves readability
+    static let listCharactersRequests = SPRequest(endpoint: .characters)
+}
+

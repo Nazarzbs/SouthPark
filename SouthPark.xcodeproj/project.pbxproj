@@ -26,6 +26,12 @@
 		CE8F396D2A0D78CC00BD8042 /* SPEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F396C2A0D78CC00BD8042 /* SPEndpoint.swift */; };
 		CE98A2F52A0E8364001E54F3 /* SPRelatives.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98A2F42A0E8364001E54F3 /* SPRelatives.swift */; };
 		CE98A2FB2A0E8700001E54F3 /* SPCharacterGender.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98A2FA2A0E8700001E54F3 /* SPCharacterGender.swift */; };
+		CE98A3032A10F9D1001E54F3 /* SPGetAllCharactersResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98A3022A10F9D1001E54F3 /* SPGetAllCharactersResponse.swift */; };
+		CE98A3052A114C4B001E54F3 /* SPCharacterListViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98A3042A114C4B001E54F3 /* SPCharacterListViewViewModel.swift */; };
+		CE98A3072A114D63001E54F3 /* SPCharacterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98A3062A114D63001E54F3 /* SPCharacterListView.swift */; };
+		CE98A30F2A117CAF001E54F3 /* Extension .swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98A30E2A117CAF001E54F3 /* Extension .swift */; };
+		CE98A3132A12C1B5001E54F3 /* SPCharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98A3122A12C1B5001E54F3 /* SPCharacterCollectionViewCell.swift */; };
+		CE98A3152A12C352001E54F3 /* SPCharacterCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98A3142A12C352001E54F3 /* SPCharacterCollectionViewCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +56,12 @@
 		CE8F396C2A0D78CC00BD8042 /* SPEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPEndpoint.swift; sourceTree = "<group>"; };
 		CE98A2F42A0E8364001E54F3 /* SPRelatives.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPRelatives.swift; sourceTree = "<group>"; };
 		CE98A2FA2A0E8700001E54F3 /* SPCharacterGender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPCharacterGender.swift; sourceTree = "<group>"; };
+		CE98A3022A10F9D1001E54F3 /* SPGetAllCharactersResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPGetAllCharactersResponse.swift; sourceTree = "<group>"; };
+		CE98A3042A114C4B001E54F3 /* SPCharacterListViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPCharacterListViewViewModel.swift; sourceTree = "<group>"; };
+		CE98A3062A114D63001E54F3 /* SPCharacterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPCharacterListView.swift; sourceTree = "<group>"; };
+		CE98A30E2A117CAF001E54F3 /* Extension .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension .swift"; sourceTree = "<group>"; };
+		CE98A3122A12C1B5001E54F3 /* SPCharacterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPCharacterCollectionViewCell.swift; sourceTree = "<group>"; };
+		CE98A3142A12C352001E54F3 /* SPCharacterCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPCharacterCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,12 +117,8 @@
 		CE8F393F2A0D308800BD8042 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				CE8F39452A0D322B00BD8042 /* SPCharacters.swift */,
-				CE8F39472A0D323C00BD8042 /* SPEpisodes.swift */,
-				CE8F39492A0D324F00BD8042 /* SPFamilies.swift */,
-				CE8F394B2A0D326600BD8042 /* SPLocations.swift */,
-				CE98A2F42A0E8364001E54F3 /* SPRelatives.swift */,
-				CE98A2FA2A0E8700001E54F3 /* SPCharacterGender.swift */,
+				CE98A3012A10F99F001E54F3 /* APIResponseType */,
+				CE98A3002A10F981001E54F3 /* DataTypes */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -118,6 +126,8 @@
 		CE8F39402A0D309F00BD8042 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CE98A3062A114D63001E54F3 /* SPCharacterListView.swift */,
+				CE98A3122A12C1B5001E54F3 /* SPCharacterCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -125,6 +135,8 @@
 		CE8F39412A0D30B700BD8042 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				CE98A3042A114C4B001E54F3 /* SPCharacterListViewViewModel.swift */,
+				CE98A3142A12C352001E54F3 /* SPCharacterCollectionViewCellViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -136,6 +148,7 @@
 				CE8F392C2A0D2FFC00BD8042 /* SceneDelegate.swift */,
 				CE8F39352A0D2FFE00BD8042 /* LaunchScreen.storyboard */,
 				CE8F39332A0D2FFE00BD8042 /* Assets.xcassets */,
+				CE98A30E2A117CAF001E54F3 /* Extension .swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -168,6 +181,27 @@
 				CE8F39602A0D347D00BD8042 /* SPSettingsViewController.swift */,
 			);
 			path = CoreNavigation;
+			sourceTree = "<group>";
+		};
+		CE98A3002A10F981001E54F3 /* DataTypes */ = {
+			isa = PBXGroup;
+			children = (
+				CE8F39452A0D322B00BD8042 /* SPCharacters.swift */,
+				CE8F39472A0D323C00BD8042 /* SPEpisodes.swift */,
+				CE8F39492A0D324F00BD8042 /* SPFamilies.swift */,
+				CE8F394B2A0D326600BD8042 /* SPLocations.swift */,
+				CE98A2F42A0E8364001E54F3 /* SPRelatives.swift */,
+				CE98A2FA2A0E8700001E54F3 /* SPCharacterGender.swift */,
+			);
+			path = DataTypes;
+			sourceTree = "<group>";
+		};
+		CE98A3012A10F99F001E54F3 /* APIResponseType */ = {
+			isa = PBXGroup;
+			children = (
+				CE98A3022A10F9D1001E54F3 /* SPGetAllCharactersResponse.swift */,
+			);
+			path = APIResponseType;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,17 +276,23 @@
 			files = (
 				CE8F395F2A0D346D00BD8042 /* SPLocationViewController.swift in Sources */,
 				CE8F394A2A0D324F00BD8042 /* SPFamilies.swift in Sources */,
+				CE98A3072A114D63001E54F3 /* SPCharacterListView.swift in Sources */,
+				CE98A3032A10F9D1001E54F3 /* SPGetAllCharactersResponse.swift in Sources */,
 				CE8F395B2A0D344900BD8042 /* SPEpisodeViewController.swift in Sources */,
+				CE98A30F2A117CAF001E54F3 /* Extension .swift in Sources */,
 				CE8F39522A0D33C800BD8042 /* SPCharacterViewController.swift in Sources */,
 				CE8F39672A0D746700BD8042 /* SPService.swift in Sources */,
 				CE8F39612A0D347D00BD8042 /* SPSettingsViewController.swift in Sources */,
+				CE98A3052A114C4B001E54F3 /* SPCharacterListViewViewModel.swift in Sources */,
 				CE8F39692A0D747E00BD8042 /* SPRequest.swift in Sources */,
+				CE98A3152A12C352001E54F3 /* SPCharacterCollectionViewCellViewModel.swift in Sources */,
 				CE8F39462A0D322B00BD8042 /* SPCharacters.swift in Sources */,
 				CE8F39482A0D323C00BD8042 /* SPEpisodes.swift in Sources */,
 				CE8F396D2A0D78CC00BD8042 /* SPEndpoint.swift in Sources */,
 				CE8F394C2A0D326600BD8042 /* SPLocations.swift in Sources */,
 				CE8F392F2A0D2FFC00BD8042 /* SPTabBarController.swift in Sources */,
 				CE98A2FB2A0E8700001E54F3 /* SPCharacterGender.swift in Sources */,
+				CE98A3132A12C1B5001E54F3 /* SPCharacterCollectionViewCell.swift in Sources */,
 				CE8F392B2A0D2FFC00BD8042 /* AppDelegate.swift in Sources */,
 				CE8F392D2A0D2FFC00BD8042 /* SceneDelegate.swift in Sources */,
 				CE98A2F52A0E8364001E54F3 /* SPRelatives.swift in Sources */,

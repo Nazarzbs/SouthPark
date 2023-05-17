@@ -13,11 +13,11 @@ import Foundation
 /// Represents unique API endpoint
 @frozen enum SPEndpoint: String {
     //Endpoint to character info
-    case character
+    case characters
     //Endpoint to location info
-    case location
+    case locations
     //Endpoint to episode info
-    case episode
+    case episodes
     //Endpoint to family info
-    case family
+    case families
 }
