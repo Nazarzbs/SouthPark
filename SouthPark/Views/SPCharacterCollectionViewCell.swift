@@ -93,20 +93,20 @@ class SPCharacterCollectionViewCell: UICollectionViewCell {
     public func configure(with viewModel: SPCharacterCollectionViewCellViewModel) {
         nameLabel.text = viewModel.characterName
         characterOccupationLabel.text = viewModel.characterOccupationText
-        imageView.image = UIImage(systemName: "person")
         
-        //MARK: ToDO - fetch the image
-//        viewModel.fetchImage { [weak self] result in
-//            switch result {
-//            case .success(let data):
-//                DispatchQueue.main.async {
-//                    let image = UIImage(data: data)
-//                    self?.imageView.image = UIImage(systemName: "person")
-//                }
-//            case .failure(let error):
-//                print(String(describing: error))
-//                break
-//            }
-//        }
+        
+//        MARK: ToDO - fetch the image
+        viewModel.fetchImage { [weak self] result in
+            switch result {
+            case .success(let data):
+                DispatchQueue.main.async {
+                    let image = UIImage(data: data)
+                    self?.imageView.image = image
+                }
+            case .failure(let error):
+                print(String(describing: error))
+                break
+            }
+        }
     }
 }

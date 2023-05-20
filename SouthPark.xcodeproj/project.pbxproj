@@ -32,6 +32,7 @@
 		CE98A30F2A117CAF001E54F3 /* Extension .swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98A30E2A117CAF001E54F3 /* Extension .swift */; };
 		CE98A3132A12C1B5001E54F3 /* SPCharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98A3122A12C1B5001E54F3 /* SPCharacterCollectionViewCell.swift */; };
 		CE98A3152A12C352001E54F3 /* SPCharacterCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98A3142A12C352001E54F3 /* SPCharacterCollectionViewCellViewModel.swift */; };
+		CE98A31B2A191AC0001E54F3 /* CharactersImage.json in Resources */ = {isa = PBXBuildFile; fileRef = CE98A31A2A191AC0001E54F3 /* CharactersImage.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		CE98A30E2A117CAF001E54F3 /* Extension .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension .swift"; sourceTree = "<group>"; };
 		CE98A3122A12C1B5001E54F3 /* SPCharacterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPCharacterCollectionViewCell.swift; sourceTree = "<group>"; };
 		CE98A3142A12C352001E54F3 /* SPCharacterCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPCharacterCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
+		CE98A31A2A191AC0001E54F3 /* CharactersImage.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CharactersImage.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 				CE8F39352A0D2FFE00BD8042 /* LaunchScreen.storyboard */,
 				CE8F39332A0D2FFE00BD8042 /* Assets.xcassets */,
 				CE98A30E2A117CAF001E54F3 /* Extension .swift */,
+				CE98A31A2A191AC0001E54F3 /* CharactersImage.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 			files = (
 				CE8F39372A0D2FFE00BD8042 /* LaunchScreen.storyboard in Resources */,
 				CE8F39342A0D2FFE00BD8042 /* Assets.xcassets in Resources */,
+				CE98A31B2A191AC0001E54F3 /* CharactersImage.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
