@@ -8,7 +8,8 @@
 import UIKit
 
 /// Controller to show and search for Characters 
-final class SPCharacterViewController: UIViewController {
+final class SPCharacterViewController: UIViewController, SPCharacterListViewDelegate {
+    
 
     private let characterListView = SPCharacterListView()
     
@@ -20,6 +21,8 @@ final class SPCharacterViewController: UIViewController {
     }
     
     private func setUpView() {
+        // Make that controller dele
+        characterListView.delegate = self
         view.addSubview(characterListView)
         NSLayoutConstraint.activate([
             characterListView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -28,4 +31,15 @@ final class SPCharacterViewController: UIViewController {
             characterListView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
+    
+    //MARK: - SPCharacterListViewDelegate
+    
+    func rmCharacterListView(_ characterListView: SPCharacterListView, didSelectCharacter character: SPCharacter) {
+        // open detail controller for that character
+        let viewModel = SPCharacterDetailVIewViewModel(character: character)
+        let detailVC = SPCharacterDetailViewController(viewModel: viewModel)
+        //navigationController give us animated slide by default
+        detailVC.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.pushViewController(detailVC, animated: true)
+    }    
 }

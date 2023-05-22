@@ -105,6 +105,7 @@ class SPCharacterCollectionViewCell: UICollectionViewCell {
                 }
             case .failure(let error):
                 print(String(describing: error))
+                self?.imageView.image = UIImage(named: "SP")
                 break
             }
         }

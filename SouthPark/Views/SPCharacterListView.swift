@@ -7,9 +7,15 @@
 
 import UIKit
 
+// to get method out of the View we use another delegate
+protocol SPCharacterListViewDelegate: AnyObject {
+    func rmCharacterListView(_ characterListView: SPCharacterListView, didSelectCharacter character: SPCharacter)
+}
+
 /// View that handles showing list of characters, loaded, etc.
 final class SPCharacterListView: UIView {
-
+    
+    public weak var delegate: SPCharacterListViewDelegate?
     private let viewModel = SPCharacterListViewViewModel()
     
     // anonymous closure
@@ -29,6 +35,7 @@ final class SPCharacterListView: UIView {
         collectionView.alpha = 0
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(SPCharacterCollectionViewCell.self, forCellWithReuseIdentifier: SPCharacterCollectionViewCell.cellIdentifier)
+        collectionView.register(SPFooterLoadingCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: SPFooterLoadingCollectionReusableView.identifier)
         return collectionView
     }()
     
@@ -73,6 +80,11 @@ final class SPCharacterListView: UIView {
 }
 
 extension SPCharacterListView: SPCharacterListViewViewModelDelegate {
+    func didSelectCharacter(_ character: SPCharacter) {
+        // to get method out of the View we use another delegate
+        delegate?.rmCharacterListView(self, didSelectCharacter: character)
+    }
+    
     //Now we did guarantee even if the async job takes significant amount of time we're never to end up in the case when view showed up before we got the data
     func didLoadInitialCharacters() {
         spinner.stopAnimating()
@@ -82,5 +94,13 @@ extension SPCharacterListView: SPCharacterListViewViewModelDelegate {
             UIView.animate(withDuration: 0.4) {
                 self.collectionView.alpha = 1
             }
+    }
+    
+    
+    func didLoadMoreCharacters(with newIndexPaths: [IndexPath]) {
+        // Add more cells
+        collectionView.performBatchUpdates {
+            self.collectionView.insertItems(at: newIndexPaths)
+        }
     }
 }

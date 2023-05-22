@@ -65,13 +65,48 @@ final class SPRequest {
     ///  - pathComponents:  Collection of Path components
     ///  - queryParameters:  Collection of query parameters
     //[String] = [] because thats optional
-    init(endpoint: SPEndpoint, pathComponents: [String] = [], queryParameters: [URLQueryItem] = []) {
+   public init(endpoint: SPEndpoint, pathComponents: [String] = [], queryParameters: [URLQueryItem] = []) {
         self.endpoint = endpoint
         self.pathComponents = pathComponents
         self.queryParameters = queryParameters
     }
+    //Parse url and attempted to get back initialised SPRequest
+    convenience init?(url: URL) {
+        let string = url.absoluteString
+        if !string.contains(Constants.baseUrl) {
+            return nil
+        }
+        let trimmed = string.replacingOccurrences(of: Constants.baseUrl+"/", with: "")
+        if trimmed.contains("/") {
+            let components = trimmed.components(separatedBy: "/")
+            if !components.isEmpty {
+                let endpointSting = components[0]
+                if let spEndpoint = SPEndpoint(rawValue: endpointSting) {
+                    self.init(endpoint: spEndpoint)
+                    return
+                }
+            }
+        } else if trimmed.contains("?") {
+            let components = trimmed.components(separatedBy: "?")
+            if !components.isEmpty, components.count >= 2 {
+                let endpointSting = components[0]
+                let queryItemsString = components[1]
+                let queryItems: [URLQueryItem] = queryItemsString.components(separatedBy: "&").compactMap({
+                    guard $0.contains("=") else { return nil }
+                    
+                    let parts = $0.components(separatedBy: "=")
+                    
+                    return URLQueryItem(name: parts[0], value: parts[1])
+                })
+                if let spEndpoint = SPEndpoint(rawValue: endpointSting) {
+                    self.init(endpoint: spEndpoint, queryParameters: queryItems)
+                    return
+                }
+            }
+        }
+        return nil
+    }
 }
-
 
 extension SPRequest {
     //Improves readability

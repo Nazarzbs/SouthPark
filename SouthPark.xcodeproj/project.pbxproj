@@ -33,6 +33,11 @@
 		CE98A3132A12C1B5001E54F3 /* SPCharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98A3122A12C1B5001E54F3 /* SPCharacterCollectionViewCell.swift */; };
 		CE98A3152A12C352001E54F3 /* SPCharacterCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98A3142A12C352001E54F3 /* SPCharacterCollectionViewCellViewModel.swift */; };
 		CE98A31B2A191AC0001E54F3 /* CharactersImage.json in Resources */ = {isa = PBXBuildFile; fileRef = CE98A31A2A191AC0001E54F3 /* CharactersImage.json */; };
+		CECDD3542A193DB9000E2ADB /* SPCharacterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECDD3532A193DB9000E2ADB /* SPCharacterDetailViewController.swift */; };
+		CECDD3562A19406F000E2ADB /* SPCharacterDetailVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECDD3552A19406F000E2ADB /* SPCharacterDetailVIew.swift */; };
+		CECDD3582A1940CD000E2ADB /* SPCharacterDetailVIewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECDD3572A1940CD000E2ADB /* SPCharacterDetailVIewViewModel.swift */; };
+		CECDD35C2A195A42000E2ADB /* SPFooterLoadingCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECDD35B2A195A42000E2ADB /* SPFooterLoadingCollectionReusableView.swift */; };
+		CECDD3602A1BE3FE000E2ADB /* SPImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECDD35F2A1BE3FE000E2ADB /* SPImageLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +69,11 @@
 		CE98A3122A12C1B5001E54F3 /* SPCharacterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPCharacterCollectionViewCell.swift; sourceTree = "<group>"; };
 		CE98A3142A12C352001E54F3 /* SPCharacterCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPCharacterCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
 		CE98A31A2A191AC0001E54F3 /* CharactersImage.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CharactersImage.json; sourceTree = "<group>"; };
+		CECDD3532A193DB9000E2ADB /* SPCharacterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPCharacterDetailViewController.swift; sourceTree = "<group>"; };
+		CECDD3552A19406F000E2ADB /* SPCharacterDetailVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPCharacterDetailVIew.swift; sourceTree = "<group>"; };
+		CECDD3572A1940CD000E2ADB /* SPCharacterDetailVIewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPCharacterDetailVIewViewModel.swift; sourceTree = "<group>"; };
+		CECDD35B2A195A42000E2ADB /* SPFooterLoadingCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPFooterLoadingCollectionReusableView.swift; sourceTree = "<group>"; };
+		CECDD35F2A1BE3FE000E2ADB /* SPImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPImageLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +121,7 @@
 		CE8F393E2A0D306700BD8042 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				CECDD3522A193D93000E2ADB /* Other */,
 				CE8F394E2A0D334900BD8042 /* CoreNavigation */,
 			);
 			path = Controllers;
@@ -130,6 +141,8 @@
 			children = (
 				CE98A3062A114D63001E54F3 /* SPCharacterListView.swift */,
 				CE98A3122A12C1B5001E54F3 /* SPCharacterCollectionViewCell.swift */,
+				CECDD3552A19406F000E2ADB /* SPCharacterDetailVIew.swift */,
+				CECDD35B2A195A42000E2ADB /* SPFooterLoadingCollectionReusableView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -139,6 +152,7 @@
 			children = (
 				CE98A3042A114C4B001E54F3 /* SPCharacterListViewViewModel.swift */,
 				CE98A3142A12C352001E54F3 /* SPCharacterCollectionViewCellViewModel.swift */,
+				CECDD3572A1940CD000E2ADB /* SPCharacterDetailVIewViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -152,6 +166,7 @@
 				CE8F39332A0D2FFE00BD8042 /* Assets.xcassets */,
 				CE98A30E2A117CAF001E54F3 /* Extension .swift */,
 				CE98A31A2A191AC0001E54F3 /* CharactersImage.json */,
+				CECDD35F2A1BE3FE000E2ADB /* SPImageLoader.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -205,6 +220,14 @@
 				CE98A3022A10F9D1001E54F3 /* SPGetAllCharactersResponse.swift */,
 			);
 			path = APIResponseType;
+			sourceTree = "<group>";
+		};
+		CECDD3522A193D93000E2ADB /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				CECDD3532A193DB9000E2ADB /* SPCharacterDetailViewController.swift */,
+			);
+			path = Other;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,13 +303,16 @@
 			files = (
 				CE8F395F2A0D346D00BD8042 /* SPLocationViewController.swift in Sources */,
 				CE8F394A2A0D324F00BD8042 /* SPFamilies.swift in Sources */,
+				CECDD3542A193DB9000E2ADB /* SPCharacterDetailViewController.swift in Sources */,
 				CE98A3072A114D63001E54F3 /* SPCharacterListView.swift in Sources */,
 				CE98A3032A10F9D1001E54F3 /* SPGetAllCharactersResponse.swift in Sources */,
 				CE8F395B2A0D344900BD8042 /* SPEpisodeViewController.swift in Sources */,
 				CE98A30F2A117CAF001E54F3 /* Extension .swift in Sources */,
+				CECDD3582A1940CD000E2ADB /* SPCharacterDetailVIewViewModel.swift in Sources */,
 				CE8F39522A0D33C800BD8042 /* SPCharacterViewController.swift in Sources */,
 				CE8F39672A0D746700BD8042 /* SPService.swift in Sources */,
 				CE8F39612A0D347D00BD8042 /* SPSettingsViewController.swift in Sources */,
+				CECDD3602A1BE3FE000E2ADB /* SPImageLoader.swift in Sources */,
 				CE98A3052A114C4B001E54F3 /* SPCharacterListViewViewModel.swift in Sources */,
 				CE8F39692A0D747E00BD8042 /* SPRequest.swift in Sources */,
 				CE98A3152A12C352001E54F3 /* SPCharacterCollectionViewCellViewModel.swift in Sources */,
@@ -294,10 +320,12 @@
 				CE8F39482A0D323C00BD8042 /* SPEpisodes.swift in Sources */,
 				CE8F396D2A0D78CC00BD8042 /* SPEndpoint.swift in Sources */,
 				CE8F394C2A0D326600BD8042 /* SPLocations.swift in Sources */,
+				CECDD3562A19406F000E2ADB /* SPCharacterDetailVIew.swift in Sources */,
 				CE8F392F2A0D2FFC00BD8042 /* SPTabBarController.swift in Sources */,
 				CE98A2FB2A0E8700001E54F3 /* SPCharacterGender.swift in Sources */,
 				CE98A3132A12C1B5001E54F3 /* SPCharacterCollectionViewCell.swift in Sources */,
 				CE8F392B2A0D2FFC00BD8042 /* AppDelegate.swift in Sources */,
+				CECDD35C2A195A42000E2ADB /* SPFooterLoadingCollectionReusableView.swift in Sources */,
 				CE8F392D2A0D2FFC00BD8042 /* SceneDelegate.swift in Sources */,
 				CE98A2F52A0E8364001E54F3 /* SPRelatives.swift in Sources */,
 				CE8F395D2A0D345E00BD8042 /* SPFamilyViewController.swift in Sources */,
