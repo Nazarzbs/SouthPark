@@ -27,16 +27,16 @@ final class SPCharacterListViewViewModel: NSObject {
     
     private var characters: [SPCharacter] = [] {
         didSet {
-            guard let jsonData = readLocalFile(forName: "CharactersImage") else { return print("Json data is missing!")}
-            let characterImageUrls = parse(jsonData)
+            guard let jsonData = SPGetImageFromJsonLocalFile.shared.readLocalFile(forName: "CharactersImage") else { return print("Json data is missing!")}
+            let characterImageUrls = SPGetImageFromJsonLocalFile.shared.parse(jsonData)
 
             for character in characters {
-                print(character)
+            
                 let characterImageUrl = characterImageUrls?.images.filter {
                     return $0.title == character.name
                 }
                 
-                let unscaledCharacterImageURL = getUnscaledImageURL(from: characterImageUrl)
+                let unscaledCharacterImageURL = SPGetImageFromJsonLocalFile.shared.getUnscaledImageURL(from: characterImageUrl)
                 
                 let viewModel = SPCharacterCollectionViewCellViewModel(characterName: character.name, characterOccupation: character.occupation ?? "Not given", characterImageUrl: URL(string: unscaledCharacterImageURL), id: character.id)
                 if !cellViewModels.contains(viewModel) {
@@ -153,49 +153,6 @@ extension SPCharacterListViewViewModel: UICollectionViewDataSource, UICollection
         //Notify the characterViewController using delegate pattern(The delegate pattern in Swift allows one object (the delegating object) to communicate and pass information to another object (the delegate object) in a loosely coupled manner.)
         delegate?.didSelectCharacter(character)
         
-    }
-    
-    //MARK: - Get characters image
-    
-    private func readLocalFile(forName name: String) -> Data? {
-        do {
-            if let bundlePath = Bundle.main.path(forResource: name,
-                                                 ofType: "json"),
-                let jsonData = try String(contentsOfFile: bundlePath).data(using: .utf8) {
-                return jsonData
-            }
-        } catch {
-            print(error)
-        }
-        
-        return nil
-    }
-    
-    private func parse(_ jsonData: Data) -> SPCharactersImage? {
-        do {
-                let decodedData = try JSONDecoder().decode(SPCharactersImage.self, from: jsonData)
-            print(decodedData.images.count)
-            return decodedData
-            } catch {
-                print("error: \(error)")
-            }
-        return nil
-    }
-    
-    func getUnscaledImageURL(from imageUrls: [SPCharacterImage]?) -> String {
-        var unscaledImageURL = ""
-        let patterToRemove = #"scale-to-width-down/\d+"#
-        let regex = try! NSRegularExpression(pattern: patterToRemove, options: [])
-
-            let modifiedURLs = imageUrls.map { urlString in
-                if !urlString.isEmpty {
-                    let range = NSRange(location: 0, length: urlString.first!.link.utf16.count)
-                    return regex.stringByReplacingMatches(in: urlString.first!.link, options: [], range: range, withTemplate: "")
-                }
-                return unscaledImageURL
-            }
-            unscaledImageURL = modifiedURLs ?? ""
-        return unscaledImageURL
     }
 }
 

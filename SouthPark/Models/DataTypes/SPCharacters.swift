@@ -7,6 +7,10 @@
 
 import Foundation
 
+struct SPCharactersData: Codable {
+    let data: SPCharacter
+}
+
 struct SPCharacter: Codable {
     let id: Int
     let name: String

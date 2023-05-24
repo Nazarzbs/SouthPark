@@ -34,9 +34,16 @@ final class SPCharacterViewController: UIViewController, SPCharacterListViewDele
     
     //MARK: - SPCharacterListViewDelegate
     
-    func rmCharacterListView(_ characterListView: SPCharacterListView, didSelectCharacter character: SPCharacter) {
+    func spCharacterListView(_ characterListView: SPCharacterListView, didSelectCharacter character: SPCharacter) {
         // open detail controller for that character
-        let viewModel = SPCharacterDetailVIewViewModel(character: character)
+        guard let jsonData = SPGetImageFromJsonLocalFile.shared.readLocalFile(forName: "CharactersImage") else { return print("Json data is missing!")}
+        let characterImageUrls = SPGetImageFromJsonLocalFile.shared.parse(jsonData)
+        let imageURL = characterImageUrls?.images.filter {
+            $0.title == character.name
+        }
+        let unscaledCharacterImageURL = SPGetImageFromJsonLocalFile.shared.getUnscaledImageURL(from: imageURL)
+        print(unscaledCharacterImageURL)
+        let viewModel = SPCharacterDetailVIewViewModel(character: character, image: unscaledCharacterImageURL)
         let detailVC = SPCharacterDetailViewController(viewModel: viewModel)
         //navigationController give us animated slide by default
         detailVC.navigationItem.largeTitleDisplayMode = .never
