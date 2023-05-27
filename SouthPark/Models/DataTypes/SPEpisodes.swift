@@ -7,11 +7,15 @@
 
 import Foundation
 
-struct SPEpisodes: Codable {
+struct SPEpisodesData: Codable {
+    let data: SPEpisodes
+}
+
+struct SPEpisodes: Codable, SPEpisodeDataRender {
     let id: Int
     let name: String
     let season: Int
-    let episode: String
+    let episode: Int
     let air_date: String
     let wiki_url: String
     let thumbnail_url: String

@@ -12,6 +12,8 @@ final class SPCharacterEpisodeCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        contentView.backgroundColor = .systemBlue
+        contentView.layer.cornerRadius = 8
     }
     
     required init?(coder: NSCoder) {
@@ -27,6 +29,14 @@ final class SPCharacterEpisodeCollectionViewCell: UICollectionViewCell {
     }
     
     public func configure(with viewModel: SPCharacterEpisodeCollectionViewCellViewModel) {
-        
+        viewModel.registerForData { data in
+            print(data.name)
+            print(data.episode)
+            print(data.season)
+            print(data.air_date)
+            print(data.thumbnail_url)
+            print(data.description)
+        }
+        viewModel.fetchEpisode()
     }
 }

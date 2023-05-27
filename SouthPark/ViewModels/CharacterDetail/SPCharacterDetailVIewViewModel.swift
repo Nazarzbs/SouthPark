@@ -34,16 +34,18 @@ final class SPCharacterDetailVIewViewModel {
 
     func setUpSections() {
         sections = [
-            .photo(viewModel: .init(imageUrl: URL(string: image ?? "??" ))),
+            .photo(viewModel: .init(imageUrl: URL(string: image))),
             .information(viewModels: [
-                .init(value: "\(String(describing: character.age))", title: "Age"),
-                .init(value: "\(String(describing: character.sex))", title: "Sex"),
-                .init(value: String(character.relatives.count), title: "Relatives"),
-                .init(value: "\(String(describing: character.occupation))", title: "Occupation"),
-                .init(value: "\(String(describing: character.grade))", title: "Grade"),
-                .init(value: "\(String(describing: character.religion))", title: "Religion"),
-                .init(value: character.family, title: "Family"),
-                .init(value: "\(character.episodes.count)", title: "Total Episodes"),
+                .init(type: .age, value: String(character.age ?? 0)),
+                .init(type: .sex, value: character.sex ?? ""),
+                .init(type: .relatives, value: String(character.relatives.count)),
+                .init(type: .occupation, value: character.occupation ?? ""),
+                .init(type: .grade, value: character.grade ?? ""),
+                .init(type: .religion, value: character.religion ?? ""),
+                .init(type: .family, value: character.family),
+                .init(type: .episodes, value: String(character.episodes.count)),
+                .init(type: .updated_at, value: character.updated_at),
+                .init(type: .created_at, value: String(character.created_at)),
               
             ]),
             .episodes(viewModels: character.episodes.compactMap ({
