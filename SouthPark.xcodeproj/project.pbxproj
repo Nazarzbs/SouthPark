@@ -44,6 +44,7 @@
 		CECDD3582A1940CD000E2ADB /* SPCharacterDetailVIewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECDD3572A1940CD000E2ADB /* SPCharacterDetailVIewViewModel.swift */; };
 		CECDD35C2A195A42000E2ADB /* SPFooterLoadingCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECDD35B2A195A42000E2ADB /* SPFooterLoadingCollectionReusableView.swift */; };
 		CECDD3602A1BE3FE000E2ADB /* SPImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECDD35F2A1BE3FE000E2ADB /* SPImageLoader.swift */; };
+		CEE2279B2A2E47F9000C86C6 /* SPEpisodeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE2279A2A2E47F9000C86C6 /* SPEpisodeDetailViewController.swift */; };
 		CEEEEF962A1E87CF00DB2750 /* SPGetImageFromJsonLocalFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEEEF952A1E87CF00DB2750 /* SPGetImageFromJsonLocalFile.swift */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +88,7 @@
 		CECDD3572A1940CD000E2ADB /* SPCharacterDetailVIewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPCharacterDetailVIewViewModel.swift; sourceTree = "<group>"; };
 		CECDD35B2A195A42000E2ADB /* SPFooterLoadingCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPFooterLoadingCollectionReusableView.swift; sourceTree = "<group>"; };
 		CECDD35F2A1BE3FE000E2ADB /* SPImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPImageLoader.swift; sourceTree = "<group>"; };
+		CEE2279A2A2E47F9000C86C6 /* SPEpisodeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPEpisodeDetailViewController.swift; sourceTree = "<group>"; };
 		CEEEEF952A1E87CF00DB2750 /* SPGetImageFromJsonLocalFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPGetImageFromJsonLocalFile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -239,8 +241,8 @@
 			isa = PBXGroup;
 			children = (
 				CECDD3552A19406F000E2ADB /* SPCharacterDetailVIew.swift */,
-				CEA238552A1D518D00C598ED /* SPCharacterInfoCollectionViewCell.swift */,
 				CEA238572A1D519E00C598ED /* SPCharacterPhotoCollectionViewCell.swift */,
+				CEA238552A1D518D00C598ED /* SPCharacterInfoCollectionViewCell.swift */,
 				CEA238592A1D51BE00C598ED /* SPCharacterEpisodeCollectionViewCell.swift */,
 			);
 			path = CharacteDetails;
@@ -271,6 +273,7 @@
 			isa = PBXGroup;
 			children = (
 				CECDD3532A193DB9000E2ADB /* SPCharacterDetailViewController.swift */,
+				CEE2279A2A2E47F9000C86C6 /* SPEpisodeDetailViewController.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 				CE8F394C2A0D326600BD8042 /* SPLocations.swift in Sources */,
 				CECDD3562A19406F000E2ADB /* SPCharacterDetailVIew.swift in Sources */,
 				CE8F392F2A0D2FFC00BD8042 /* SPTabBarController.swift in Sources */,
+				CEE2279B2A2E47F9000C86C6 /* SPEpisodeDetailViewController.swift in Sources */,
 				CE98A2FB2A0E8700001E54F3 /* SPCharacterGender.swift in Sources */,
 				CEA238562A1D518D00C598ED /* SPCharacterInfoCollectionViewCell.swift in Sources */,
 				CEA2385F2A1D532500C598ED /* SPCharacterPhotoCollectionViewCellViewModel.swift in Sources */,

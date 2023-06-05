@@ -13,6 +13,10 @@ final class SPCharacterDetailVIewViewModel {
     private let character: SPCharacter
     private let image: String
     
+    public var episodes: [String] {
+        character.episodes
+    }
+    
     //To store specific cell view model we use Associated Value with enum cases. 
     enum SectionType {
         case photo(viewModel: SPCharacterPhotoCollectionViewCellViewModel)
@@ -46,7 +50,6 @@ final class SPCharacterDetailVIewViewModel {
                 .init(type: .episodes, value: String(character.episodes.count)),
                 .init(type: .updated_at, value: character.updated_at),
                 .init(type: .created_at, value: String(character.created_at)),
-              
             ]),
             .episodes(viewModels: character.episodes.compactMap ({
                 return SPCharacterEpisodeCollectionViewCellViewModel(episodeDataUrl: URL(string: $0))
@@ -85,8 +88,8 @@ final class SPCharacterDetailVIewViewModel {
     
     public func createEpisodesSectionLayout() -> NSCollectionLayoutSection {
         let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0)))
-        item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 5, bottom: 10, trailing: 8)
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.8), heightDimension: .absolute(150)) , subitems: [item])
+        item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 5, bottom: 20, trailing: 8)
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.8), heightDimension: .absolute(350)) , subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .groupPaging
         return section
