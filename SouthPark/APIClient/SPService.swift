@@ -16,6 +16,8 @@ final class SPService {
     /// Shared singleton instance
     static let shared = SPService()
     
+    private let cacheManager = SPAPICacheManager()
+    
     //to force to use our shared instance
     
     ///Privatised constructor
@@ -31,13 +33,23 @@ final class SPService {
     ///   - request: Request instance
     ///   - type: The type of object we expect to get back
     ///   - completion: Callback with data  or error
-    public func execute<T: Codable>(_ request: SPRequest, expected type: T.Type, completion: @escaping(Result<T, Error>) -> Void) {
+    public func execute<T: Codable>(_ request: SPRequest, expecting type: T.Type, completion: @escaping(Result<T, Error>) -> Void) {
+        if let cachedData = cacheManager.cachedResponse(for: request.endpoint, url: request.url) {
+            do {
+                let result = try JSONDecoder().decode(type.self, from: cachedData)
+                completion(.success(result))
+            }
+            catch {
+                completion(.failure(error))
+            }
+            return
+        }
         guard let urlRequest = self.request(from: request) else {
             completion(.failure(SPServiceError.failedToCreateRequest))
             return
         }
         
-        let task = URLSession.shared.dataTask(with: urlRequest) {
+        let task = URLSession.shared.dataTask(with: urlRequest) { [weak self]
             data, _, error in
             guard let data = data, error == nil else { completion(.failure(error ?? SPServiceError.failedToGetData))
                 return
@@ -49,6 +61,7 @@ final class SPService {
                 //Instead of decoding/serialisation to the json, we will decode to the our type
 //                let json = try JSONSerialization.jsonObject(with: data)
                 let result = try JSONDecoder().decode(type.self, from: data)
+                self?.cacheManager.setCache(for: request.endpoint, url: request.url, data: data)
                 completion(.success(result))
             } catch {
                 completion(.failure(error))

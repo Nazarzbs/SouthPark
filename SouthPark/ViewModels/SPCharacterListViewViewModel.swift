@@ -51,7 +51,7 @@ final class SPCharacterListViewViewModel: NSObject {
     
     ///  Fetch initial set of characters (20)
     func fetchCharacters() {
-        SPService.shared.execute(.listCharactersRequests, expected: SPGetAllCharactersResponse.self) { [weak self] result in
+        SPService.shared.execute(.listCharactersRequests, expecting: SPGetAllCharactersResponse.self) { [weak self] result in
             switch result {
             case .success(let responseModel):
                 let result = responseModel.data
@@ -77,7 +77,7 @@ final class SPCharacterListViewViewModel: NSObject {
             return
         }
         
-        SPService.shared.execute(request, expected: SPGetAllCharactersResponse.self) { [weak self] result in
+        SPService.shared.execute(request, expecting: SPGetAllCharactersResponse.self) { [weak self] result in
             guard let strongSelf = self else { return }
             switch result {
             case .success(let responseModel):

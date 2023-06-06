@@ -16,7 +16,7 @@ final class SPRequest {
         static let baseUrl = "https://spapi.dev/api"
     }
     /// Desired endpoint
-    private let endpoint: SPEndpoint
+    let endpoint: SPEndpoint
     /// Path components for API, if any
     private let pathComponents: [String]
     /// Query arguments for API, if any

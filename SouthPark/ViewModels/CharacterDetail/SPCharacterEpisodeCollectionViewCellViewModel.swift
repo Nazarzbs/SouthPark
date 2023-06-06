@@ -39,7 +39,6 @@ final class SPCharacterEpisodeCollectionViewCellViewModel {
                 switch result {
                 case .success(let data):
                     DispatchQueue.main.async {
-                        print(data.count)
                         self?.episodeImageData = data
                         self?.dataBlock?(model, data)
                     }
@@ -75,10 +74,9 @@ final class SPCharacterEpisodeCollectionViewCellViewModel {
         guard let url = episodeDataUrl, let request = SPRequest(url: url) else { return }
         isFetching = true
         
-        SPService.shared.execute(request, expected: SPEpisodesData.self) { [weak self] result in
+        SPService.shared.execute(request, expecting: SPEpisodesData.self) { [weak self] result in
             switch result {
             case .success(let model):
-                print(model.data.episode)
                 DispatchQueue.main.async {
                     self?.episode = model
                 }
@@ -94,10 +92,8 @@ final class SPCharacterEpisodeCollectionViewCellViewModel {
         guard let thumbnailURLString = data?.thumbnail_url else {
             // Handle the case when thumbnailURL is nil
             return
-        }
-      
+        }      
         guard let thumbnailURL = URL(string: thumbnailURLString) else { return }
-        
         SPImageLoader.shared.downloadImage(thumbnailURL, completion: completion)
     }
 }

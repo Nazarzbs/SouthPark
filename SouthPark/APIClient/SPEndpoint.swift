@@ -6,12 +6,10 @@
 //
 
 import Foundation
-
-
 // use enum to model all endpoints with raw value type String (Endpoint.character.raw would be a String "character").
 
 /// Represents unique API endpoint
-@frozen enum SPEndpoint: String {
+@frozen enum SPEndpoint: String, CaseIterable, Hashable {
     //Endpoint to character info
     case characters
     //Endpoint to location info
