@@ -18,7 +18,7 @@ protocol SPEpisodeDataRender {
     var description: String { get }
 }
 
-final class SPCharacterEpisodeCollectionViewCellViewModel {
+final class SPCharacterEpisodeCollectionViewCellViewModel: Hashable, Equatable {
     let episodeDataUrl: URL?
 
     //flag to track if data and images are being fetched
@@ -95,5 +95,13 @@ final class SPCharacterEpisodeCollectionViewCellViewModel {
         }      
         guard let thumbnailURL = URL(string: thumbnailURLString) else { return }
         SPImageLoader.shared.downloadImage(thumbnailURL, completion: completion)
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(self.episodeDataUrl?.absoluteString ?? "")
+    }
+    
+    static func == (lhs: SPCharacterEpisodeCollectionViewCellViewModel, rhs: SPCharacterEpisodeCollectionViewCellViewModel) -> Bool {
+        return lhs.hashValue == rhs.hashValue
     }
 }

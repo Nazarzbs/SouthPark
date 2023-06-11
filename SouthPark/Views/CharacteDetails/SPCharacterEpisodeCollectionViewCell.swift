@@ -42,13 +42,13 @@ final class SPCharacterEpisodeCollectionViewCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.font = .systemFont(ofSize: 16, weight: .light)
-        label.adjustsFontSizeToFitWidth = true
+       // label.adjustsFontSizeToFitWidth = true
         return label
     }()
     
     private let thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         // To not overflow
        
         imageView.clipsToBounds = true
@@ -61,10 +61,8 @@ final class SPCharacterEpisodeCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.backgroundColor = .tertiarySystemBackground
-        contentView.layer.cornerRadius = 8
-        contentView.layer.borderWidth = 2
-        contentView.layer.borderColor = UIColor.systemBlue.cgColor
+        setUpLayer()
+        contentView.backgroundColor = .secondarySystemBackground
         contentView.addSubviews(seasonLabel, thumbnailImageView, nameLabel, airDateLabel, descriptionLabel)
         setUpConstraints()
     }
@@ -73,28 +71,38 @@ final class SPCharacterEpisodeCollectionViewCell: UICollectionViewCell {
         fatalError()
     }
     
+    private func setUpLayer() {
+        contentView.layer.cornerRadius = 8
+        contentView.layer.shadowColor = UIColor.label.cgColor
+        contentView.layer.shadowOpacity = 0.4
+        contentView.layer.shadowOffset =  CGSize(width: -2, height: 2)
+    }
+    
     private func setUpConstraints() {
         NSLayoutConstraint.activate([
             
             nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+           
             nameLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
             nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
             
             thumbnailImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            thumbnailImageView.widthAnchor.constraint(equalToConstant: 300),
-            thumbnailImageView.heightAnchor.constraint(equalToConstant: 150),
+            thumbnailImageView.heightAnchor.constraint(equalToConstant: 180),
             thumbnailImageView.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 4),
+            thumbnailImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
+            thumbnailImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
             
-            seasonLabel.topAnchor.constraint(equalTo: thumbnailImageView.bottomAnchor, constant: 8),
+            seasonLabel.topAnchor.constraint(equalTo: thumbnailImageView.bottomAnchor, constant: 4),
             seasonLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
         
-            descriptionLabel.topAnchor.constraint(equalTo: seasonLabel.bottomAnchor, constant: 4),
+
             descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
             descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
-            descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 4),
+           
+            descriptionLabel.topAnchor.constraint(equalTo: seasonLabel.bottomAnchor, constant: 4),
 
-            airDateLabel.topAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0),
+            airDateLabel.topAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 3),
             airDateLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
     }

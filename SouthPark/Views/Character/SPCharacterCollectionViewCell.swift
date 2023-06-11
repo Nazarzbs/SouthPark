@@ -44,7 +44,6 @@ class SPCharacterCollectionViewCell: UICollectionViewCell {
         contentView.addSubviews(imageView, nameLabel, characterOccupationLabel)
         addConstraints()
         setUpLayer()
-    
     }
     
     required init?(coder: NSCoder) {
@@ -55,7 +54,7 @@ class SPCharacterCollectionViewCell: UICollectionViewCell {
         contentView.layer.cornerRadius = 8
         contentView.layer.shadowColor = UIColor.label.cgColor
         contentView.layer.shadowOffset =  CGSize(width: -2, height: 2)
-        contentView.layer.shadowOpacity = 0.3
+        contentView.layer.shadowOpacity = 0.4
     }
     
     private func addConstraints() {
@@ -105,7 +104,9 @@ class SPCharacterCollectionViewCell: UICollectionViewCell {
                 }
             case .failure(let error):
                 print(String(describing: error))
-                self?.imageView.image = UIImage(named: "CharacrersDefault")
+                DispatchQueue.main.async {
+                    self?.imageView.image = UIImage(named: "CharacrersDefault")
+                }
                 break
             }
         }

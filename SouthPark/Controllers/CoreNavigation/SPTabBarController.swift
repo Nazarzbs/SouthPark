@@ -42,8 +42,8 @@ final class SPTabBarController: UITabBarController {
         nav1.tabBarItem = UITabBarItem(title: "Characters", image: UIImage(systemName: "person.text.rectangle"), tag: 1)
         nav2.tabBarItem = UITabBarItem(title: "Locations", image: UIImage(systemName: "globe.americas"), tag: 2)
         nav3.tabBarItem = UITabBarItem(title: "Episodes", image: UIImage(systemName: "tv"), tag: 3)
-        nav4.tabBarItem = UITabBarItem(title: "Families", image: UIImage(systemName: "figure.2.and.child.holdinghands"), tag: 5)
-        nav5.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(systemName: "gear"), tag: 4)
+        nav4.tabBarItem = UITabBarItem(title: "Families", image: UIImage(systemName: "figure.2.and.child.holdinghands"), tag: 4)
+        nav5.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(systemName: "gear"), tag: 5)
         
         for nav in [nav1, nav2, nav3, nav4] {
             nav.navigationBar.prefersLargeTitles = true

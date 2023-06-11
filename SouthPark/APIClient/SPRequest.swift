@@ -120,5 +120,6 @@ final class SPRequest {
 extension SPRequest {
     //Improves readability
     static let listCharactersRequests = SPRequest(endpoint: .characters)
+    static let listEpisodesRequest = SPRequest(endpoint: .episodes)
 }
 

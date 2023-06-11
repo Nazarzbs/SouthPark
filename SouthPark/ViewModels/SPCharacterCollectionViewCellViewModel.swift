@@ -13,12 +13,12 @@ final class SPCharacterCollectionViewCellViewModel: Hashable, Equatable {
     public let characterOccupation: String
     public let id: Int?
     
-    private let characterImageUrl: URL?
+    private let characterImageName: String
     
-    init(characterName: String, characterOccupation: String, characterImageUrl: URL?, id: Int?) {
+    init(characterName: String, characterOccupation: String, characterImageName: String?, id: Int?) {
         self.characterName = characterName
         self.characterOccupation = characterOccupation
-        self.characterImageUrl = characterImageUrl
+        self.characterImageName = characterImageName ?? ""
         self.id = id
     }
     
@@ -30,8 +30,22 @@ final class SPCharacterCollectionViewCellViewModel: Hashable, Equatable {
     //@escaping - this cloture/call back can escape the context of another async job
     public func fetchImage(completion: @escaping (Result<Data, Error>) -> Void) {
         //TODO: Abstract to Image Manager
-        guard let url = characterImageUrl else { return completion(.failure(URLError(.badURL)))}
+    
+        guard let url = URL(string: getImageFromJsonFile(with: characterImageName) ?? "") else { return completion(.failure(URLError(.badURL)))}
         SPImageLoader.shared.downloadImage(url, completion: completion)
+    }
+    
+    func getImageFromJsonFile(with characterName: String) -> String? {
+        guard let jsonData = SPGetImageFromJsonLocalFile.shared.readLocalFile(forName: "CharactersImage") else { return nil}
+        
+        let characterImageUrls = SPGetImageFromJsonLocalFile.shared.parse(jsonData)
+        
+        let characterImageUrl = characterImageUrls?.images.filter {
+            return $0.title == characterName
+        }
+        
+        let unscaledCharacterImageURL = SPGetImageFromJsonLocalFile.shared.getUnscaledImageURL(from: characterImageUrl)
+        return unscaledCharacterImageURL
     }
     
     //MARK: - Hashable
@@ -44,7 +58,7 @@ final class SPCharacterCollectionViewCellViewModel: Hashable, Equatable {
         //Telling view model what unique hash value for if is
         hasher.combine(characterName)
         hasher.combine(characterOccupation)
-        hasher.combine(characterImageUrl)
+        hasher.combine(characterImageName)
         hasher.combine(id)
     }
 }
