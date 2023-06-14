@@ -21,6 +21,7 @@ final class SPEpisodeDetailViewViewModel {
     }
     
     enum SectionType {
+        case episodeImage(viewModel: SPEpisodeImageCollectionViewCellViewModel)
         case information(viewModels: [SPEpisodeInfoCollectionViewCellViewModel])
         case characters(viewModels: [SPCharacterCollectionViewCellViewModel])
 //        case locations(viewModels: [SPCharacterCollectionViewCellViewModel])
@@ -34,6 +35,11 @@ final class SPEpisodeDetailViewViewModel {
      
     init(endpointURL: URL?) {
         self.endpointURL = endpointURL
+    }
+    
+    public func character(at index: Int) -> SPCharacter? {
+        guard let dataTuple = dataTuple else { return nil }
+        return dataTuple.characters[index]
     }
     
     //MARK: - Public
@@ -57,11 +63,11 @@ final class SPEpisodeDetailViewViewModel {
         let episode = dataTuple.episode.data
         let characters = dataTuple.characters
         cellViewModels = [
+            .episodeImage(viewModel: SPEpisodeImageCollectionViewCellViewModel(imageUrlString: episode.thumbnail_url)),
             .information(viewModels: [
                 .init(title: "Episode Name", value: episode.name),
-                .init(title: "Image", value: episode.thumbnail_url),
                 .init(title: "Air Date", value: episode.air_date),
-                .init(title: "Episode", value: "S\(episode.season)E\(episode.episode)"),
+                .init(title: "Episode", value: "Season: \(episode.season)Episode: \(episode.episode)"),
                 .init(title: "Description", value: episode.description),
                 .init(title: "Wiki Url", value: episode.wiki_url),
             ]),
@@ -76,10 +82,6 @@ final class SPEpisodeDetailViewViewModel {
 //                return SP...
 //            }))
         ]
-    }
-    
-    private func fetchRelatedEpisodeImage(episode: SPEpisodesData) {
-        
     }
     
     private func fetchRelatedCharacters(episode: SPEpisodesData) {

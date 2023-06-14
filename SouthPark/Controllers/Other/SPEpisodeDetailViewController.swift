@@ -7,7 +7,7 @@
 
 import UIKit
 //Vc to show details about single episode
-final class SPEpisodeDetailViewController: UIViewController, SPEpisodeDetailViewViewModelDelegate {
+final class SPEpisodeDetailViewController: UIViewController, SPEpisodeDetailViewViewModelDelegate, SPEpisodeDetailViewDelegate {
 
     private let viewModel: SPEpisodeDetailViewViewModel
     
@@ -28,6 +28,7 @@ final class SPEpisodeDetailViewController: UIViewController, SPEpisodeDetailView
     //MARK: - Lifecycle 
     override func viewDidLoad() {
         super.viewDidLoad()
+        detailView.delegate = self
         title = "Episode"
        
         view.addSubview(detailView)
@@ -50,8 +51,23 @@ final class SPEpisodeDetailViewController: UIViewController, SPEpisodeDetailView
     @objc func didTapShare() {
         
     }
+    //MARK: - View Delegate
     
+    func spEpisodeDetailView(_ detailView: SPEpisodeDetailView, didSelect character: SPCharacter) {
+        
+        guard let imageUrlString = SPGetImageFromJsonLocalFile.shared.getImageUrlString(with: character.name) else { return }
+        
+        let vc = SPCharacterDetailViewController(viewModel: .init(character: character, imageUrl: imageUrlString))
+        
+        vc.title = character.name
+        vc.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+
+    //MARK: - ViewModel delegate
     func didFetchEpisodeDetails() {
         detailView.configure(with: viewModel)
     }
+    
 }

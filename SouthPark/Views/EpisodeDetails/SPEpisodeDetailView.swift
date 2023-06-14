@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol SPEpisodeDetailViewDelegate: AnyObject {
+    func spEpisodeDetailView(_ detailView: SPEpisodeDetailView, didSelect character: SPCharacter)
+}
+
 final class SPEpisodeDetailView: UIView {
+    
+    public weak var delegate: (SPEpisodeDetailViewDelegate)?
     
     private var viewModel: SPEpisodeDetailViewViewModel? {
         didSet {
@@ -73,6 +79,7 @@ final class SPEpisodeDetailView: UIView {
         collectionView.alpha = 0
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.register(SPEpisodeImageCollectionViewCell.self, forCellWithReuseIdentifier: SPEpisodeImageCollectionViewCell.cellIdentifier)
         collectionView.register(SPEpisodeInfoCollectionViewCell.self, forCellWithReuseIdentifier: SPEpisodeInfoCollectionViewCell.cellIdentifier)
         collectionView.register(SPCharacterCollectionViewCell.self, forCellWithReuseIdentifier: SPCharacterCollectionViewCell.cellIdentifier)
         return collectionView
@@ -95,12 +102,14 @@ extension SPEpisodeDetailView: UICollectionViewDelegate, UICollectionViewDataSou
         let sectionType = sections[section]
         
         switch sectionType {
+        case .episodeImage(viewModel: _):
+            return 1
         case .information(viewModels: let viewModels):
             return viewModels.count
         case .characters(viewModels: let viewModels):
             return viewModels.count
-//        case .locations(viewModels: let viewModels):
-//            return viewModels.count
+            //        case .locations(viewModels: let viewModels):
+            //            return viewModels.count
         }
     }
     
@@ -109,6 +118,7 @@ extension SPEpisodeDetailView: UICollectionViewDelegate, UICollectionViewDataSou
         let sectionType = sections[indexPath.section]
         
         switch sectionType {
+            
         case .information(viewModels: let viewModels):
             let cellViewModel = viewModels[indexPath.row]
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SPEpisodeInfoCollectionViewCell.cellIdentifier, for: indexPath) as? SPEpisodeInfoCollectionViewCell else { fatalError() }
@@ -120,11 +130,29 @@ extension SPEpisodeDetailView: UICollectionViewDelegate, UICollectionViewDataSou
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SPCharacterCollectionViewCell.cellIdentifier, for: indexPath) as? SPCharacterCollectionViewCell else { fatalError() }
             cell.configure(with: cellViewModel)
             return cell
+        case .episodeImage(viewModel: let viewModel):
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SPEpisodeImageCollectionViewCell.cellIdentifier, for: indexPath) as? SPEpisodeImageCollectionViewCell else { fatalError() }
+            cell.configure(with: viewModel)
+            return cell
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
+        guard let viewModel = viewModel else { return }
+        
+        let sections = viewModel.cellViewModels
+        let sectionType = sections[indexPath.section]
+        
+        switch sectionType {
+        case .information:
+            break
+        case .characters:
+            guard let character = viewModel.character(at: indexPath.row) else  { return }
+            delegate?.spEpisodeDetailView(self, didSelect: character)
+        case .episodeImage(viewModel: _):
+            break
+        }
     }
 }
 
@@ -138,6 +166,8 @@ extension SPEpisodeDetailView {
             return createInfoLayout()
         case .characters:
             return createCharacterLayout()
+        case .episodeImage:
+            return createEpisodeImageLayout()
         }
     }
     
@@ -146,7 +176,7 @@ extension SPEpisodeDetailView {
         
         item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
         
-        let group = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(100)), subitems: [item])
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(80)), subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
         return section
     }
@@ -155,6 +185,14 @@ extension SPEpisodeDetailView {
         let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(1.0)))
         item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(260)) , subitems: [item, item])
+        let section = NSCollectionLayoutSection(group: group)
+        return section
+    }
+    
+    func createEpisodeImageLayout() -> NSCollectionLayoutSection {
+        let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1.0)))
+        item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(230)) , subitems: [item, item])
         let section = NSCollectionLayoutSection(group: group)
         return section
     }

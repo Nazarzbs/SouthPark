@@ -71,7 +71,7 @@ final class SPEpisodeListView: UIView {
             collectionView.topAnchor.constraint(equalTo: topAnchor, constant: -8),
             collectionView.leftAnchor.constraint(equalTo: leftAnchor),
             collectionView.rightAnchor.constraint(equalTo: rightAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 40),
+            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
             
         ])
     }

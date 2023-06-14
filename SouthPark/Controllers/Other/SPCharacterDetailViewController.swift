@@ -67,7 +67,7 @@ extension SPCharacterDetailViewController: UICollectionViewDelegate, UICollectio
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let sectionType = viewModel.sections[section]
         switch sectionType {
-        case .photo(let viewModel):
+        case .photo(_):
             return 1
         case .information(let viewModels):
             return viewModels.count

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		CE0C91352A34AA8800E8CE90 /* SPSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0C91342A34AA8800E8CE90 /* SPSearchViewController.swift */; };
+		CE2F71C62A3A1CFC0094954D /* SPEpisodeImageCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2F71C52A3A1CFC0094954D /* SPEpisodeImageCollectionViewCellViewModel.swift */; };
+		CE2F71C82A3A1F630094954D /* SPEpisodeImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2F71C72A3A1F630094954D /* SPEpisodeImageCollectionViewCell.swift */; };
 		CE8F392B2A0D2FFC00BD8042 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F392A2A0D2FFC00BD8042 /* AppDelegate.swift */; };
 		CE8F392D2A0D2FFC00BD8042 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F392C2A0D2FFC00BD8042 /* SceneDelegate.swift */; };
 		CE8F392F2A0D2FFC00BD8042 /* SPTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F392E2A0D2FFC00BD8042 /* SPTabBarController.swift */; };
@@ -59,6 +61,8 @@
 
 /* Begin PBXFileReference section */
 		CE0C91342A34AA8800E8CE90 /* SPSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPSearchViewController.swift; sourceTree = "<group>"; };
+		CE2F71C52A3A1CFC0094954D /* SPEpisodeImageCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPEpisodeImageCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
+		CE2F71C72A3A1F630094954D /* SPEpisodeImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPEpisodeImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		CE8F39272A0D2FFC00BD8042 /* SouthPark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SouthPark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE8F392A2A0D2FFC00BD8042 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE8F392C2A0D2FFC00BD8042 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -298,6 +302,7 @@
 			children = (
 				CEE227A62A2FD219000C86C6 /* SPEpisodeDetailView.swift */,
 				CEB2BA412A360C1200645856 /* SPEpisodeInfoCollectionViewCell.swift */,
+				CE2F71C72A3A1F630094954D /* SPEpisodeImageCollectionViewCell.swift */,
 			);
 			path = EpisodeDetails;
 			sourceTree = "<group>";
@@ -307,6 +312,7 @@
 			children = (
 				CEE227A22A2FD12C000C86C6 /* SPEpisodeDetailViewViewModel.swift */,
 				CEB2BA482A360CEE00645856 /* SPEpisodeInfoCollectionViewCellViewModel.swift */,
+				CE2F71C52A3A1CFC0094954D /* SPEpisodeImageCollectionViewCellViewModel.swift */,
 			);
 			path = EpisodeDetail;
 			sourceTree = "<group>";
@@ -412,8 +418,10 @@
 				CEA2385A2A1D51BE00C598ED /* SPCharacterEpisodeCollectionViewCell.swift in Sources */,
 				CECDD3582A1940CD000E2ADB /* SPCharacterDetailVIewViewModel.swift in Sources */,
 				CE8F39522A0D33C800BD8042 /* SPCharacterViewController.swift in Sources */,
+				CE2F71C82A3A1F630094954D /* SPEpisodeImageCollectionViewCell.swift in Sources */,
 				CEE227B62A324EB5000C86C6 /* SPGetAllEpisodesResponse.swift in Sources */,
 				CEE227B22A3242D2000C86C6 /* SPEpisodeListViewViewModel.swift in Sources */,
+				CE2F71C62A3A1CFC0094954D /* SPEpisodeImageCollectionViewCellViewModel.swift in Sources */,
 				CE8F39672A0D746700BD8042 /* SPService.swift in Sources */,
 				CE8F39612A0D347D00BD8042 /* SPSettingsViewController.swift in Sources */,
 				CECDD3602A1BE3FE000E2ADB /* SPImageLoader.swift in Sources */,

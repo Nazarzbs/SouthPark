@@ -50,7 +50,6 @@ final class SPCharacterEpisodeCollectionViewCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         // To not overflow
-       
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(named: "EpisodesDefault")

@@ -11,7 +11,7 @@ import UIKit
 final class SPCharacterDetailVIewViewModel {
     // To know which character are we showing the detail screen for
     private let character: SPCharacter
-    private let image: String
+    private let imageUrl: URL
     
     public var episodes: [String] {
         character.episodes
@@ -30,15 +30,15 @@ final class SPCharacterDetailVIewViewModel {
     
     //MARK: - Init
     
-    init(character: SPCharacter, image: String) {
+    init(character: SPCharacter, imageUrl: URL) {
         self.character = character
-        self.image = image
+        self.imageUrl = imageUrl
         setUpSections()
     }
 
     func setUpSections() {
         sections = [
-            .photo(viewModel: .init(imageUrl: URL(string: image))),
+            .photo(viewModel: .init(imageUrl: imageUrl)),
             .information(viewModels: [
                 .init(type: .age, value: String(character.age ?? 0)),
                 .init(type: .sex, value: character.sex ?? ""),
