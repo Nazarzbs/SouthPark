@@ -50,7 +50,7 @@ final class SPCharacterPhotoCollectionViewCell: UICollectionViewCell {
                 DispatchQueue.main.async {
                     self?.imageView.image = UIImage(data: data)
                 }
-            case .failure(let failure):
+            case .failure(_):
                 break
             }
         }

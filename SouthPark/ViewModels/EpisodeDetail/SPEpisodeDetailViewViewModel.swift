@@ -24,6 +24,8 @@ final class SPEpisodeDetailViewViewModel {
         case episodeImage(viewModel: SPEpisodeImageCollectionViewCellViewModel)
         case information(viewModels: [SPEpisodeInfoCollectionViewCellViewModel])
         case characters(viewModels: [SPCharacterCollectionViewCellViewModel])
+        case description(viewModels: [SPEpisodeInfoCollectionViewCellViewModel])
+        case wikiUrl(viewModels: [SPEpisodeInfoCollectionViewCellViewModel])
 //        case locations(viewModels: [SPCharacterCollectionViewCellViewModel])
     }
     
@@ -35,11 +37,6 @@ final class SPEpisodeDetailViewViewModel {
      
     init(endpointURL: URL?) {
         self.endpointURL = endpointURL
-    }
-    
-    public func character(at index: Int) -> SPCharacter? {
-        guard let dataTuple = dataTuple else { return nil }
-        return dataTuple.characters[index]
     }
     
     //MARK: - Public
@@ -56,6 +53,18 @@ final class SPEpisodeDetailViewViewModel {
         }
     }
     
+    
+    public func wikiUrl() -> URL? {
+        guard let dataTuple = dataTuple else { return nil }
+        guard let url = URL(string: dataTuple.episode.data.wiki_url) else { return nil }
+        return url
+    }
+    
+    public func character(at index: Int) -> SPCharacter? {
+        guard let dataTuple = dataTuple else { return nil }
+        return dataTuple.characters[index]
+    }
+    
     //MARK: - Private
     
     private func createCellViewModels() {
@@ -64,19 +73,23 @@ final class SPEpisodeDetailViewViewModel {
         let characters = dataTuple.characters
         cellViewModels = [
             .episodeImage(viewModel: SPEpisodeImageCollectionViewCellViewModel(imageUrlString: episode.thumbnail_url)),
+           
+            .description(viewModels: [
+                .init(title: "Description", value: episode.description),
+            ]),
             .information(viewModels: [
                 .init(title: "Episode Name", value: episode.name),
                 .init(title: "Air Date", value: episode.air_date),
-                .init(title: "Episode", value: "Season: \(episode.season)Episode: \(episode.episode)"),
-                .init(title: "Description", value: episode.description),
-                .init(title: "Wiki Url", value: episode.wiki_url),
+                .init(title: "Episode", value: "Season: \(episode.season)\nEpisode: \(episode.episode)"),
+                .init(title: "Locations", value: "\(episode.locations.count)"),
+                .init(title: "Characters", value: "\(episode.characters.count)"),
+            ]),
+            .wikiUrl(viewModels: [
+                .init(title: "🔎 Episode Wiki:", value: episode.wiki_url)
             ]),
             .characters(viewModels: characters.compactMap({
                 return SPCharacterCollectionViewCellViewModel(
-                    characterName: $0.name,
-                    characterOccupation: $0.occupation ?? "Not given",
-                    characterImageName: $0.name,
-                    id: $0.id)
+                    characterName: $0.name, characterOccupation: $0.occupation ?? "Not given", characterImageName: $0.name, id: $0.id)
             })),
 //            .locations(viewModels: characters.compactMap({
 //                return SP...

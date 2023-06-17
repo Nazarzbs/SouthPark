@@ -15,10 +15,10 @@ final class SPCharacterCollectionViewCellViewModel: Hashable, Equatable {
     
     private let characterImageName: String
     
-    init(characterName: String, characterOccupation: String, characterImageName: String?, id: Int?) {
+    init(characterName: String, characterOccupation: String, characterImageName: String, id: Int?) {
         self.characterName = characterName
         self.characterOccupation = characterOccupation
-        self.characterImageName = characterImageName ?? ""
+        self.characterImageName = characterImageName
         self.id = id
     }
     

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 //Vc to show details about single episode
 final class SPEpisodeDetailViewController: UIViewController, SPEpisodeDetailViewViewModelDelegate, SPEpisodeDetailViewDelegate {
 
@@ -70,4 +71,8 @@ final class SPEpisodeDetailViewController: UIViewController, SPEpisodeDetailView
         detailView.configure(with: viewModel)
     }
     
+    func spEpisodeWikiWebView(episodeUrl: URL) {
+        let vc = SFSafariViewController(url: episodeUrl)
+        present(vc, animated: true)
+    }
 }
