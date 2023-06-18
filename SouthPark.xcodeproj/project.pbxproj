@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		CE0C91352A34AA8800E8CE90 /* SPSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0C91342A34AA8800E8CE90 /* SPSearchViewController.swift */; };
+		CE2849242A3F0D99002D9922 /* SPLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2849232A3F0D99002D9922 /* SPLocationView.swift */; };
+		CE2849332A3F3508002D9922 /* SPLocationViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2849322A3F3508002D9922 /* SPLocationViewViewModel.swift */; };
 		CE2F71C62A3A1CFC0094954D /* SPEpisodeImageCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2F71C52A3A1CFC0094954D /* SPEpisodeImageCollectionViewCellViewModel.swift */; };
 		CE2F71C82A3A1F630094954D /* SPEpisodeImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2F71C72A3A1F630094954D /* SPEpisodeImageCollectionViewCell.swift */; };
 		CE2F71CA2A3A39980094954D /* SPEpisodeDescriptionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2F71C92A3A39980094954D /* SPEpisodeDescriptionCollectionViewCell.swift */; };
@@ -67,6 +69,8 @@
 
 /* Begin PBXFileReference section */
 		CE0C91342A34AA8800E8CE90 /* SPSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPSearchViewController.swift; sourceTree = "<group>"; };
+		CE2849232A3F0D99002D9922 /* SPLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPLocationView.swift; sourceTree = "<group>"; };
+		CE2849322A3F3508002D9922 /* SPLocationViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPLocationViewViewModel.swift; sourceTree = "<group>"; };
 		CE2F71C52A3A1CFC0094954D /* SPEpisodeImageCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPEpisodeImageCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
 		CE2F71C72A3A1F630094954D /* SPEpisodeImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPEpisodeImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		CE2F71C92A3A39980094954D /* SPEpisodeDescriptionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPEpisodeDescriptionCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -137,6 +141,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE2849222A3F0D7A002D9922 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				CE2849232A3F0D99002D9922 /* SPLocationView.swift */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
 		CE2F71CE2A3B85B10094954D /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -207,6 +219,7 @@
 		CE8F39402A0D309F00BD8042 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CE2849222A3F0D7A002D9922 /* Location */,
 				CE2F71DE2A3B91550094954D /* SwiftUI */,
 				CEB2BA402A360B7100645856 /* EpisodeDetails */,
 				CEE227AE2A32412F000C86C6 /* Episode */,
@@ -226,6 +239,7 @@
 				CE98A3142A12C352001E54F3 /* SPCharacterCollectionViewCellViewModel.swift */,
 				CE98A3042A114C4B001E54F3 /* SPCharacterListViewViewModel.swift */,
 				CEE227B12A3242D2000C86C6 /* SPEpisodeListViewViewModel.swift */,
+				CE2849322A3F3508002D9922 /* SPLocationViewViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -454,6 +468,7 @@
 				CE8F39522A0D33C800BD8042 /* SPCharacterViewController.swift in Sources */,
 				CE2F71C82A3A1F630094954D /* SPEpisodeImageCollectionViewCell.swift in Sources */,
 				CEE227B62A324EB5000C86C6 /* SPGetAllEpisodesResponse.swift in Sources */,
+				CE2849332A3F3508002D9922 /* SPLocationViewViewModel.swift in Sources */,
 				CEE227B22A3242D2000C86C6 /* SPEpisodeListViewViewModel.swift in Sources */,
 				CE2F71C62A3A1CFC0094954D /* SPEpisodeImageCollectionViewCellViewModel.swift in Sources */,
 				CE8F39672A0D746700BD8042 /* SPService.swift in Sources */,
@@ -468,6 +483,7 @@
 				CE8F39462A0D322B00BD8042 /* SPCharacters.swift in Sources */,
 				CEB2BA492A360CEE00645856 /* SPEpisodeInfoCollectionViewCellViewModel.swift in Sources */,
 				CEE227A72A2FD219000C86C6 /* SPEpisodeDetailView.swift in Sources */,
+				CE2849242A3F0D99002D9922 /* SPLocationView.swift in Sources */,
 				CE8F39482A0D323C00BD8042 /* SPEpisodes.swift in Sources */,
 				CE8F396D2A0D78CC00BD8042 /* SPEndpoint.swift in Sources */,
 				CE2F71E02A3B918D0094954D /* SPSettingsView.swift in Sources */,
