@@ -8,7 +8,7 @@
 import UIKit
 
 /// Controller to show and search for Location
-final class SPLocationViewController: UIViewController {
+final class SPLocationViewController: UIViewController, SPLocationViewViewModelDelegate {
     
     private let primaryView = SPLocationView()
     
@@ -23,14 +23,12 @@ final class SPLocationViewController: UIViewController {
         title = "Locations"
         addSearchButton()
         addConstrains()
+        viewModel.delegate = self
+        viewModel.fetchLocations()
     }
     
     private func addSearchButton() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(didTapSearch))
-    }
-    
-    @objc private func didTapSearch() {
-        
     }
     
     private func addConstrains() {
@@ -40,5 +38,15 @@ final class SPLocationViewController: UIViewController {
             primaryView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
             primaryView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
+    }
+    
+    @objc private func didTapSearch() {
+        
+    }
+    
+    //MARK: - LocationViewModel Delegate
+    
+    func didFetchInitialLocations() {
+        primaryView.configure(with: viewModel)
     }
 }

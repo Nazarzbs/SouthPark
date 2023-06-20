@@ -26,12 +26,10 @@ final class SPCharacterCollectionViewCellViewModel: Hashable, Equatable {
         return "Occupation: \(characterOccupation)"
     }
     
-    //MARK: ToDO - fetch the image
     //@escaping - this cloture/call back can escape the context of another async job
     public func fetchImage(completion: @escaping (Result<Data, Error>) -> Void) {
-        //TODO: Abstract to Image Manager
         
-        guard let imageUrlString = SPGetImageFromJsonLocalFile.shared.getImageUrlString(with: characterName) else { return }
+        guard let imageUrlString = SPGetImageFromJsonLocalFile.shared.getImageUrlString(forCharacter: characterName, from: "CharactersImage") else { return }
         SPImageLoader.shared.downloadImage(imageUrlString, completion: completion)
     }
     

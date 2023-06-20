@@ -43,31 +43,31 @@ final class SPGetImageFromJsonLocalFile {
         return nil
     }
     
-    private func getUnscaledImageURL(from imageUrls: [SPCharacterImage]?) -> String {
-        var unscaledImageURL = ""
-        let patterToRemove = #"scale-to-width-down/\d+"#
-        let regex = try! NSRegularExpression(pattern: patterToRemove, options: [])
-
-            let modifiedURLs = imageUrls.map { urlString in
-                if !urlString.isEmpty {
-                    let range = NSRange(location: 0, length: urlString.first!.link.utf16.count)
-                    return regex.stringByReplacingMatches(in: urlString.first!.link, options: [], range: range, withTemplate: "")
-                }
-                return unscaledImageURL
-            }
-            unscaledImageURL = modifiedURLs ?? ""
-        return unscaledImageURL
-    }
+//    private func getUnscaledImageURL(from imageUrls: [SPCharacterImage]?) -> String {
+//        var unscaledImageURL = ""
+//        let patterToRemove = #"scale-to-width-down/\d+"#
+//        let regex = try! NSRegularExpression(pattern: patterToRemove, options: [])
+//
+//            let modifiedURLs = imageUrls.map { urlString in
+//                if !urlString.isEmpty {
+//                    let range = NSRange(location: 0, length: urlString.first!.link.utf16.count)
+//                    return regex.stringByReplacingMatches(in: urlString.first!.link, options: [], range: range, withTemplate: "")
+//                }
+//                return unscaledImageURL
+//            }
+//            unscaledImageURL = modifiedURLs ?? ""
+//        return unscaledImageURL
+//    }
     
-    public func getImageUrlString(with characterName: String) -> URL? {
-        guard let jsonData = SPGetImageFromJsonLocalFile.shared.readLocalFile(forName: "CharactersImage") else { return nil }
+    public func getImageUrlString(forCharacter name: String,from jsonFileName: String) -> URL? {
+        guard let jsonData = SPGetImageFromJsonLocalFile.shared.readLocalFile(forName: jsonFileName) else { return nil }
         let characterImageUrls = SPGetImageFromJsonLocalFile.shared.parse(jsonData)
         let imageURL = characterImageUrls?.images.filter {
-            $0.title == characterName
+            $0.title == name
         }
-        let unscaledCharacterImageURL = SPGetImageFromJsonLocalFile.shared.getUnscaledImageURL(from: imageURL)
+//        let unscaledCharacterImageURL = SPGetImageFromJsonLocalFile.shared.getUnscaledImageURL(from: imageURL)
         
-        guard let imageURL = URL(string: unscaledCharacterImageURL) else { return nil }
+        guard let imageURL = URL(string: imageURL?.first?.link ?? "nil") else { return nil }
         return imageURL
     }
 }

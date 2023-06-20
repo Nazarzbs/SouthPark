@@ -56,7 +56,7 @@ final class SPEpisodeDetailViewController: UIViewController, SPEpisodeDetailView
     
     func spEpisodeDetailView(_ detailView: SPEpisodeDetailView, didSelect character: SPCharacter) {
         
-        guard let imageUrlString = SPGetImageFromJsonLocalFile.shared.getImageUrlString(with: character.name) else { return }
+        guard let imageUrlString = SPGetImageFromJsonLocalFile.shared.getImageUrlString(forCharacter: character.name, from: "CharactersImage" ) else { return }
         
         let vc = SPCharacterDetailViewController(viewModel: .init(character: character, imageUrl: imageUrlString))
         

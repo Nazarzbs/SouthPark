@@ -93,7 +93,6 @@ class SPCharacterCollectionViewCell: UICollectionViewCell {
         nameLabel.text = viewModel.characterName
         characterOccupationLabel.text = viewModel.characterOccupationText
         
-//        MARK: ToDO - fetch the image
         viewModel.fetchImage { [weak self] result in
             switch result {
             case .success(let data):

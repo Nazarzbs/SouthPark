@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol SPLocationViewDelegate: AnyObject {
+    func spLocationView(_ locationView: SPLocationView, didSelect location: SPLocations)
+}
+
 final class SPLocationView: UIView {
+    
+    public weak var delegate: SPLocationViewDelegate?
     
     private var viewModel: SPLocationViewViewModel? {
         didSet {
@@ -23,7 +29,7 @@ final class SPLocationView: UIView {
     private let tableView: UITableView = {
         let table = UITableView()
         table.translatesAutoresizingMaskIntoConstraints = false
-        table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        table.register(SPLocationTableViewCell.self, forCellReuseIdentifier: SPLocationTableViewCell.cellIdentifier)
         table.alpha = 0
         table.isHidden = true
         return table
@@ -39,15 +45,20 @@ final class SPLocationView: UIView {
     //MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .red
         translatesAutoresizingMaskIntoConstraints = false
         addSubviews(tableView, spinner)
         spinner.startAnimating()
         addConstraints()
+        configureTable()
     }
     
     required init?(coder: NSCoder) {
         fatalError()
+    }
+    
+    private func configureTable() {
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
     private func addConstraints() {
@@ -68,3 +79,34 @@ final class SPLocationView: UIView {
         self.viewModel = viewModel
     }
 }
+
+extension SPLocationView: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        guard let locationModel = viewModel?.location(at: indexPath.row) else { return }
+        
+        delegate?.spLocationView(self, didSelect: locationModel)
+    }
+}
+
+extension SPLocationView: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 250
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel?.cellViewModels.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cellViewModels = viewModel?.cellViewModels else {
+            fatalError()
+        }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SPLocationTableViewCell.cellIdentifier, for: indexPath) as? SPLocationTableViewCell else { fatalError() }
+        let cellViewModel = cellViewModels[indexPath.row]
+        cell.configure(with: cellViewModel)
+        return cell
+    }
+}
+
