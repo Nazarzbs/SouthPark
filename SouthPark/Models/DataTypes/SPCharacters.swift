@@ -30,13 +30,3 @@ struct SPCharacter: Codable {
     let episodes: [String]
 }
 
-struct SPCharactersImage: Codable {
-    let images: [SPCharacterImage]
-}
-
-struct SPCharacterImage: Codable {
-    let link: String
-    let title: String
-}
-
-

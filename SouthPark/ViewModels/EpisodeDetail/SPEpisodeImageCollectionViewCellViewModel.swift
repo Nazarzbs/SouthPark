@@ -13,7 +13,6 @@ struct SPEpisodeImageCollectionViewCellViewModel {
     
     //@escaping - this cloture/call back can escape the context of another async job
     public func fetchImage(completion: @escaping (Result<Data, Error>) -> Void) {
-        //TODO: Abstract to Image Manager
         
         guard let imageUrl = URL(string: imageUrlString) else { return }
         

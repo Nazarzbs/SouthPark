@@ -87,7 +87,7 @@ final class SPCharacterEpisodeCollectionViewCellViewModel: Hashable, Equatable {
         }
     }
     
-    func fetchImage(data: SPEpisodes?, completion: @escaping (Result<Data, Error>) -> Void) {
+    func fetchImage(data: SPEpisode?, completion: @escaping (Result<Data, Error>) -> Void) {
 
         guard let thumbnailURLString = data?.thumbnail_url else {
             // Handle the case when thumbnailURL is nil

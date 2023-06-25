@@ -13,7 +13,7 @@ protocol SPEpisodeDetailViewViewModelDelegate: AnyObject {
 
 final class SPEpisodeDetailViewViewModel {
     private let endpointURL: URL?
-    private var dataTuple: (episode: SPEpisodesData, characters: [SPCharacter])? {
+    private var dataTuple: (episode: SPEpisodesData, characters: [SPCharacter], locations: [SPLocation])? {
         didSet {
             createCellViewModels()
             delegate?.didFetchEpisodeDetails() // Caller Will be our View and it will be notified to read data
@@ -26,7 +26,7 @@ final class SPEpisodeDetailViewViewModel {
         case characters(viewModels: [SPCharacterCollectionViewCellViewModel])
         case description(viewModels: [SPEpisodeInfoCollectionViewCellViewModel])
         case wikiUrl(viewModels: [SPEpisodeInfoCollectionViewCellViewModel])
-//        case locations(viewModels: [SPCharacterCollectionViewCellViewModel])
+        case locations(viewModels: [SPEpisodeLocationsDetailCellViewModel])
     }
     
     public weak var delegate: SPEpisodeDetailViewViewModelDelegate?
@@ -46,7 +46,7 @@ final class SPEpisodeDetailViewViewModel {
         SPService.shared.execute(request, expecting: SPEpisodesData.self) { result in
             switch result {
             case .success(let model):
-                self.fetchRelatedCharacters(episode: model)
+                self.fetchRelatedCharactersAndLocations(for: model)
             case .failure(_):
                 break
             }
@@ -65,12 +65,18 @@ final class SPEpisodeDetailViewViewModel {
         return dataTuple.characters[index]
     }
     
+    public func location(at index: Int) -> SPLocation? {
+        guard let dataTuple = dataTuple else { return nil }
+        return dataTuple.locations[index]
+    }
+    
     //MARK: - Private
     
     private func createCellViewModels() {
         guard let dataTuple = dataTuple else { return }
         let episode = dataTuple.episode.data
         let characters = dataTuple.characters
+        let locations = dataTuple.locations
         cellViewModels = [
             .episodeImage(viewModel: SPEpisodeImageCollectionViewCellViewModel(imageUrlString: episode.thumbnail_url)),
            
@@ -87,18 +93,24 @@ final class SPEpisodeDetailViewViewModel {
             .wikiUrl(viewModels: [
                 .init(title: "🔎 Episode Wiki:", value: episode.wiki_url)
             ]),
+            .locations(viewModels: locations.compactMap({
+                return SPEpisodeLocationsDetailCellViewModel(location: $0)
+            })),
             .characters(viewModels: characters.compactMap({
                 return SPCharacterCollectionViewCellViewModel(
                     characterName: $0.name, characterOccupation: $0.occupation ?? "Not given", characterImageName: $0.name, id: $0.id)
-            })),
-//            .locations(viewModels: characters.compactMap({
-//                return SP...
-//            }))
+            }))
         ]
     }
     
-    private func fetchRelatedCharacters(episode: SPEpisodesData) {
-        let requests: [SPRequest] = episode.data.characters.compactMap({
+    private func fetchRelatedCharactersAndLocations(for episode: SPEpisodesData) {
+        let episodeRequests: [SPRequest] = episode.data.characters.compactMap({
+            return URL(string: $0)
+        }).compactMap({
+            return SPRequest(url: $0)
+        })
+        
+        let locationRequests: [SPRequest] = episode.data.locations.compactMap({
             return URL(string: $0)
         }).compactMap({
             return SPRequest(url: $0)
@@ -110,12 +122,13 @@ final class SPEpisodeDetailViewViewModel {
         
         let group = DispatchGroup()
         var characters = [SPCharacter]()
-        for request in requests {
-            group.enter()
+        var locations = [SPLocation]()
+        for request in episodeRequests {
+           
             SPService.shared.execute(request, expecting: SPCharactersData.self, completion: {
                 result in
                 defer { //Last thing that going to run before the execution of our program exits the scope of this closure
-                    group.leave() // -20 // It is gona tell our group that what thing we kicked of and  started we left.
+//                    group.leave() // -20 // It is gona tell our group that what thing we kicked of and  started we left.
                 }
                 switch result {
                 case .success(let model):
@@ -126,10 +139,27 @@ final class SPEpisodeDetailViewViewModel {
             })
         }
         
+        for request in locationRequests {
+            group.enter()
+            SPService.shared.execute(request, expecting: SPLocationsData.self, completion: {
+                result in
+                defer { //Last thing that going to run before the execution of our program exits the scope of this closure
+                    group.leave() // -20 // It is gona tell our group that what thing we kicked of and  started we left.
+                }
+                switch result {
+                case .success(let model):
+                    locations.append(model.data)
+                case .failure:
+                    break
+                }
+            })
+        }
+        
         group.notify(queue: .main) {
             self.dataTuple = (
                 episode: episode,
-                characters: characters
+                characters: characters,
+                locations: locations
             )
         }
     }

@@ -8,7 +8,7 @@
 import UIKit
 
 /// Controller to show and search for Location
-final class SPLocationViewController: UIViewController, SPLocationViewViewModelDelegate {
+final class SPLocationViewController: UIViewController, SPLocationViewViewModelDelegate, SPLocationViewDelegate {
     
     private let primaryView = SPLocationView()
     
@@ -18,6 +18,7 @@ final class SPLocationViewController: UIViewController, SPLocationViewViewModelD
 //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        primaryView.delegate = self
         view.addSubview(primaryView)
         view.backgroundColor = .systemBackground
         title = "Locations"
@@ -42,6 +43,13 @@ final class SPLocationViewController: UIViewController, SPLocationViewViewModelD
     
     @objc private func didTapSearch() {
         
+    }
+    
+    //MARK: - RMLocationDelegate
+    func spLocationView(_ locationView: SPLocationView, didSelect location: SPLocation) {
+        let vc = SPLocationDetailViewController(url: URL(string: "https://spapi.dev/api/locations/" + "\(location.id)"))
+        vc.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     //MARK: - LocationViewModel Delegate

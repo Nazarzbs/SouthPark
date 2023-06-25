@@ -9,7 +9,7 @@ import UIKit
 import SafariServices
 //Vc to show details about single episode
 final class SPEpisodeDetailViewController: UIViewController, SPEpisodeDetailViewViewModelDelegate, SPEpisodeDetailViewDelegate {
-
+   
     private let viewModel: SPEpisodeDetailViewViewModel
     
     private let detailView = SPEpisodeDetailView()
@@ -56,7 +56,7 @@ final class SPEpisodeDetailViewController: UIViewController, SPEpisodeDetailView
     
     func spEpisodeDetailView(_ detailView: SPEpisodeDetailView, didSelect character: SPCharacter) {
         
-        guard let imageUrlString = SPGetImageFromJsonLocalFile.shared.getImageUrlString(forCharacter: character.name, from: "CharactersImage" ) else { return }
+        guard let imageUrlString = SPGetImageFromJsonLocalFile.shared.getImageUrlString(for: character.name, from: "CharactersImage" ) else { return }
         
         let vc = SPCharacterDetailViewController(viewModel: .init(character: character, imageUrl: imageUrlString))
         
@@ -65,14 +65,22 @@ final class SPEpisodeDetailViewController: UIViewController, SPEpisodeDetailView
         navigationController?.pushViewController(vc, animated: true)
     }
     
-
-    //MARK: - ViewModel delegate
-    func didFetchEpisodeDetails() {
-        detailView.configure(with: viewModel)
+    func spLocationDetailView(_ detailView: SPEpisodeDetailView, didSelect location: SPLocation) {
+        guard let url = URL(string: "https://spapi.dev/api/locations/" + "\(location.id)") else { return }
+        
+        let vc = SPLocationDetailViewController(url: url)
+        vc.title = location.name
+        vc.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func spEpisodeWikiWebView(episodeUrl: URL) {
         let vc = SFSafariViewController(url: episodeUrl)
         present(vc, animated: true)
+    }
+    
+    //MARK: - ViewModel delegate
+    func didFetchEpisodeDetails() {
+        detailView.configure(with: viewModel)
     }
 }

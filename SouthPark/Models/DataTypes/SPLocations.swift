@@ -7,7 +7,11 @@
 
 import Foundation
 
-struct SPLocations: Codable {
+struct SPLocationsData: Codable {
+    let data: SPLocation
+}
+
+struct SPLocation: Codable {
     let id: Int
     let name: String
     let created_at: String

@@ -10,9 +10,9 @@ import UIKit
 
 final class SPLocationTableViewCellViewModel: Hashable, Equatable {
     
-    let location: SPLocations
+    let location: SPLocation
   
-    init(location: SPLocations) {
+    init(location: SPLocation) {
         self.location = location
     }
     
@@ -33,7 +33,7 @@ final class SPLocationTableViewCellViewModel: Hashable, Equatable {
     //@escaping - this cloture/call back can escape the context of another async job
     public func fetchImage(completion: @escaping (Result<Data, Error>) -> Void) {
         
-        guard let imageUrlString = SPGetImageFromJsonLocalFile.shared.getImageUrlString(forCharacter: location.name, from: "LocationImages") else { return } 
+        guard let imageUrlString = SPGetImageFromJsonLocalFile.shared.getImageUrlString(for: location.name, from: "LocationImages") else { return } 
         SPImageLoader.shared.downloadImage(imageUrlString, completion: completion)
     }
 }

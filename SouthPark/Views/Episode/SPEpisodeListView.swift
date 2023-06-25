@@ -9,7 +9,7 @@ import UIKit
 
 // to get method out of the View we use another delegate
 protocol SPEpisodeListViewDelegate: AnyObject {
-    func spEpisodeListView(_ episodeListView: SPEpisodeListView, didSelectEpisode episode: SPEpisodes)
+    func spEpisodeListView(_ episodeListView: SPEpisodeListView, didSelectEpisode episode: SPEpisode)
 }
 
 /// View that handles showing list of characters, loaded, etc.
@@ -36,7 +36,7 @@ final class SPEpisodeListView: UIView {
         collectionView.isHidden = true
         collectionView.alpha = 0
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(SPCharacterEpisodeCollectionViewCell.self, forCellWithReuseIdentifier: SPCharacterEpisodeCollectionViewCell.cellIdentifier)
+        collectionView.register(SPEpisodeCollectionViewCell.self, forCellWithReuseIdentifier: SPEpisodeCollectionViewCell.cellIdentifier)
         collectionView.register(SPFooterLoadingCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: SPFooterLoadingCollectionReusableView.identifier)
         return collectionView
     }()
@@ -68,7 +68,7 @@ final class SPEpisodeListView: UIView {
             spinner.centerXAnchor.constraint(equalTo: centerXAnchor),
             spinner.centerYAnchor.constraint(equalTo: centerYAnchor),
             
-            collectionView.topAnchor.constraint(equalTo: topAnchor, constant: -8),
+            collectionView.topAnchor.constraint(equalTo: topAnchor, constant: 0),
             collectionView.leftAnchor.constraint(equalTo: leftAnchor),
             collectionView.rightAnchor.constraint(equalTo: rightAnchor),
             collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
@@ -83,7 +83,7 @@ final class SPEpisodeListView: UIView {
 }
 
 extension SPEpisodeListView: SPEpisodeListViewViewModelDelegate {
-    func didSelectEpisode(_ episode: SPEpisodes) {
+    func didSelectEpisode(_ episode: SPEpisode) {
         // to get method out of the View we use another delegate
         delegate?.spEpisodeListView(self, didSelectEpisode: episode)
     }

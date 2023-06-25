@@ -29,7 +29,7 @@ final class SPCharacterCollectionViewCellViewModel: Hashable, Equatable {
     //@escaping - this cloture/call back can escape the context of another async job
     public func fetchImage(completion: @escaping (Result<Data, Error>) -> Void) {
         
-        guard let imageUrlString = SPGetImageFromJsonLocalFile.shared.getImageUrlString(forCharacter: characterName, from: "CharactersImage") else { return }
+        guard let imageUrlString = SPGetImageFromJsonLocalFile.shared.getImageUrlString(for: characterName, from: "CharactersImage") else { return }
         SPImageLoader.shared.downloadImage(imageUrlString, completion: completion)
     }
     

@@ -15,7 +15,7 @@ final class SPLocationViewViewModel {
     
     weak var delegate: SPLocationViewViewModelDelegate?
     
-    private var locations: [SPLocations] = [] {
+    private var locations: [SPLocation] = [] {
         didSet {
             for location in locations {
                 let cellViewModel = SPLocationTableViewCellViewModel(location: location)
@@ -35,8 +35,8 @@ final class SPLocationViewViewModel {
     
     init() {}
     
-    public func location(at index: Int) -> SPLocations? {
-        guard index >= locations.count else { return nil}
+    public func location(at index: Int) -> SPLocation? {
+        guard index < locations.count, index >= 0 else { return nil }
         return self.locations[index]
     }
     

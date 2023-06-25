@@ -33,9 +33,9 @@ final class SPGetImageFromJsonLocalFile {
         return nil
     }
     
-    private func parse(_ jsonData: Data) -> SPCharactersImage? {
+    private func parse(_ jsonData: Data) -> SPImageLinksAndTitles? {
         do {
-                let decodedData = try JSONDecoder().decode(SPCharactersImage.self, from: jsonData)
+                let decodedData = try JSONDecoder().decode(SPImageLinksAndTitles.self, from: jsonData)
             return decodedData
             } catch {
                 print("error: \(error)")
@@ -59,10 +59,10 @@ final class SPGetImageFromJsonLocalFile {
 //        return unscaledImageURL
 //    }
     
-    public func getImageUrlString(forCharacter name: String,from jsonFileName: String) -> URL? {
+    public func getImageUrlString(for name: String, from jsonFileName: String) -> URL? {
         guard let jsonData = SPGetImageFromJsonLocalFile.shared.readLocalFile(forName: jsonFileName) else { return nil }
-        let characterImageUrls = SPGetImageFromJsonLocalFile.shared.parse(jsonData)
-        let imageURL = characterImageUrls?.images.filter {
+        let ImageUrls = SPGetImageFromJsonLocalFile.shared.parse(jsonData)
+        let imageURL = ImageUrls?.images.filter {
             $0.title == name
         }
 //        let unscaledCharacterImageURL = SPGetImageFromJsonLocalFile.shared.getUnscaledImageURL(from: imageURL)
@@ -71,3 +71,13 @@ final class SPGetImageFromJsonLocalFile {
         return imageURL
     }
 }
+
+struct SPImageLinksAndTitles: Codable {
+    let images: [SPImageLinkAndTitle]
+}
+
+struct SPImageLinkAndTitle: Codable {
+    let link: String
+    let title: String
+}
+

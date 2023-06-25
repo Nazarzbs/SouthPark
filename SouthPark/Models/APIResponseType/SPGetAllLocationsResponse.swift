@@ -29,5 +29,5 @@ struct SPGetAllLocationsResponse: Codable {
 
     let meta: Meta
     let links: Links
-    let data: [SPLocations]
+    let data: [SPLocation]
 }

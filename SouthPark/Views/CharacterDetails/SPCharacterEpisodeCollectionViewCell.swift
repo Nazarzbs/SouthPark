@@ -23,7 +23,6 @@ final class SPCharacterEpisodeCollectionViewCell: UICollectionViewCell {
     private let nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 0
         label.textAlignment = .center
         label.font = .systemFont(ofSize: 20, weight: .regular)
         return label
@@ -37,14 +36,14 @@ final class SPCharacterEpisodeCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    private let descriptionLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 0
-        label.font = .systemFont(ofSize: 16, weight: .light)
-       // label.adjustsFontSizeToFitWidth = true
-        return label
-    }()
+//    private let descriptionLabel: UILabel = {
+//        let label = UILabel()
+//        label.translatesAutoresizingMaskIntoConstraints = false
+//        label.numberOfLines = 0
+//        label.font = .systemFont(ofSize: 16, weight: .light)
+//       // label.adjustsFontSizeToFitWidth = true
+//        return label
+//    }()
     
     private let thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
@@ -62,7 +61,7 @@ final class SPCharacterEpisodeCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         setUpLayer()
         contentView.backgroundColor = .secondarySystemBackground
-        contentView.addSubviews(seasonLabel, thumbnailImageView, nameLabel, airDateLabel, descriptionLabel)
+        contentView.addSubviews(seasonLabel, thumbnailImageView, nameLabel, airDateLabel)
         setUpConstraints()
     }
     
@@ -92,15 +91,14 @@ final class SPCharacterEpisodeCollectionViewCell: UICollectionViewCell {
             thumbnailImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
             thumbnailImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
             
-            seasonLabel.topAnchor.constraint(equalTo: thumbnailImageView.bottomAnchor, constant: 4),
+//            descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
+//            descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
+//           
+//            descriptionLabel.topAnchor.constraint(equalTo: thumbnailImageView.bottomAnchor, constant: 8),
+            
+            seasonLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
             seasonLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
         
-
-            descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
-            descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
-           
-            descriptionLabel.topAnchor.constraint(equalTo: seasonLabel.bottomAnchor, constant: 4),
-
             airDateLabel.topAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 3),
             airDateLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
@@ -111,7 +109,7 @@ final class SPCharacterEpisodeCollectionViewCell: UICollectionViewCell {
         nameLabel.text = nil
         seasonLabel.text = nil
         airDateLabel.text = nil
-        descriptionLabel.text = nil
+//        descriptionLabel.text = nil
         thumbnailImageView.image = nil
         
     }
@@ -123,7 +121,7 @@ final class SPCharacterEpisodeCollectionViewCell: UICollectionViewCell {
             self?.nameLabel.text = data.name
             self?.seasonLabel.text = "Episode: "+"S0\(data.season)E0\(data.episode)"
             self?.airDateLabel.text = "Aired on: "+data.air_date
-            self?.descriptionLabel.text = data.description
+//            self?.descriptionLabel.text = data.description
             guard let data = imageData else { return }
             self?.thumbnailImageView.image = UIImage(data: data)
         }

@@ -41,9 +41,9 @@ final class SPEpisodeViewController: UIViewController, SPEpisodeListViewDelegate
     
     //Mark: - RMEpisodeListViewDelegate
     
-    func spEpisodeListView(_ episodeListView: SPEpisodeListView, didSelectEpisode episode: SPEpisodes) {
+    func spEpisodeListView(_ episodeListView: SPEpisodeListView, didSelectEpisode episode: SPEpisode) {
         //Open detail controller for that episode
-        let detailVC = SPEpisodeDetailViewController(url: URL(string: "https://spapi.dev/api/episodes/" + "\(episode.episode)"))
+        let detailVC = SPEpisodeDetailViewController(url: URL(string: "https://spapi.dev/api/episodes/" + "\(episode.id)"))
         
         detailVC.navigationItem.largeTitleDisplayMode = .never
         navigationController?.pushViewController(detailVC, animated: true)

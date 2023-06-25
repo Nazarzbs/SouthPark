@@ -8,7 +8,7 @@
 import UIKit
 
 protocol SPLocationViewDelegate: AnyObject {
-    func spLocationView(_ locationView: SPLocationView, didSelect location: SPLocations)
+    func spLocationView(_ locationView: SPLocationView, didSelect location: SPLocation)
 }
 
 final class SPLocationView: UIView {

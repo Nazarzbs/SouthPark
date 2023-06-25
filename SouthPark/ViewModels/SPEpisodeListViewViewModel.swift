@@ -15,7 +15,7 @@ protocol SPEpisodeListViewViewModelDelegate: AnyObject {
     func didLoadInitialEpisodes()
     func didLoadMoreEpisodes(with newIndexPaths: [IndexPath])
     
-    func didSelectEpisode(_ episode: SPEpisodes)
+    func didSelectEpisode(_ episode: SPEpisode)
 }
 
 // View model to handle character list view logic
@@ -25,7 +25,7 @@ final class SPEpisodeListViewViewModel: NSObject {
     public weak var delegate: SPEpisodeListViewViewModelDelegate?
     private var isLoadingMoreEpisodes = false
     
-    private var episodes: [SPEpisodes] = [] {
+    private var episodes: [SPEpisode] = [] {
         didSet {
 
             for episode in episodes {
@@ -112,7 +112,7 @@ extension SPEpisodeListViewViewModel: UICollectionViewDataSource, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SPCharacterEpisodeCollectionViewCell.cellIdentifier, for: indexPath) as? SPCharacterEpisodeCollectionViewCell else { fatalError("Unsupported cell")}
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SPEpisodeCollectionViewCell.cellIdentifier, for: indexPath) as? SPEpisodeCollectionViewCell else { fatalError("Unsupported cell")}
        
         cell.configure(with: cellViewModels[indexPath.row])
         return cell

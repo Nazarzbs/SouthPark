@@ -48,7 +48,7 @@ final class SPCharacterViewController: UIViewController, SPCharacterListViewDele
     
     func spCharacterListView(_ characterListView: SPCharacterListView, didSelectCharacter character: SPCharacter) {
         // open detail controller for that character
-        guard let imageURL = SPGetImageFromJsonLocalFile.shared.getImageUrlString(forCharacter: character.name, from: "CharactersImage") else { return }
+        guard let imageURL = SPGetImageFromJsonLocalFile.shared.getImageUrlString(for: character.name, from: "CharactersImage") else { return }
         
         let viewModel = SPCharacterDetailVIewViewModel(character: character, imageUrl: imageURL)
         let detailVC = SPCharacterDetailViewController(viewModel: viewModel)

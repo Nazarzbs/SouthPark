@@ -8,10 +8,10 @@
 import Foundation
 
 struct SPEpisodesData: Codable {
-    let data: SPEpisodes
+    let data: SPEpisode
 }
 
-struct SPEpisodes: Codable, SPEpisodeDataRender {
+struct SPEpisode: Codable, SPEpisodeDataRender, SPLocationDetailEpisodeDataRender {
     let id: Int
     let name: String
     let season: Int

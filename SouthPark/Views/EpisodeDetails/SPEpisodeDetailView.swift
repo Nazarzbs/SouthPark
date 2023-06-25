@@ -9,6 +9,7 @@ import UIKit
 
 protocol SPEpisodeDetailViewDelegate: AnyObject {
     func spEpisodeDetailView(_ detailView: SPEpisodeDetailView, didSelect character: SPCharacter)
+    func spLocationDetailView(_ detailView: SPEpisodeDetailView, didSelect location: SPLocation)
     func spEpisodeWikiWebView(episodeUrl: URL)
 }
 
@@ -85,6 +86,7 @@ final class SPEpisodeDetailView: UIView {
         collectionView.register(SPEpisodeInfoCollectionViewCell.self, forCellWithReuseIdentifier: SPEpisodeInfoCollectionViewCell.cellIdentifier)
         collectionView.register(SPCharacterCollectionViewCell.self, forCellWithReuseIdentifier: SPCharacterCollectionViewCell.cellIdentifier)
         collectionView.register(SPEpisodeWikiCollectionViewCell.self, forCellWithReuseIdentifier: SPEpisodeWikiCollectionViewCell.cellIdentifier)
+        collectionView.register(SPEpisodeLocationCollectionViewCell.self, forCellWithReuseIdentifier: SPEpisodeLocationCollectionViewCell.cellIdentifier)
         return collectionView
     }
     
@@ -115,11 +117,9 @@ extension SPEpisodeDetailView: UICollectionViewDelegate, UICollectionViewDataSou
             return viewModels.count
         case .wikiUrl(viewModels: _):
             return 1
+        case .locations(viewModels: let viewModels):
+            return viewModels.count
         }
-            
-            //        case .locations(viewModels: let viewModels):
-            //            return viewModels.count
-       
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -154,6 +154,11 @@ extension SPEpisodeDetailView: UICollectionViewDelegate, UICollectionViewDataSou
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SPEpisodeWikiCollectionViewCell.cellIdentifier, for: indexPath) as? SPEpisodeWikiCollectionViewCell else { fatalError() }
             cell.configure(with: cellViewModel)
             return cell
+        case .locations(viewModels: let viewModels):
+            let cellViewModel = viewModels[indexPath.row]
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SPEpisodeLocationCollectionViewCell.cellIdentifier, for: indexPath) as? SPEpisodeLocationCollectionViewCell else { fatalError() }
+            cell.configure(with: cellViewModel)
+            return cell
         }
     }
     
@@ -172,11 +177,14 @@ extension SPEpisodeDetailView: UICollectionViewDelegate, UICollectionViewDataSou
         case .description(viewModels: _):
             break
         case .characters:
-            guard let character = viewModel.character(at: indexPath.row) else  { return }
+            guard let character = viewModel.character(at: indexPath.row) else { return }
             delegate?.spEpisodeDetailView(self, didSelect: character)
         case .wikiUrl:
             guard let url = viewModel.wikiUrl() else  { return }
             delegate?.spEpisodeWikiWebView(episodeUrl: url)
+        case .locations:
+            guard let location = viewModel.location(at: indexPath.row) else { return }
+            delegate?.spLocationDetailView(self, didSelect: location)
         }
     }
 }
@@ -197,6 +205,8 @@ extension SPEpisodeDetailView {
             return createCharacterLayout()
         case .wikiUrl:
             return createWikiLayout()
+        case .locations:
+            return createLocationLayout()
         }
     }
     
@@ -245,6 +255,15 @@ extension SPEpisodeDetailView {
         
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(50)), subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
+        return section
+    }
+    
+    func createLocationLayout() -> NSCollectionLayoutSection {
+        let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0)))
+        item.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 5, bottom: 20, trailing: 8)
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.8), heightDimension: .estimated(250)), subitems: [item])
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .groupPaging
         return section
     }
 }

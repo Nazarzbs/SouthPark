@@ -29,5 +29,5 @@ struct SPGetAllEpisodesResponse: Codable {
 
     let meta: Meta
     let links: Links
-    let data: [SPEpisodes]
+    let data: [SPEpisode]
 }
