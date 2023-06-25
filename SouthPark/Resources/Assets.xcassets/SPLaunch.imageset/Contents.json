@@ -1,6 +1,7 @@
 {
   "images" : [
     {
+      "filename" : "SPLaunch.jpeg",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -9,7 +10,6 @@
       "scale" : "2x"
     },
     {
-      "filename" : "SPLaunch.jpg",
       "idiom" : "universal",
       "scale" : "3x"
     }
