@@ -11,7 +11,7 @@ struct SPCharactersData: Codable {
     let data: SPCharacter
 }
 
-struct SPCharacter: Codable {
+struct SPCharacter: Codable, SPCharacterDataRender {
     let id: Int
     let name: String
     let age: Int?

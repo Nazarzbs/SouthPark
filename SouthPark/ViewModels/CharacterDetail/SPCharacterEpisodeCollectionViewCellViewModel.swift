@@ -32,6 +32,7 @@ final class SPCharacterEpisodeCollectionViewCellViewModel: Hashable, Equatable {
     //Property observer that updates the episode data and triggers the dataBlock closure to pass the updated data to subscribers.
     private var episode: SPEpisodesData? {
         didSet {
+            
             guard let model = episode?.data else {
                 return
             }

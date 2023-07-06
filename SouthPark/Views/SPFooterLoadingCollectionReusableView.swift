@@ -41,4 +41,13 @@ final class SPFooterLoadingCollectionReusableView: UICollectionReusableView {
     public func startAnimating() {
         spinner.startAnimating()
     }
+    
+    public func stopAnimating() {
+        spinner.stopAnimating()
+    }
+    
+    public func hideSpinner() {
+        spinner.isHidden = true
+        spinner.stopAnimating()
+    }
 }

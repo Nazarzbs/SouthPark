@@ -16,7 +16,7 @@ final class SPService {
     /// Shared singleton instance
     static let shared = SPService()
     
-    private let cacheManager = SPAPICacheManager()
+    public private(set) var cacheManager = SPAPICacheManager()
     
     //to force to use our shared instance
     
@@ -34,8 +34,10 @@ final class SPService {
     ///   - type: The type of object we expect to get back
     ///   - completion: Callback with data  or error
     public func execute<T: Codable>(_ request: SPRequest, expecting type: T.Type, completion: @escaping(Result<T, Error>) -> Void) {
+       
         if let cachedData = cacheManager.cachedResponse(for: request.endpoint, url: request.url) {
             do {
+                print("Using cache")
                 let result = try JSONDecoder().decode(type.self, from: cachedData)
                 completion(.success(result))
             }
@@ -48,7 +50,7 @@ final class SPService {
             completion(.failure(SPServiceError.failedToCreateRequest))
             return
         }
-        
+        print(request.url as Any)
         let task = URLSession.shared.dataTask(with: urlRequest) { [weak self]
             data, _, error in
             guard let data = data, error == nil else { completion(.failure(error ?? SPServiceError.failedToGetData))
@@ -64,7 +66,7 @@ final class SPService {
                 self?.cacheManager.setCache(for: request.endpoint, url: request.url, data: data)
                 completion(.success(result))
             } catch {
-                completion(.failure(error))
+               completion(.failure(error))
             }
         }
         task.resume()

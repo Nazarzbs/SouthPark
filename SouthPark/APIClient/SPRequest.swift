@@ -122,5 +122,6 @@ extension SPRequest {
     static let listCharactersRequests = SPRequest(endpoint: .characters)
     static let listEpisodesRequest = SPRequest(endpoint: .episodes)
     static let listLocationsRequest = SPRequest(endpoint: .locations)
+    static let listFamiliesRequest = SPRequest(endpoint: .families)
 }
 

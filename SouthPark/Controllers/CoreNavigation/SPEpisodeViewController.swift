@@ -5,18 +5,27 @@
 //  Created by Nazar on 11.05.2023.
 //
 
+
 import UIKit
 
 /// Controller to show and search for Episode
 final class SPEpisodeViewController: UIViewController, SPEpisodeListViewDelegate {
     
-    private let episodeListView = SPEpisodeListView()
+    // Declared as an optional without initialization.
+    
+    // When the tab button is tapped, the tabButtonTapped method is triggered. If viewModel is nil, indicating that it hasn't been initialized yet, it initializes viewModel with a new instance of ListViewViewModel and then proceeds to call fetchData to perform the data fetching.
+    
+    //  Using this approach, the viewModel is only created when needed, i.e., when the user taps on the navigation tab button. It gives you the flexibility to delay the initialization and data fetching until the appropriate time, optimizing resource usage and responsiveness.
+    
+    private var episodeListView: SPEpisodeListView? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         title = "Episodes"
+        episodeListView = SPEpisodeListView()
         setUpView()
+       
         addSearchButton()
     }
     
@@ -29,6 +38,7 @@ final class SPEpisodeViewController: UIViewController, SPEpisodeListViewDelegate
     }
     
     private func setUpView() {
+        guard let episodeListView = episodeListView else { return }
         episodeListView.delegate = self
         view.addSubview(episodeListView)
         NSLayoutConstraint.activate([

@@ -95,8 +95,7 @@ extension SPCharacterListView: SPCharacterListViewViewModelDelegate {
                 self.collectionView.alpha = 1
             }
     }
-    
-    
+
     func didLoadMoreCharacters(with newIndexPaths: [IndexPath]) {
         // Add more cells
         collectionView.performBatchUpdates {

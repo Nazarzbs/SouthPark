@@ -67,8 +67,7 @@ final class SPGetImageFromJsonLocalFile {
         }
 //        let unscaledCharacterImageURL = SPGetImageFromJsonLocalFile.shared.getUnscaledImageURL(from: imageURL)
         
-        guard let imageURL = URL(string: imageURL?.first?.link ?? "nil") else { return nil }
-        return imageURL
+        return URL(string: imageURL?.first?.link ?? "nil")
     }
 }
 

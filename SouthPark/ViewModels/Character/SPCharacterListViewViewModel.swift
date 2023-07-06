@@ -153,6 +153,7 @@ extension SPCharacterListViewViewModel: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         //
         guard shouldShowLoadMoreIndicator, !isLoadingMoreCharacters, !cellViewModels.isEmpty, let nextUrlString = apiInfo?.next, let url = URL(string: nextUrlString) else {
+            
             return
         }
         Timer.scheduledTimer(withTimeInterval: 0.2, repeats: false) { [weak self] t in

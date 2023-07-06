@@ -11,12 +11,13 @@ import UIKit
 final class SPCharacterViewController: UIViewController, SPCharacterListViewDelegate {
     
 
-    private let characterListView = SPCharacterListView()
+    private var characterListView: SPCharacterListView? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         title = "Characters"
+        characterListView = SPCharacterListView()
         setUpView()
         addSearchButton()
     }
@@ -33,7 +34,9 @@ final class SPCharacterViewController: UIViewController, SPCharacterListViewDele
     }
     
     private func setUpView() {
-        // Make that controller dele
+        // Make that controller delegate
+        guard let characterListView = characterListView else { return }
+       
         characterListView.delegate = self
         view.addSubview(characterListView)
         NSLayoutConstraint.activate([

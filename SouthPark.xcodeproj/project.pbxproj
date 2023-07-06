@@ -28,6 +28,9 @@
 		CE2F71DC2A3B882A0094954D /* SPSettingsOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2F71DB2A3B882A0094954D /* SPSettingsOption.swift */; };
 		CE2F71E02A3B918D0094954D /* SPSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2F71DF2A3B918D0094954D /* SPSettingsView.swift */; };
 		CE2F71E42A3D15370094954D /* SPEpisodeWikiCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2F71E32A3D15370094954D /* SPEpisodeWikiCollectionViewCell.swift */; };
+		CE7BFB0B2A52157100614C97 /* SPFamiliesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7BFB0A2A52157100614C97 /* SPFamiliesCollectionViewCell.swift */; };
+		CE7BFB0D2A535E8B00614C97 /* SPFamiliesCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7BFB0C2A535E8B00614C97 /* SPFamiliesCollectionViewCellViewModel.swift */; };
+		CE88838D2A4CD417002C6998 /* FamilyNameHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88838C2A4CD417002C6998 /* FamilyNameHeaderCollectionReusableView.swift */; };
 		CE8F392B2A0D2FFC00BD8042 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F392A2A0D2FFC00BD8042 /* AppDelegate.swift */; };
 		CE8F392D2A0D2FFC00BD8042 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F392C2A0D2FFC00BD8042 /* SceneDelegate.swift */; };
 		CE8F392F2A0D2FFC00BD8042 /* SPTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F392E2A0D2FFC00BD8042 /* SPTabBarController.swift */; };
@@ -65,6 +68,9 @@
 		CEA238612A1D533400C598ED /* SPCharacterEpisodeCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA238602A1D533400C598ED /* SPCharacterEpisodeCollectionViewCellViewModel.swift */; };
 		CEB2BA422A360C1200645856 /* SPEpisodeInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2BA412A360C1200645856 /* SPEpisodeInfoCollectionViewCell.swift */; };
 		CEB2BA492A360CEE00645856 /* SPEpisodeInfoCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2BA482A360CEE00645856 /* SPEpisodeInfoCollectionViewCellViewModel.swift */; };
+		CEBB6C152A4C50E600F67197 /* SPFamiliesCollectionViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB6C142A4C50E600F67197 /* SPFamiliesCollectionViewViewModel.swift */; };
+		CEBB6C172A4C51B000F67197 /* SPGetAllFamiliesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB6C162A4C51B000F67197 /* SPGetAllFamiliesResponse.swift */; };
+		CEBB6C1C2A4C532400F67197 /* SPFamiliesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB6C1B2A4C532400F67197 /* SPFamiliesView.swift */; };
 		CECDD3542A193DB9000E2ADB /* SPCharacterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECDD3532A193DB9000E2ADB /* SPCharacterDetailViewController.swift */; };
 		CECDD3562A19406F000E2ADB /* SPCharacterDetailVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECDD3552A19406F000E2ADB /* SPCharacterDetailVIew.swift */; };
 		CECDD3582A1940CD000E2ADB /* SPCharacterDetailVIewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECDD3572A1940CD000E2ADB /* SPCharacterDetailVIewViewModel.swift */; };
@@ -102,6 +108,9 @@
 		CE2F71DB2A3B882A0094954D /* SPSettingsOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPSettingsOption.swift; sourceTree = "<group>"; };
 		CE2F71DF2A3B918D0094954D /* SPSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPSettingsView.swift; sourceTree = "<group>"; };
 		CE2F71E32A3D15370094954D /* SPEpisodeWikiCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPEpisodeWikiCollectionViewCell.swift; sourceTree = "<group>"; };
+		CE7BFB0A2A52157100614C97 /* SPFamiliesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPFamiliesCollectionViewCell.swift; sourceTree = "<group>"; };
+		CE7BFB0C2A535E8B00614C97 /* SPFamiliesCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPFamiliesCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
+		CE88838C2A4CD417002C6998 /* FamilyNameHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyNameHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		CE8F39272A0D2FFC00BD8042 /* SouthPark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SouthPark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE8F392A2A0D2FFC00BD8042 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE8F392C2A0D2FFC00BD8042 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -141,6 +150,9 @@
 		CEA238602A1D533400C598ED /* SPCharacterEpisodeCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPCharacterEpisodeCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
 		CEB2BA412A360C1200645856 /* SPEpisodeInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPEpisodeInfoCollectionViewCell.swift; sourceTree = "<group>"; };
 		CEB2BA482A360CEE00645856 /* SPEpisodeInfoCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPEpisodeInfoCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
+		CEBB6C142A4C50E600F67197 /* SPFamiliesCollectionViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPFamiliesCollectionViewViewModel.swift; sourceTree = "<group>"; };
+		CEBB6C162A4C51B000F67197 /* SPGetAllFamiliesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPGetAllFamiliesResponse.swift; sourceTree = "<group>"; };
+		CEBB6C1B2A4C532400F67197 /* SPFamiliesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPFamiliesView.swift; sourceTree = "<group>"; };
 		CECDD3532A193DB9000E2ADB /* SPCharacterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPCharacterDetailViewController.swift; sourceTree = "<group>"; };
 		CECDD3552A19406F000E2ADB /* SPCharacterDetailVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPCharacterDetailVIew.swift; sourceTree = "<group>"; };
 		CECDD3572A1940CD000E2ADB /* SPCharacterDetailVIewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPCharacterDetailVIewViewModel.swift; sourceTree = "<group>"; };
@@ -167,6 +179,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE187B232A4C4DE400422A59 /* Families */ = {
+			isa = PBXGroup;
+			children = (
+				CEBB6C142A4C50E600F67197 /* SPFamiliesCollectionViewViewModel.swift */,
+				CE7BFB0C2A535E8B00614C97 /* SPFamiliesCollectionViewCellViewModel.swift */,
+			);
+			path = Families;
+			sourceTree = "<group>";
+		};
 		CE2849222A3F0D7A002D9922 /* Location */ = {
 			isa = PBXGroup;
 			children = (
@@ -179,8 +200,8 @@
 		CE2849442A3F9E2A002D9922 /* Location */ = {
 			isa = PBXGroup;
 			children = (
-				CE2849452A3F9E48002D9922 /* SPLocationTableViewCellViewModel.swift */,
 				CE2849322A3F3508002D9922 /* SPLocationViewViewModel.swift */,
+				CE2849452A3F9E48002D9922 /* SPLocationTableViewCellViewModel.swift */,
 				CE2849552A426335002D9922 /* SPLocationDetailViewViewModel.swift */,
 				CE28495B2A44E4B8002D9922 /* SPLocationEpisodesDetailCellViewModel.swift */,
 			);
@@ -267,6 +288,7 @@
 		CE8F39402A0D309F00BD8042 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CEBB6C182A4C525000F67197 /* Families */,
 				CE28494D2A425AF0002D9922 /* LocationDetail */,
 				CE2849222A3F0D7A002D9922 /* Location */,
 				CE2F71DE2A3B91550094954D /* SwiftUI */,
@@ -282,13 +304,13 @@
 		CE8F39412A0D30B700BD8042 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				CE187B232A4C4DE400422A59 /* Families */,
 				CE2849442A3F9E2A002D9922 /* Location */,
 				CE2F71CE2A3B85B10094954D /* Settings */,
 				CEB2BA462A360C9700645856 /* EpisodeDetail */,
 				CEA2385B2A1D52DF00C598ED /* CharacterDetail */,
-				CE98A3142A12C352001E54F3 /* SPCharacterCollectionViewCellViewModel.swift */,
-				CE98A3042A114C4B001E54F3 /* SPCharacterListViewViewModel.swift */,
-				CEE227B12A3242D2000C86C6 /* SPEpisodeListViewViewModel.swift */,
+				CEBB6C1D2A4C540000F67197 /* Character */,
+				CEBB6C1E2A4C542200F67197 /* Episode */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -330,10 +352,10 @@
 		CE8F394E2A0D334900BD8042 /* CoreNavigation */ = {
 			isa = PBXGroup;
 			children = (
+				CE8F395C2A0D345E00BD8042 /* SPFamilyViewController.swift */,
 				CE8F392E2A0D2FFC00BD8042 /* SPTabBarController.swift */,
 				CE8F39512A0D33C800BD8042 /* SPCharacterViewController.swift */,
 				CE8F395A2A0D344900BD8042 /* SPEpisodeViewController.swift */,
-				CE8F395C2A0D345E00BD8042 /* SPFamilyViewController.swift */,
 				CE8F395E2A0D346D00BD8042 /* SPLocationViewController.swift */,
 				CE8F39602A0D347D00BD8042 /* SPSettingsViewController.swift */,
 			);
@@ -359,6 +381,7 @@
 				CE98A3022A10F9D1001E54F3 /* SPGetAllCharactersResponse.swift */,
 				CEE227B52A324EB5000C86C6 /* SPGetAllEpisodesResponse.swift */,
 				CE2849372A3F7AC8002D9922 /* SPGetAllLocationsResponse.swift */,
+				CEBB6C162A4C51B000F67197 /* SPGetAllFamiliesResponse.swift */,
 			);
 			path = APIResponseType;
 			sourceTree = "<group>";
@@ -416,6 +439,33 @@
 				CE9E572E2A486BCC0033365D /* SPEpisodeLocationsDetailCellViewModel.swift */,
 			);
 			path = EpisodeDetail;
+			sourceTree = "<group>";
+		};
+		CEBB6C182A4C525000F67197 /* Families */ = {
+			isa = PBXGroup;
+			children = (
+				CEBB6C1B2A4C532400F67197 /* SPFamiliesView.swift */,
+				CE7BFB0A2A52157100614C97 /* SPFamiliesCollectionViewCell.swift */,
+				CE88838C2A4CD417002C6998 /* FamilyNameHeaderCollectionReusableView.swift */,
+			);
+			path = Families;
+			sourceTree = "<group>";
+		};
+		CEBB6C1D2A4C540000F67197 /* Character */ = {
+			isa = PBXGroup;
+			children = (
+				CE98A3042A114C4B001E54F3 /* SPCharacterListViewViewModel.swift */,
+				CE98A3142A12C352001E54F3 /* SPCharacterCollectionViewCellViewModel.swift */,
+			);
+			path = Character;
+			sourceTree = "<group>";
+		};
+		CEBB6C1E2A4C542200F67197 /* Episode */ = {
+			isa = PBXGroup;
+			children = (
+				CEE227B12A3242D2000C86C6 /* SPEpisodeListViewViewModel.swift */,
+			);
+			path = Episode;
 			sourceTree = "<group>";
 		};
 		CECDD3522A193D93000E2ADB /* Other */ = {
@@ -532,6 +582,8 @@
 				CE28495A2A44E2BA002D9922 /* SPLocationEpisodesCollectionViewCell.swift in Sources */,
 				CE2F71C62A3A1CFC0094954D /* SPEpisodeImageCollectionViewCellViewModel.swift in Sources */,
 				CE8F39672A0D746700BD8042 /* SPService.swift in Sources */,
+				CEBB6C172A4C51B000F67197 /* SPGetAllFamiliesResponse.swift in Sources */,
+				CEBB6C1C2A4C532400F67197 /* SPFamiliesView.swift in Sources */,
 				CE8F39612A0D347D00BD8042 /* SPSettingsViewController.swift in Sources */,
 				CECDD3602A1BE3FE000E2ADB /* SPImageLoader.swift in Sources */,
 				CEEEEF962A1E87CF00DB2750 /* SPGetImageFromJsonLocalFile.swift in Sources */,
@@ -569,13 +621,17 @@
 				CEA238612A1D533400C598ED /* SPCharacterEpisodeCollectionViewCellViewModel.swift in Sources */,
 				CE8F392B2A0D2FFC00BD8042 /* AppDelegate.swift in Sources */,
 				CECDD35C2A195A42000E2ADB /* SPFooterLoadingCollectionReusableView.swift in Sources */,
+				CE7BFB0B2A52157100614C97 /* SPFamiliesCollectionViewCell.swift in Sources */,
 				CE8F392D2A0D2FFC00BD8042 /* SceneDelegate.swift in Sources */,
 				CEE227B02A32416A000C86C6 /* SPEpisodeListView.swift in Sources */,
 				CE9E57312A4880810033365D /* SPEpisodeLocationCollectionViewCell.swift in Sources */,
+				CE7BFB0D2A535E8B00614C97 /* SPFamiliesCollectionViewCellViewModel.swift in Sources */,
 				CE0C91352A34AA8800E8CE90 /* SPSearchViewController.swift in Sources */,
 				CE98A2F52A0E8364001E54F3 /* SPRelatives.swift in Sources */,
 				CE28495C2A44E4B8002D9922 /* SPLocationEpisodesDetailCellViewModel.swift in Sources */,
 				CE2F71CA2A3A39980094954D /* SPEpisodeDescriptionCollectionViewCell.swift in Sources */,
+				CE88838D2A4CD417002C6998 /* FamilyNameHeaderCollectionReusableView.swift in Sources */,
+				CEBB6C152A4C50E600F67197 /* SPFamiliesCollectionViewViewModel.swift in Sources */,
 				CE8F395D2A0D345E00BD8042 /* SPFamilyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

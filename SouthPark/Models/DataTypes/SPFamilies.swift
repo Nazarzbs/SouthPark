@@ -7,8 +7,12 @@
 
 import Foundation
 
-struct SPFamilies: Codable {
-    let id: String
+struct SPFamiliesData: Codable {
+    let data: SPFamilies
+}
+
+struct SPFamilies: Codable, Hashable {
+    let id: Int
     let name: String
     let created_at: String
     let updated_at: String
