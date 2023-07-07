@@ -9,7 +9,7 @@ import UIKit
 
 // to get method out of the View we use another delegate
 protocol SPCharacterListViewDelegate: AnyObject {
-    func spCharacterListView(_ characterListView: SPCharacterListView, didSelectCharacter character: SPCharacter)
+    func spCharacterListView(didSelectCharacter character: SPCharacter)
 }
 
 /// View that handles showing list of characters, loaded, etc.
@@ -82,7 +82,7 @@ final class SPCharacterListView: UIView {
 extension SPCharacterListView: SPCharacterListViewViewModelDelegate {
     func didSelectCharacter(_ character: SPCharacter) {
         // to get method out of the View we use another delegate
-        delegate?.spCharacterListView(self, didSelectCharacter: character)
+        delegate?.spCharacterListView(didSelectCharacter: character)
     }
     
     //Now we did guarantee even if the async job takes significant amount of time we're never to end up in the case when view showed up before we got the data

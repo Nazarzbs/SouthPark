@@ -10,7 +10,6 @@ import UIKit
 /// Controller to show and search for Characters 
 final class SPCharacterViewController: UIViewController, SPCharacterListViewDelegate {
     
-
     private var characterListView: SPCharacterListView? = nil
     
     override func viewDidLoad() {
@@ -49,7 +48,7 @@ final class SPCharacterViewController: UIViewController, SPCharacterListViewDele
     
     //MARK: - SPCharacterListViewDelegate
     
-    func spCharacterListView(_ characterListView: SPCharacterListView, didSelectCharacter character: SPCharacter) {
+    func spCharacterListView(didSelectCharacter character: SPCharacter) {
         // open detail controller for that character
         guard let imageURL = SPGetImageFromJsonLocalFile.shared.getImageUrlString(for: character.name, from: "CharactersImage") else { return }
         

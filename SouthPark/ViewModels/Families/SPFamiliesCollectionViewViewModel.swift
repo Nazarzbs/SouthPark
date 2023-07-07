@@ -11,6 +11,7 @@ import UIKit
 protocol SPFamiliesCollectionViewViewModelDelegate: AnyObject {
     func didLoadInitialFamilies()
     func didLoadMoreFamilies(with newSectionIndexSet: IndexSet, and newIndexPaths: [IndexPath])
+    func didSelectFamiliesMember(_ character: SPCharacter)
 }
 
 final class SPFamiliesCollectionViewViewModel: NSObject {
@@ -135,6 +136,25 @@ extension SPFamiliesCollectionViewViewModel: UICollectionViewDataSource, UIColle
                 }
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        let characterDataUrl = families[indexPath.section].characters[indexPath.row]
+        //Notify the characterViewController using delegate pattern(The delegate pattern in Swift allows one object (the delegating object) to communicate and pass information to another object (the delegate object) in a loosely coupled manner.)
+        
+        guard let url = URL(string: characterDataUrl), let request = SPRequest(url: url) else { return }
+
+        SPService.shared.execute(request, expecting: SPCharactersData.self) { result in
+            switch result {
+            case .success(let character):
+                self.delegate?.didSelectFamiliesMember(character.data)
+            case .failure(let failure):
+                print(String(describing: failure))
+            }
+        }
+    }
+    
+    // MARK: - Supplementary view header/footer
 
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
        

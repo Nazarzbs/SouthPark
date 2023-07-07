@@ -7,9 +7,15 @@
 
 import UIKit
 
+// to get method out of the View we use another delegate
+protocol SPFamiliesViewDelegate: AnyObject {
+    func didSelectFamiliesMember(_ character: SPCharacter)
+}
+
 final class SPFamiliesView: UIView {
     
     private let viewModel = SPFamiliesCollectionViewViewModel()
+    public weak var delegate: SPFamiliesViewDelegate?
     
     public var collectionView: UICollectionView?
   
@@ -83,9 +89,10 @@ final class SPFamiliesView: UIView {
     }
 }
 
-// MARK: - SPFamiliesCollectionViewViewModelDelegate
+// MARK: - Delegate
 
 extension SPFamiliesView: SPFamiliesCollectionViewViewModelDelegate {
+   
     //Now we did guarantee even if the async job takes significant amount of time we're never to end up in the case when view showed up before we got the data
     func didLoadInitialFamilies() {
         spinner.stopAnimating()
@@ -107,6 +114,13 @@ extension SPFamiliesView: SPFamiliesCollectionViewViewModelDelegate {
               collectionView?.insertItems(at: newIndexPaths)
         }
     }
+    
+    func didSelectFamiliesMember(_ character: SPCharacter) {
+        // to get method out of the View we use another delegate
+        delegate?.didSelectFamiliesMember(character)
+    }
+    
+    // MARK: - Layout
     
     func createFamiliesLayout() -> NSCollectionLayoutSection {
         let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0)))
