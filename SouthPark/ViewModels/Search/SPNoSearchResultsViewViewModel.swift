@@ -5,8 +5,9 @@
 //  Created by Nazar on 11.07.2023.
 //
 
-import Foundation
+import UIKit
 
 final class SPNoSearchResultsViewViewModel {
-    
+    let title = "No Results"
+    let image = UIImage(systemName: "magnifyingglass.circle")
 }

@@ -33,10 +33,13 @@ class SPSearchViewController: UIViewController {
         let type: `Type`
     }
     
-    private let config: Config
+    private let viewModel: SPSearchViewViewModel
+    private let searchView: SPSearchView
     
     init(config: Config) {
-        self.config = config
+        let viewModel = SPSearchViewViewModel(config: config)
+        self.viewModel = viewModel
+        self.searchView = SPSearchView(frame: .zero, viewModel: viewModel)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -44,10 +47,27 @@ class SPSearchViewController: UIViewController {
         fatalError("Unsupported")
     }
         
-        
         override func viewDidLoad() {
             super.viewDidLoad()
-            title = config.type.title
+            title = viewModel.config.type.title
             view.backgroundColor = .systemBackground
+            view.addSubview(searchView)
+            addConstrains()
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Search", style: .done, target: self, action: #selector(didTapExecuteSearch))
+    }
+    
+    @objc
+    private func didTapExecuteSearch() {
+       // viewModel.executeSearch()
+    }
+    
+    
+    private func addConstrains() {
+        NSLayoutConstraint.activate([
+            searchView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            searchView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            searchView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            searchView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
+        ])
     }
 }

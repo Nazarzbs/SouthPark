@@ -13,7 +13,7 @@ final class SPSearchView: UIView {
     
     // MARK: - Subviews
     // Search input view (bar, selection buttons)
-    // No results view
+   private let noResultsView = SPNoSearchResultsView()
     // Result collection
     
     //MARK: - init
@@ -21,12 +21,23 @@ final class SPSearchView: UIView {
     init(frame: CGRect, viewModel: SPSearchViewViewModel) {
         self.viewModel = viewModel
         super.init(frame: frame)
-        backgroundColor = .red
+        backgroundColor = .systemBackground
         translatesAutoresizingMaskIntoConstraints = false
+        addSubviews(noResultsView)
+        addConstraints()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func addConstraints() {
+        NSLayoutConstraint.activate([
+            noResultsView.widthAnchor.constraint(equalToConstant: 150),
+            noResultsView.heightAnchor.constraint(equalToConstant: 150),
+            noResultsView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            noResultsView.centerYAnchor.constraint(equalTo: centerYAnchor)
+        ])
     }
 }
 
