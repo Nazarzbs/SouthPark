@@ -42,7 +42,9 @@ final class SPLocationViewController: UIViewController, SPLocationViewViewModelD
     }
     
     @objc private func didTapSearch() {
-        
+        let vc = SPSearchViewController(config: .init(type: .location))
+        vc.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     //MARK: - RMLocationDelegate

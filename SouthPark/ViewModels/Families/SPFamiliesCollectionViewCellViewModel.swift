@@ -39,6 +39,7 @@ final class SPFamiliesCollectionViewCellViewModel: Hashable, Equatable {
             guard let model = character?.data else {
                 return
             }
+            //Removed [weak self]
             fetchImage(for: model.name) { result in
                 switch result {
                 case .success(let data):
@@ -81,6 +82,7 @@ final class SPFamiliesCollectionViewCellViewModel: Hashable, Equatable {
             return }
         guard let url = characterDataUrl, let request = SPRequest(url: url) else { return }
         isFetching = true
+        //Removed [weak self]
         SPService.shared.execute(request, expecting: SPCharactersData.self) { result in
             switch result {
             case .success(let model):

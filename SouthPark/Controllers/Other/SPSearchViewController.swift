@@ -15,6 +15,19 @@ class SPSearchViewController: UIViewController {
             case episode
             case location
             case family
+            
+            var title: String {
+                switch self {
+                case .character:
+                    return "Search Characters"
+                case .episode:
+                    return "Search Episode"
+                case .family:
+                    return "Search Family"
+                case .location:
+                    return "Search Location"
+                }
+            }
         }
         
         let type: `Type`
@@ -34,7 +47,7 @@ class SPSearchViewController: UIViewController {
         
         override func viewDidLoad() {
             super.viewDidLoad()
-            title = "Search"
-            view.backgroundColor = .systemBackground    
+            title = config.type.title
+            view.backgroundColor = .systemBackground
     }
 }

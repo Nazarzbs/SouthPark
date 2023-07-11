@@ -74,15 +74,11 @@ final class SPFamiliesCollectionViewViewModel: NSObject {
             
                 // Create array of index paths for new items
 
-                let indexPathsToAdd: [IndexPath] = Array(startingIndex..<(startingIndex+newCount)).compactMap({ index in
-                    var indexPath: IndexPath = IndexPath(item: 0, section: 0)
-                    
-                    Array(0..<strongSelf.families[index].characters.count).map({ row in
-                        
-                        indexPath = IndexPath(row: row, section: index)
-                    })
-                    return indexPath
-                })
+                let indexPathsToAdd: [IndexPath] = (startingIndex..<(startingIndex+newCount)).flatMap { index in
+                    (0..<strongSelf.families[index].characters.count).map { row in
+                        IndexPath(row: row, section: index)
+                    }
+                }
                 
                 //tell delegate that we just in loaded initial families, on the main thread because it is gonna trigger the updates of the view
                 DispatchQueue.main.async {

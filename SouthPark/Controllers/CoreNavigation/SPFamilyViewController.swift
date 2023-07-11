@@ -26,7 +26,9 @@ final class SPFamilyViewController: UIViewController, SPFamiliesViewDelegate {
     }
     
     @objc private func didTapSearch() {
-        
+        let vc = SPSearchViewController(config: .init(type: .family))
+        vc.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     private func setUpView() {
