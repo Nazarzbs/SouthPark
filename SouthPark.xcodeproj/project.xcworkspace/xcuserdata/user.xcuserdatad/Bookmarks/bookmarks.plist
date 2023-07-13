@@ -9,18 +9,12 @@
 			<dict>
 				<key>location-parameters</key>
 				<dict>
-					<key>EndingColumnNumber</key>
-					<string>138</string>
 					<key>EndingLineNumber</key>
-					<string>76</string>
-					<key>LocationEncoding</key>
-					<string>1</string>
-					<key>StartingColumnNumber</key>
-					<string>138</string>
+					<string>82</string>
 					<key>StartingLineNumber</key>
-					<string>76</string>
+					<string>82</string>
 					<key>Timestamp</key>
-					<string>710945152.032781</string>
+					<string>710959503.953689</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -36,15 +30,16 @@
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string></string>
+				<string>                return SPFamiliesCollectionViewCellViewModel(characterDataUrl: URL(string: "https://spapi.dev/api/character/" + "\($0.id)"))
+</string>
 				<key>leading</key>
 				<string>        } else if let familiesResults = model as? SPGetAllFamiliesResponse {
             resultsVM = .families(familiesResults.data.compactMap({
-                return SPFamiliesCollectionViewCellViewModel(characterDataUrl: URL(string: "https://spapi.dev/api/character/" + "\($0.id)"</string>
+</string>
 				<key>trailing</key>
-				<string>))
-            }))
+				<string>            }))
         }
+        
 </string>
 			</dict>
 			<key>title</key>

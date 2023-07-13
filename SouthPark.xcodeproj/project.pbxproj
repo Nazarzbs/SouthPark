@@ -11,6 +11,7 @@
 		CE1737782A5CBA8900B4ADD1 /* SPSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1737772A5CBA8900B4ADD1 /* SPSearchView.swift */; };
 		CE17377B2A5CC70100B4ADD1 /* SPSearchViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE17377A2A5CC70100B4ADD1 /* SPSearchViewViewModel.swift */; };
 		CE2508FF2A5F41D7006AD13D /* SPSearchResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2508FE2A5F41D7006AD13D /* SPSearchResultViewModel.swift */; };
+		CE2509032A603406006AD13D /* SPSearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2509022A603406006AD13D /* SPSearchResultsView.swift */; };
 		CE26258E2A5D8A190024CEC9 /* SPNoSearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE26258D2A5D8A190024CEC9 /* SPNoSearchResultsView.swift */; };
 		CE2625902A5D8A290024CEC9 /* SPNoSearchResultsViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE26258F2A5D8A290024CEC9 /* SPNoSearchResultsViewViewModel.swift */; };
 		CE2625922A5D8A4A0024CEC9 /* SPSearchInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2625912A5D8A4A0024CEC9 /* SPSearchInputView.swift */; };
@@ -98,6 +99,7 @@
 		CE1737772A5CBA8900B4ADD1 /* SPSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPSearchView.swift; sourceTree = "<group>"; };
 		CE17377A2A5CC70100B4ADD1 /* SPSearchViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPSearchViewViewModel.swift; sourceTree = "<group>"; };
 		CE2508FE2A5F41D7006AD13D /* SPSearchResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPSearchResultViewModel.swift; sourceTree = "<group>"; };
+		CE2509022A603406006AD13D /* SPSearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPSearchResultsView.swift; sourceTree = "<group>"; };
 		CE26258D2A5D8A190024CEC9 /* SPNoSearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPNoSearchResultsView.swift; sourceTree = "<group>"; };
 		CE26258F2A5D8A290024CEC9 /* SPNoSearchResultsViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPNoSearchResultsViewViewModel.swift; sourceTree = "<group>"; };
 		CE2625912A5D8A4A0024CEC9 /* SPSearchInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPSearchInputView.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 				CE1737772A5CBA8900B4ADD1 /* SPSearchView.swift */,
 				CE26258D2A5D8A190024CEC9 /* SPNoSearchResultsView.swift */,
 				CE2625912A5D8A4A0024CEC9 /* SPSearchInputView.swift */,
+				CE2509022A603406006AD13D /* SPSearchResultsView.swift */,
 			);
 			path = "Search ";
 			sourceTree = "<group>";
@@ -642,6 +645,7 @@
 				CECDD3562A19406F000E2ADB /* SPCharacterDetailVIew.swift in Sources */,
 				CE17377B2A5CC70100B4ADD1 /* SPSearchViewViewModel.swift in Sources */,
 				CE2849462A3F9E48002D9922 /* SPLocationTableViewCellViewModel.swift in Sources */,
+				CE2509032A603406006AD13D /* SPSearchResultsView.swift in Sources */,
 				CE8F392F2A0D2FFC00BD8042 /* SPTabBarController.swift in Sources */,
 				CEE2279B2A2E47F9000C86C6 /* SPEpisodeDetailViewController.swift in Sources */,
 				CE2F71DC2A3B882A0094954D /* SPSettingsOption.swift in Sources */,

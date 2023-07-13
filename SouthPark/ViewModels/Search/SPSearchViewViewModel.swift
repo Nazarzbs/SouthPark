@@ -12,6 +12,7 @@ final class SPSearchViewViewModel {
     let config: SPSearchViewController.Config
     private var searchText = ""
     private var searchResultsHandler: ((SPSearchResultsViewModel) -> Void)?
+    private var noResultsHandler: (() -> Void)?
     
     // MARK: - init
     init(config: SPSearchViewController.Config) {
@@ -22,6 +23,10 @@ final class SPSearchViewViewModel {
     
     public func registerSearchResultHandler(_ block: @escaping (SPSearchResultsViewModel) -> Void) {
         self.searchResultsHandler = block
+    }
+    
+    public func registerNoSearchResultHandler(_ block: @escaping () -> Void) {
+        self.noResultsHandler = block
     }
     
     public func executeSearch() {
@@ -53,6 +58,7 @@ final class SPSearchViewViewModel {
             case .success(let model):
                 self?.processSearchResult(model: model)
             case .failure:
+                self?.handleNoResults()
                 break
             }
         }
@@ -81,7 +87,11 @@ final class SPSearchViewViewModel {
         if let results = resultsVM {
             self.searchResultsHandler?(results)
         } else {
-            // fallback error
+            handleNoResults()
         }
+    }
+    
+    private func handleNoResults() {
+        noResultsHandler?()
     }
 }
