@@ -10,6 +10,7 @@
 		CE0C91352A34AA8800E8CE90 /* SPSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0C91342A34AA8800E8CE90 /* SPSearchViewController.swift */; };
 		CE1737782A5CBA8900B4ADD1 /* SPSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1737772A5CBA8900B4ADD1 /* SPSearchView.swift */; };
 		CE17377B2A5CC70100B4ADD1 /* SPSearchViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE17377A2A5CC70100B4ADD1 /* SPSearchViewViewModel.swift */; };
+		CE2508FF2A5F41D7006AD13D /* SPSearchResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2508FE2A5F41D7006AD13D /* SPSearchResultViewModel.swift */; };
 		CE26258E2A5D8A190024CEC9 /* SPNoSearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE26258D2A5D8A190024CEC9 /* SPNoSearchResultsView.swift */; };
 		CE2625902A5D8A290024CEC9 /* SPNoSearchResultsViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE26258F2A5D8A290024CEC9 /* SPNoSearchResultsViewViewModel.swift */; };
 		CE2625922A5D8A4A0024CEC9 /* SPSearchInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2625912A5D8A4A0024CEC9 /* SPSearchInputView.swift */; };
@@ -96,6 +97,7 @@
 		CE0C91342A34AA8800E8CE90 /* SPSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPSearchViewController.swift; sourceTree = "<group>"; };
 		CE1737772A5CBA8900B4ADD1 /* SPSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPSearchView.swift; sourceTree = "<group>"; };
 		CE17377A2A5CC70100B4ADD1 /* SPSearchViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPSearchViewViewModel.swift; sourceTree = "<group>"; };
+		CE2508FE2A5F41D7006AD13D /* SPSearchResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPSearchResultViewModel.swift; sourceTree = "<group>"; };
 		CE26258D2A5D8A190024CEC9 /* SPNoSearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPNoSearchResultsView.swift; sourceTree = "<group>"; };
 		CE26258F2A5D8A290024CEC9 /* SPNoSearchResultsViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPNoSearchResultsViewViewModel.swift; sourceTree = "<group>"; };
 		CE2625912A5D8A4A0024CEC9 /* SPSearchInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPSearchInputView.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 				CE17377A2A5CC70100B4ADD1 /* SPSearchViewViewModel.swift */,
 				CE26258F2A5D8A290024CEC9 /* SPNoSearchResultsViewViewModel.swift */,
 				CE2625932A5D8A560024CEC9 /* SPSearchInputViewViewModel.swift */,
+				CE2508FE2A5F41D7006AD13D /* SPSearchResultViewModel.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -505,9 +508,9 @@
 		CECDD3522A193D93000E2ADB /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				CE0C91342A34AA8800E8CE90 /* SPSearchViewController.swift */,
 				CECDD3532A193DB9000E2ADB /* SPCharacterDetailViewController.swift */,
 				CEE2279A2A2E47F9000C86C6 /* SPEpisodeDetailViewController.swift */,
-				CE0C91342A34AA8800E8CE90 /* SPSearchViewController.swift */,
 				CE28494B2A425381002D9922 /* SPLocationDetailViewController.swift */,
 			);
 			path = Other;
@@ -670,6 +673,7 @@
 				CE98A2F52A0E8364001E54F3 /* SPRelatives.swift in Sources */,
 				CE28495C2A44E4B8002D9922 /* SPLocationEpisodesDetailCellViewModel.swift in Sources */,
 				CE2F71CA2A3A39980094954D /* SPEpisodeDescriptionCollectionViewCell.swift in Sources */,
+				CE2508FF2A5F41D7006AD13D /* SPSearchResultViewModel.swift in Sources */,
 				CE88838D2A4CD417002C6998 /* FamilyNameHeaderCollectionReusableView.swift in Sources */,
 				CEBB6C152A4C50E600F67197 /* SPFamiliesCollectionViewViewModel.swift in Sources */,
 				CE8F395D2A0D345E00BD8042 /* SPFamilyViewController.swift in Sources */,

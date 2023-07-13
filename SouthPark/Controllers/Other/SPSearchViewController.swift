@@ -16,6 +16,15 @@ class SPSearchViewController: UIViewController {
             case location
             case family
             
+            var endpoint: SPEndpoint {
+                switch self {
+                case .character: return .characters
+                case .episode: return .episodes
+                case .location: return .locations
+                case .family: return .families
+                }
+            }
+            
             var title: String {
                 switch self {
                 case .character:
@@ -56,9 +65,14 @@ class SPSearchViewController: UIViewController {
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Search", style: .done, target: self, action: #selector(didTapExecuteSearch))
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        searchView.presentKeyboard()
+    }
+    
     @objc
     private func didTapExecuteSearch() {
-       // viewModel.executeSearch()
+        viewModel.executeSearch()
     }
     
     
