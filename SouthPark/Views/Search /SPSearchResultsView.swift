@@ -166,7 +166,7 @@ extension SPSearchResultsView: UICollectionViewDataSource, UICollectionViewDeleg
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SPCharacterCollectionViewCell.cellIdentifier, for: indexPath) as? SPCharacterCollectionViewCell else { fatalError() }
             cell.configure(with: characterVM)
             return cell
-        } else if let episodeVM = currentViewModel as? SPEpisodeCollectionViewCell {
+        } else if currentViewModel is SPEpisodeCollectionViewCell {
             // Episode Cell
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SPEpisodeCollectionViewCell.cellIdentifier, for: indexPath) as? SPEpisodeCollectionViewCell else { fatalError() }
             

@@ -33,7 +33,58 @@ final class SPLocationViewViewModel {
     
     public var cellViewModels: [SPLocationTableViewCellViewModel] = []
     
+    public var shouldShowLoadMoreIndicator: Bool {
+        return apiInfo?.next != nil
+    }
+    
+    public var isLoadingMoreLocations = false
+    
+    private var didFinishPagination: (() -> Void)?
+    
+//MARK: - init
     init() {}
+    
+    public func registerDidFinishPaginationBlock(_ block: @escaping () -> Void) {
+        self.didFinishPagination = block
+    }
+    
+    /// Paginate if additional locations are needed
+    public func fetchAdditionalLocations() {
+        guard !isLoadingMoreLocations else { return }
+        
+        guard let nextUrlString = apiInfo?.next, let url = URL(string: nextUrlString) else { return }
+        
+        isLoadingMoreLocations = true
+        
+        guard let request = SPRequest(url: url) else {
+            isLoadingMoreLocations = false
+            return
+        }
+        // Translate URL to urlRequest
+        SPService.shared.execute(request, expecting: SPGetAllLocationsResponse.self) { [weak self] result in
+            //change the self to avoid nil
+            guard let strongSelf = self else { return }
+            switch result {
+            case .success(let responseModel):
+                let moreResults = responseModel.data
+                let info = responseModel.links
+                
+                strongSelf.apiInfo = info
+                strongSelf.cellViewModels.append(contentsOf: moreResults.compactMap({
+                    return SPLocationTableViewCellViewModel(location: $0)
+                }))
+                DispatchQueue.main.async {
+                    strongSelf.isLoadingMoreLocations = false
+                    
+                    // Notify via callback
+                    strongSelf.didFinishPagination?()
+                }
+            case .failure(let failure):
+                self?.isLoadingMoreLocations = false
+                print(String(describing: failure))
+            }
+        }
+    }
     
     public func location(at index: Int) -> SPLocation? {
         guard index < locations.count, index >= 0 else { return nil }

@@ -84,6 +84,7 @@
 		CECDD3582A1940CD000E2ADB /* SPCharacterDetailVIewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECDD3572A1940CD000E2ADB /* SPCharacterDetailVIewViewModel.swift */; };
 		CECDD35C2A195A42000E2ADB /* SPFooterLoadingCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECDD35B2A195A42000E2ADB /* SPFooterLoadingCollectionReusableView.swift */; };
 		CECDD3602A1BE3FE000E2ADB /* SPImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECDD35F2A1BE3FE000E2ADB /* SPImageLoader.swift */; };
+		CEE1F4E62A63139400EFE406 /* SPTableLoadingFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE1F4E52A63139400EFE406 /* SPTableLoadingFooterView.swift */; };
 		CEE2279B2A2E47F9000C86C6 /* SPEpisodeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE2279A2A2E47F9000C86C6 /* SPEpisodeDetailViewController.swift */; };
 		CEE2279F2A2FCC55000C86C6 /* SPAPICacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE2279E2A2FCC55000C86C6 /* SPAPICacheManager.swift */; };
 		CEE227A32A2FD12C000C86C6 /* SPEpisodeDetailViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE227A22A2FD12C000C86C6 /* SPEpisodeDetailViewViewModel.swift */; };
@@ -174,6 +175,7 @@
 		CECDD3572A1940CD000E2ADB /* SPCharacterDetailVIewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPCharacterDetailVIewViewModel.swift; sourceTree = "<group>"; };
 		CECDD35B2A195A42000E2ADB /* SPFooterLoadingCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPFooterLoadingCollectionReusableView.swift; sourceTree = "<group>"; };
 		CECDD35F2A1BE3FE000E2ADB /* SPImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPImageLoader.swift; sourceTree = "<group>"; };
+		CEE1F4E52A63139400EFE406 /* SPTableLoadingFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPTableLoadingFooterView.swift; sourceTree = "<group>"; };
 		CEE2279A2A2E47F9000C86C6 /* SPEpisodeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPEpisodeDetailViewController.swift; sourceTree = "<group>"; };
 		CEE2279E2A2FCC55000C86C6 /* SPAPICacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPAPICacheManager.swift; sourceTree = "<group>"; };
 		CEE227A22A2FD12C000C86C6 /* SPEpisodeDetailViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPEpisodeDetailViewViewModel.swift; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 			children = (
 				CE2849232A3F0D99002D9922 /* SPLocationView.swift */,
 				CE28493D2A3F99C6002D9922 /* SPLocationTableViewCell.swift */,
+				CEE1F4E52A63139400EFE406 /* SPTableLoadingFooterView.swift */,
 			);
 			path = Location;
 			sourceTree = "<group>";
@@ -600,6 +603,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEE1F4E62A63139400EFE406 /* SPTableLoadingFooterView.swift in Sources */,
 				CE8F395F2A0D346D00BD8042 /* SPLocationViewController.swift in Sources */,
 				CE9E57332A48C78B0033365D /* SPEpisodeCollectionViewCell.swift in Sources */,
 				CE8F394A2A0D324F00BD8042 /* SPFamilies.swift in Sources */,

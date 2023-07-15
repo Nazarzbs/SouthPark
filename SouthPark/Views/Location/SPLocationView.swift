@@ -23,6 +23,14 @@ final class SPLocationView: UIView {
             UIView.animate(withDuration: 0.3) {
                 self.tableView.alpha = 1
             }
+            
+            
+            DispatchQueue.main.async {
+                self.viewModel?.registerDidFinishPaginationBlock { [weak self] in
+                    self?.tableView.tableFooterView = nil
+                    self?.tableView.reloadData()
+                }
+            }
         }
     }
     
@@ -109,4 +117,35 @@ extension SPLocationView: UITableViewDataSource {
         return cell
     }
 }
+
+
+extension SPLocationView: UIScrollViewDelegate {
+    func scrollViewDidScroll
+    (_ scrollView: UIScrollView) {
+        guard let viewModel = viewModel else { return }
+        guard viewModel.shouldShowLoadMoreIndicator, !viewModel.isLoadingMoreLocations, !viewModel.cellViewModels.isEmpty else {
+            return
+        }
+        Timer.scheduledTimer(withTimeInterval: 0.2, repeats: false) { [weak self] t in
+            let offset = scrollView.contentOffset.y
+            let totalContentHeight = scrollView.contentSize.height
+            let totalScrollViewFixedHeight = scrollView.frame.size.height
+            
+            if offset >= (totalContentHeight - totalScrollViewFixedHeight - 120) {
+                DispatchQueue.main.async {
+                    self?.showLoadingIndicator()
+                }
+                
+                viewModel.fetchAdditionalLocations()
+            }
+            t.invalidate()
+        }
+    }
+    
+    private func showLoadingIndicator() {
+        let footer = SPTableLoadingFooterView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: 100))
+        tableView.tableFooterView = footer
+    }
+}
+
 
