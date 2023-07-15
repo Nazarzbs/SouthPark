@@ -19,7 +19,8 @@ final class SPLocationTableViewCell: UITableViewCell {
     
     private var image: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleToFill
+        imageView.image = UIImage(named: "EpisodesDefault")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
      }()
@@ -46,7 +47,7 @@ final class SPLocationTableViewCell: UITableViewCell {
                 image.topAnchor.constraint(equalTo: name.bottomAnchor, constant: 10),
                 image.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10),
                 image.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10),
-                image.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
+                image.heightAnchor.constraint(equalToConstant: 200)
             ])
         }
     

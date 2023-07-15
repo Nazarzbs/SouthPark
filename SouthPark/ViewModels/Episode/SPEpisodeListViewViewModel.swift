@@ -40,7 +40,7 @@ final class SPEpisodeListViewViewModel: NSObject {
     private var cellViewModels: [SPCharacterEpisodeCollectionViewCellViewModel] = []
     private var apiInfo: SPGetAllEpisodesResponse.Links? = nil
     
-    ///  Fetch initial set of characters (20)
+    ///  Fetch initial set of episodes (20)
     func fetchEpisodes() {
         SPService.shared.execute(.listEpisodesRequest, expecting: SPGetAllEpisodesResponse.self) { [weak self] result in
             switch result {

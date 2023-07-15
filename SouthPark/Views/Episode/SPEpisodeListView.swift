@@ -30,7 +30,7 @@ final class SPEpisodeListView: UIView {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 10, right: 10)
-        layout.minimumLineSpacing = 28 // Adjust the vertical spacing between cells
+        layout.minimumLineSpacing = 35 // Adjust the vertical spacing between cells
            
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.isHidden = true

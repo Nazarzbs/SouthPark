@@ -13,6 +13,7 @@ final class SPSearchViewViewModel {
     private var searchText = ""
     private var searchResultsHandler: ((SPSearchResultsViewModel) -> Void)?
     private var noResultsHandler: (() -> Void)?
+    private var searchResultModel: Codable?
     
     // MARK: - init
     init(config: SPSearchViewController.Config) {
@@ -72,19 +73,21 @@ final class SPSearchViewViewModel {
             }))
         } else if let episodesResults = model as? SPGetAllEpisodesResponse {
             resultsVM = .episodes(episodesResults.data.compactMap({
-                return SPCharacterEpisodeCollectionViewCellViewModel(episodeDataUrl: URL(string: $0.thumbnail_url))
+                return SPCharacterEpisodeCollectionViewCellViewModel(episodeDataUrl: URL(string: "https://spapi.dev/api/episodes/" + "\($0.id)"))
             }))
         } else if let locationsResults = model as? SPGetAllLocationsResponse {
             resultsVM = .locations(locationsResults.data.compactMap({
                 return SPLocationTableViewCellViewModel(location: $0)
             }))
         } else if let familiesResults = model as? SPGetAllFamiliesResponse {
-            resultsVM = .families(familiesResults.data.compactMap({
-                return SPFamiliesCollectionViewCellViewModel(characterDataUrl: URL(string: "https://spapi.dev/api/character/" + "\($0.id)"))
+            guard let data = familiesResults.data.first else { return }
+            resultsVM = .families(data.characters.compactMap({
+                return SPFamiliesCollectionViewCellViewModel(characterDataUrl: URL(string: $0))
             }))
         }
         
         if let results = resultsVM {
+            self.searchResultModel = model
             self.searchResultsHandler?(results)
         } else {
             handleNoResults()
@@ -93,5 +96,10 @@ final class SPSearchViewViewModel {
     
     private func handleNoResults() {
         noResultsHandler?()
+    }
+    
+    public func locationSearchResult(at index: Int) -> SPLocation? {
+        guard let searchModel = searchResultModel as? SPGetAllLocationsResponse else { return nil }
+        return searchModel.data[index]
     }
 }

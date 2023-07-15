@@ -7,9 +7,15 @@
 
 import UIKit
 
+protocol SPSearchViewDelegate: AnyObject {
+    func spSearchView(_ searchView: SPSearchView, didSelectOption location: SPLocation)
+}
+
 final class SPSearchView: UIView {
     
     let viewModel: SPSearchViewViewModel
+    
+    weak var delegate: SPSearchViewDelegate?
     
     // MARK: - Subviews
 
@@ -31,6 +37,7 @@ final class SPSearchView: UIView {
         addConstraints()
         searchInputView.configure(with: SPSearchInputViewViewModel(type: viewModel.config.type))
         searchInputView.delegate = self
+        resultsView.delegate = self
         setupHandlers()
     }
     private func setupHandlers() {
@@ -111,3 +118,14 @@ extension SPSearchView: SPSearchInputViewDelegate {
         viewModel.set(query: text)
     }
 }
+
+extension SPSearchView: SPSearchResultsViewDelegate {
+    func spSearchResultsView(_ resultsView: SPSearchResultsView, didTapLocationAt index: Int) {
+        print("location Tapped")
+        
+        guard let locationModel = viewModel.locationSearchResult(at: index) else { return }
+        
+        delegate?.spSearchView(self, didSelectOption: locationModel)
+    }
+}
+

@@ -55,14 +55,15 @@ class SPSearchViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("Unsupported")
     }
-        
-        override func viewDidLoad() {
-            super.viewDidLoad()
-            title = viewModel.config.type.title
-            view.backgroundColor = .systemBackground
-            view.addSubview(searchView)
-            addConstrains()
-            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Search", style: .done, target: self, action: #selector(didTapExecuteSearch))
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        title = viewModel.config.type.title
+        view.backgroundColor = .systemBackground
+        view.addSubview(searchView)
+        addConstrains()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Search", style: .done, target: self, action: #selector(didTapExecuteSearch))
+        searchView.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -83,5 +84,15 @@ class SPSearchViewController: UIViewController {
             searchView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             searchView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
         ])
+    }
+}
+
+//MARK: - RMSearchViewDelegate
+
+extension SPSearchViewController: SPSearchViewDelegate {
+    func spSearchView(_ searchView: SPSearchView, didSelectOption location: SPLocation) {
+        let vc = SPLocationDetailViewController(url: URL(string: "https://spapi.dev/api/locations/" + "\(location.id)"))
+        vc.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
