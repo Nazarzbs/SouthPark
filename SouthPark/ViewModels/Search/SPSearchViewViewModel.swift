@@ -31,6 +31,7 @@ final class SPSearchViewViewModel {
     }
     
     public func executeSearch() {
+        guard !searchText.trimmingCharacters(in: .whitespaces).isEmpty else { return }
         
         let queryParams: [URLQueryItem] = [URLQueryItem(name: "search", value: searchText.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed))]
        
@@ -66,29 +67,37 @@ final class SPSearchViewViewModel {
     }
     
     private func processSearchResult(model: Codable) {
-        var resultsVM: SPSearchResultsViewModel?
+        var resultsVM: SPSearchResultsType?
+        var nextURL: String?
         if let characterResults = model as? SPGetAllCharactersResponse {
             resultsVM = .characters(characterResults.data.compactMap({
                 return SPCharacterCollectionViewCellViewModel(characterName: $0.name, characterOccupation: $0.occupation ?? "Not given", characterImageName: $0.url, id: $0.id)
             }))
+            nextURL = characterResults.links.next
         } else if let episodesResults = model as? SPGetAllEpisodesResponse {
             resultsVM = .episodes(episodesResults.data.compactMap({
                 return SPCharacterEpisodeCollectionViewCellViewModel(episodeDataUrl: URL(string: "https://spapi.dev/api/episodes/" + "\($0.id)"))
             }))
+            nextURL = episodesResults.links.next
+            
         } else if let locationsResults = model as? SPGetAllLocationsResponse {
             resultsVM = .locations(locationsResults.data.compactMap({
                 return SPLocationTableViewCellViewModel(location: $0)
             }))
+            nextURL = locationsResults.links.next
+            
         } else if let familiesResults = model as? SPGetAllFamiliesResponse {
             guard let data = familiesResults.data.first else { return }
             resultsVM = .families(data.characters.compactMap({
                 return SPFamiliesCollectionViewCellViewModel(characterDataUrl: URL(string: $0))
             }))
+            nextURL = familiesResults.links.next
         }
         
         if let results = resultsVM {
             self.searchResultModel = model
-            self.searchResultsHandler?(results)
+            let vm = SPSearchResultsViewModel(results: results, next: nextURL)
+            self.searchResultsHandler?(vm)
         } else {
             handleNoResults()
         }

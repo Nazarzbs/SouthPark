@@ -50,7 +50,10 @@ class SPSearchResultsView: UIView {
         return collectionView
     }()
     
+    ///    Table view view models
     private var locationCellViewModels: [SPLocationTableViewCellViewModel] = []
+    
+    /// Collection view view models
     private var collectionViewCellViewModels: [any Hashable] = []
         
         // MARK: - init
@@ -72,7 +75,7 @@ class SPSearchResultsView: UIView {
                 return
             }
             
-            switch viewModel {
+            switch viewModel.results {
             case .characters(let viewModels):
                 self.collectionViewCellViewModels = viewModels
                 setupCollectionView()
@@ -166,7 +169,7 @@ extension SPSearchResultsView: UICollectionViewDataSource, UICollectionViewDeleg
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SPCharacterCollectionViewCell.cellIdentifier, for: indexPath) as? SPCharacterCollectionViewCell else { fatalError() }
             cell.configure(with: characterVM)
             return cell
-        } else if currentViewModel is SPEpisodeCollectionViewCell {
+        } else if currentViewModel is SPCharacterEpisodeCollectionViewCellViewModel {
             // Episode Cell
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SPEpisodeCollectionViewCell.cellIdentifier, for: indexPath) as? SPEpisodeCollectionViewCell else { fatalError() }
             
@@ -205,4 +208,82 @@ extension SPSearchResultsView: UICollectionViewDataSource, UICollectionViewDeleg
         return CGSize(width: width, height: width * 0.95)
         
     }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard kind == UICollectionView.elementKindSectionFooter else { fatalError("Unsupported")}
+        guard let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SPFooterLoadingCollectionReusableView.identifier, for: indexPath) as? SPFooterLoadingCollectionReusableView else { fatalError("Unsupported") }
+        if let viewModel = viewModel, viewModel.shouldShowLoadMoreIndicator {
+            footer.startAnimating()
+        }
+        
+        return footer
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        //Hide the footer
+        guard let viewModel = viewModel, viewModel.shouldShowLoadMoreIndicator else { return .zero}
+        return CGSize(width: collectionView.frame.width, height: 100)
+    }
 }
+// MARK: -  Scrollview delegate
+
+extension SPSearchResultsView: UIScrollViewDelegate {
+    func scrollViewDidScroll
+    (_ scrollView: UIScrollView) {
+        if !locationCellViewModels.isEmpty {
+            handleLocationPagination(scrollView)
+        } else {
+            handleCharacterOrEpisodePagination(scrollView: scrollView)
+        }
+    }
+    
+    private func handleCharacterOrEpisodePagination(scrollView: UIScrollView) {
+        guard let viewModel = viewModel, !collectionViewCellViewModels.isEmpty, viewModel.shouldShowLoadMoreIndicator, !viewModel.isLoadingMoreResults else { return }
+        
+        Timer.scheduledTimer(withTimeInterval: 0.2, repeats: false) { [weak self] t in
+            let offset = scrollView.contentOffset.y
+            let totalContentHeight = scrollView.contentSize.height
+            let totalScrollViewFixedHeight = scrollView.frame.size.height
+            
+            if offset >= (totalContentHeight - totalScrollViewFixedHeight - 120) {
+                
+                viewModel.fetchAdditionalResults { [weak self] newResults in
+                    self?.tableView.tableFooterView = nil
+                    self?.collectionViewCellViewModels  = newResults
+                    print(newResults.count)
+                }
+            }
+            t.invalidate()
+        }
+    }
+    
+    private func handleLocationPagination(_ scrollView: UIScrollView) {
+        guard let viewModel = viewModel, !locationCellViewModels.isEmpty, viewModel.shouldShowLoadMoreIndicator, !viewModel.isLoadingMoreResults else { return }
+        
+        Timer.scheduledTimer(withTimeInterval: 0.2, repeats: false) { [weak self] t in
+            let offset = scrollView.contentOffset.y
+            let totalContentHeight = scrollView.contentSize.height
+            let totalScrollViewFixedHeight = scrollView.frame.size.height
+            
+            if offset >= (totalContentHeight - totalScrollViewFixedHeight - 120) {
+                DispatchQueue.main.async {
+                    self?.showTableLoadingIndicator()
+                }
+                
+                viewModel.fetchAdditionalLocations { [weak self] newResults in
+                    self?.tableView.tableFooterView = nil
+                    self?.locationCellViewModels  = newResults
+                    self?.tableView.reloadData()
+                }
+            }
+            t.invalidate()
+        }
+    }
+    
+    private func showTableLoadingIndicator() {
+        let footer = SPTableLoadingFooterView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: 100))
+        tableView.tableFooterView = footer
+    }
+}
+
+
