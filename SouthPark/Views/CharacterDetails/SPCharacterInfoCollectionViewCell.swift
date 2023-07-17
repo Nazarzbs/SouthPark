@@ -14,7 +14,8 @@ final class SPCharacterInfoCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.font = .systemFont(ofSize: 22, weight: .light)
+    
+        label.font = .systemFont(ofSize: UIDevice.isiPhone ? 22 : 38, weight: .light)
         return label
     }()
     
@@ -23,7 +24,8 @@ final class SPCharacterInfoCollectionViewCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
        
         label.textAlignment = .center
-        label.font = .systemFont(ofSize: 20, weight: .medium)
+       
+        label.font = .systemFont(ofSize: UIDevice.isiPhone ? 20 : 35, weight: .light)
         return label
     }()
     

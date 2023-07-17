@@ -14,7 +14,13 @@ class SPLocationDetailCollectionViewCell: UICollectionViewCell {
             let label = UILabel()
             label.translatesAutoresizingMaskIntoConstraints = false
             label.textAlignment = .center
-            label.font = .systemFont(ofSize: 30, weight: .medium)
+            
+            if UIDevice.isiPhone {
+                label.font = .systemFont(ofSize: 30, weight: .medium)
+            } else {
+                label.font = .systemFont(ofSize: 60, weight: .medium)
+            }
+          
             return label
         }()
         
@@ -44,10 +50,10 @@ class SPLocationDetailCollectionViewCell: UICollectionViewCell {
                     image.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10),
                     image.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10),
                     
-                     name.topAnchor.constraint(equalTo: image.bottomAnchor, constant: 0),
-                     name.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10),
-                     name.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10),
-                     name.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
+                    name.topAnchor.constraint(equalTo: image.bottomAnchor, constant: 0),
+                    name.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10),
+                    name.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10),
+                    name.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
                 ])
             }
         

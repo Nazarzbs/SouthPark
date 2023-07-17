@@ -15,8 +15,8 @@ final class SPCharacterEpisodeCollectionViewCell: UICollectionViewCell {
     private let seasonLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-      
-        label.font = .systemFont(ofSize: 18, weight: .semibold)
+        
+        label.font = .systemFont(ofSize: UIDevice.isiPhone ? 18 : 36, weight: .semibold)
         return label
     }()
     
@@ -24,7 +24,8 @@ final class SPCharacterEpisodeCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
-        label.font = .systemFont(ofSize: 20, weight: .regular)
+        
+        label.font = .systemFont(ofSize: UIDevice.isiPhone ? 20 : 40, weight: .semibold)
         return label
     }()
     
@@ -32,7 +33,7 @@ final class SPCharacterEpisodeCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         
-        label.font = .systemFont(ofSize: 14, weight: .ultraLight)
+        label.font = .systemFont(ofSize: UIDevice.isiPhone ? 14 : 20, weight: .semibold)
         return label
     }()
     
@@ -77,17 +78,18 @@ final class SPCharacterEpisodeCollectionViewCell: UICollectionViewCell {
     }
     
     private func setUpConstraints() {
+
         NSLayoutConstraint.activate([
             
-            nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: UIDevice.isiPhone ? 4 : 12),
            
             nameLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
             nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
             
             thumbnailImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            thumbnailImageView.heightAnchor.constraint(equalToConstant: 180),
-            thumbnailImageView.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 4),
+            thumbnailImageView.heightAnchor.constraint(equalToConstant: UIDevice.isiPhone ? 180 : 360),
+            thumbnailImageView.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: UIDevice.isiPhone ? 4 : 12),
             thumbnailImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
             thumbnailImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
             
@@ -99,7 +101,7 @@ final class SPCharacterEpisodeCollectionViewCell: UICollectionViewCell {
             seasonLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
             seasonLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
         
-            airDateLabel.topAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 3),
+            airDateLabel.topAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 6),
             airDateLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
     }

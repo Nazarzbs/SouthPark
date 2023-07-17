@@ -11,8 +11,14 @@ class FamilyNameHeaderCollectionReusableView: UICollectionReusableView {
     static let identifier = "FamilyNameHeaderCollectionReusableView"
     
     let label: UILabel = {
+        
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+        if UIDevice.isiPhone {
+            label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+        } else {
+            label.font = UIFont.systemFont(ofSize: 40, weight: .bold)
+        }
+      
         label.textColor = .label
         return label
     }()
@@ -22,7 +28,7 @@ class FamilyNameHeaderCollectionReusableView: UICollectionReusableView {
         label.translatesAutoresizingMaskIntoConstraints = false
         addSubview(label)
         NSLayoutConstraint.activate([
-            label.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+            label.topAnchor.constraint(equalTo: topAnchor, constant: 13),
             label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
             label.bottomAnchor.constraint(equalTo: bottomAnchor),
             label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),

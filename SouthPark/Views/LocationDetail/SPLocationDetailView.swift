@@ -160,17 +160,36 @@ extension SPLocationDetailView {
     }
     
     func createEpisodesLayout() -> NSCollectionLayoutSection {
-        let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(1.0)))
+        var fractionalWidth: CGFloat = 0
+        var height: CGFloat = 0
+        if UIDevice.isiPhone {
+            height = 200
+            fractionalWidth = 0.5
+        } else {
+            fractionalWidth = 0.33
+            height = 300
+        }
+        let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(fractionalWidth), heightDimension: .fractionalHeight(1.0)))
         item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 8, bottom: 10, trailing: 8)
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(200)) , subitems: [item, item])
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(height)), subitems: [item, item, item])
         let section = NSCollectionLayoutSection(group: group)
         return section
     }
     
     func createLocationLayout() -> NSCollectionLayoutSection {
+        let bounds = UIScreen.main.bounds
+        let width = (bounds.width-40)
+        
+        var height: CGFloat = 0
+        if UIDevice.isiPhone {
+            height = 280
+        } else {
+            height = width * 0.75
+        }
+        
         let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1.0)))
         item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(280)) , subitems: [item])
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(height)) , subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
         return section
     }

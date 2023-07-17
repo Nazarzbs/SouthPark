@@ -16,8 +16,12 @@ class SPLocationEpisodesCollectionViewCell: UICollectionViewCell {
         private let seasonLabel: UILabel = {
             let label = UILabel()
             label.translatesAutoresizingMaskIntoConstraints = false
-          
-            label.font = .systemFont(ofSize: 12, weight: .semibold)
+            if UIDevice.isiPhone {
+                label.font = .systemFont(ofSize: 12, weight: .semibold)
+            } else {
+                label.font = .systemFont(ofSize: 20, weight: .semibold)
+            }
+           
             return label
         }()
         
@@ -26,7 +30,11 @@ class SPLocationEpisodesCollectionViewCell: UICollectionViewCell {
             label.translatesAutoresizingMaskIntoConstraints = false
             label.numberOfLines = 0
             label.textAlignment = .center
-            label.font = .systemFont(ofSize: 12, weight: .regular)
+            if UIDevice.isiPhone {
+                label.font = .systemFont(ofSize: 12, weight: .semibold)
+            } else {
+                label.font = .systemFont(ofSize: 20, weight: .semibold)
+            }
             return label
         }()
         
@@ -63,6 +71,12 @@ class SPLocationEpisodesCollectionViewCell: UICollectionViewCell {
         }
         
         private func setUpConstraints() {
+            var height: CGFloat = 0
+            if UIDevice.isiPhone {
+                height = 100
+            } else {
+                height = 200
+            }
             NSLayoutConstraint.activate([
                 
                 nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 4),
@@ -72,7 +86,7 @@ class SPLocationEpisodesCollectionViewCell: UICollectionViewCell {
                 nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
                 
                 thumbnailImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-                thumbnailImageView.heightAnchor.constraint(equalToConstant: 100),
+                thumbnailImageView.heightAnchor.constraint(equalToConstant: height),
                 thumbnailImageView.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 4),
                 thumbnailImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
                 thumbnailImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),

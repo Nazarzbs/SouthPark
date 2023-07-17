@@ -7,6 +7,8 @@
 
 import UIKit
 
+/// Interface to relay location view events
+
 protocol SPLocationViewDelegate: AnyObject {
     func spLocationView(_ locationView: SPLocationView, didSelect location: SPLocation)
 }
@@ -87,6 +89,7 @@ final class SPLocationView: UIView {
         self.viewModel = viewModel
     }
 }
+//MARK: - UITableViewDelegate
 
 extension SPLocationView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -97,10 +100,14 @@ extension SPLocationView: UITableViewDelegate {
     }
 }
 
+//MARK: - UITableViewDataSource
+
 extension SPLocationView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 250
+        let bounds = UIScreen.main.bounds
+       
+        return UIDevice.isiPhone ? 270 : bounds.height / 1.7
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -117,7 +124,7 @@ extension SPLocationView: UITableViewDataSource {
         return cell
     }
 }
-
+// MARK: - UIScrollViewDelegate
 
 extension SPLocationView: UIScrollViewDelegate {
     func scrollViewDidScroll
@@ -132,9 +139,7 @@ extension SPLocationView: UIScrollViewDelegate {
             let totalScrollViewFixedHeight = scrollView.frame.size.height
             
             if offset >= (totalContentHeight - totalScrollViewFixedHeight - 120) {
-                DispatchQueue.main.async {
-                    self?.showLoadingIndicator()
-                }
+                self?.showLoadingIndicator()
                 
                 viewModel.fetchAdditionalLocations()
             }

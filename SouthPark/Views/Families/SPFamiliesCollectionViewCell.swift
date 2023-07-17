@@ -21,7 +21,12 @@ class SPFamiliesCollectionViewCell: UICollectionViewCell {
         private let nameLabel: UILabel = {
             let label =  UILabel()
             label.textColor = .label
-            label.font = .systemFont(ofSize: 20, weight: .medium)
+           
+            if UIDevice.isiPhone {
+                label.font = .systemFont(ofSize: 20, weight: .medium)
+            } else {
+                label.font = .systemFont(ofSize: 40, weight: .medium)
+            }
             label.translatesAutoresizingMaskIntoConstraints = false
             return label
         }()
@@ -30,7 +35,12 @@ class SPFamiliesCollectionViewCell: UICollectionViewCell {
             let label =  UILabel()
             label.textColor = .label
             label.numberOfLines = 0
-            label.font = .systemFont(ofSize: 14, weight: .regular)
+            if UIDevice.isiPhone {
+                label.font = .systemFont(ofSize: 14, weight: .regular)
+            } else {
+                label.font = .systemFont(ofSize: 28, weight: .medium)
+            }
+           
             label.translatesAutoresizingMaskIntoConstraints = false
             return label
         }()

@@ -134,20 +134,16 @@ extension SPCharacterListViewViewModel: UICollectionViewDataSource, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        let isIphone = UIDevice.current.userInterfaceIdiom == .phone
-        
-        
+     
         let bounds = collectionView.bounds
         let width: CGFloat
-        if isIphone {
+        if UIDevice.isiPhone {
             width = (bounds.width-30)/2
         } else {
             //Mac / ipad
             width = (bounds.width-50)/3
         }
-    
-        return CGSize(width: width, height: width * 1.3)
+            return CGSize(width: width, height: width * 1.3)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

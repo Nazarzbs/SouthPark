@@ -352,8 +352,8 @@
 				CE2F71CE2A3B85B10094954D /* Settings */,
 				CEB2BA462A360C9700645856 /* EpisodeDetail */,
 				CEA2385B2A1D52DF00C598ED /* CharacterDetail */,
-				CEBB6C1D2A4C540000F67197 /* Character */,
 				CEBB6C1E2A4C542200F67197 /* Episode */,
+				CEBB6C1D2A4C540000F67197 /* Character */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";

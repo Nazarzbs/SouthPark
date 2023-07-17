@@ -16,8 +16,13 @@ class SPEpisodeCollectionViewCell: UICollectionViewCell {
         private let seasonLabel: UILabel = {
             let label = UILabel()
             label.translatesAutoresizingMaskIntoConstraints = false
-          
-            label.font = .systemFont(ofSize: 18, weight: .semibold)
+    
+            if UIDevice.isiPhone {
+                label.font = .systemFont(ofSize: 18, weight: .semibold)
+            } else {
+                label.font = .systemFont(ofSize: 40, weight: .semibold)
+            }
+           
             return label
         }()
         
@@ -26,15 +31,24 @@ class SPEpisodeCollectionViewCell: UICollectionViewCell {
             label.translatesAutoresizingMaskIntoConstraints = false
             label.numberOfLines = 0
             label.textAlignment = .center
-            label.font = .systemFont(ofSize: 20, weight: .regular)
+            if UIDevice.isiPhone {
+                label.font = .systemFont(ofSize: 20, weight: .semibold)
+            } else {
+                label.font = .systemFont(ofSize: 40, weight: .semibold)
+            }
+            
             return label
         }()
         
         private let airDateLabel: UILabel = {
             let label = UILabel()
             label.translatesAutoresizingMaskIntoConstraints = false
-            
-            label.font = .systemFont(ofSize: 14, weight: .ultraLight)
+            if UIDevice.isiPhone {
+                label.font = .systemFont(ofSize: 14, weight: .semibold)
+            } else {
+                label.font = .systemFont(ofSize: 19, weight: .semibold)
+            }
+           
             return label
         }()
         
@@ -42,8 +56,9 @@ class SPEpisodeCollectionViewCell: UICollectionViewCell {
             let label = UILabel()
             label.translatesAutoresizingMaskIntoConstraints = false
             label.numberOfLines = 0
-            label.font = .systemFont(ofSize: 16, weight: .light)
-           // label.adjustsFontSizeToFitWidth = true
+           
+            label.font = .systemFont(ofSize: UIDevice.isiPhone ? 16 : 22, weight: .regular)
+            label.adjustsFontSizeToFitWidth = true
             return label
         }()
         
@@ -79,6 +94,16 @@ class SPEpisodeCollectionViewCell: UICollectionViewCell {
         }
         
     private func setUpConstraints() {
+        var imageHeight: CGFloat = 0
+        var descriptionLabelLeadingAndTrailingAnchor = 8.0
+        if UIDevice.isiPhone {
+            imageHeight = 180
+            descriptionLabelLeadingAndTrailingAnchor = 8
+        } else {
+            imageHeight = 500
+            descriptionLabelLeadingAndTrailingAnchor = 40
+        }
+       
         NSLayoutConstraint.activate([
             
             nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
@@ -86,15 +111,16 @@ class SPEpisodeCollectionViewCell: UICollectionViewCell {
             nameLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             
             thumbnailImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            thumbnailImageView.heightAnchor.constraint(equalToConstant: 180),
+            thumbnailImageView.heightAnchor.constraint(equalToConstant: imageHeight),
+          
             thumbnailImageView.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 4),
             thumbnailImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
             thumbnailImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
             
            
 
-            descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
-            descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
+            descriptionLabel.leadingAnchor.constraint(equalTo: thumbnailImageView.leadingAnchor, constant: descriptionLabelLeadingAndTrailingAnchor),
+            descriptionLabel.trailingAnchor.constraint(equalTo: thumbnailImageView.trailingAnchor, constant: -descriptionLabelLeadingAndTrailingAnchor),
            
             descriptionLabel.topAnchor.constraint(lessThanOrEqualTo: thumbnailImageView.bottomAnchor, constant: 15),
             descriptionLabel.bottomAnchor.constraint(equalTo: seasonLabel.topAnchor, constant: 8),
@@ -103,7 +129,7 @@ class SPEpisodeCollectionViewCell: UICollectionViewCell {
             seasonLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
             seasonLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
         
-            airDateLabel.topAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 3),
+            airDateLabel.topAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 6),
             airDateLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
     }

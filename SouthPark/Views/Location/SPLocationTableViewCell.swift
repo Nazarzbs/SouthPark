@@ -13,7 +13,12 @@ final class SPLocationTableViewCell: UITableViewCell {
     private var name: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 20, weight: .medium)
+        if UIDevice.isiPhone {
+            label.font = .systemFont(ofSize: 25, weight: .medium)
+        } else {
+            label.font = .systemFont(ofSize: 50, weight: .medium)
+        }
+        
         return label
     }()
     
@@ -39,15 +44,17 @@ final class SPLocationTableViewCell: UITableViewCell {
     }
 
         private func addConstraints() {
+            let bounds = UIScreen.main.bounds
+            
             NSLayoutConstraint.activate([
-                name.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+                name.topAnchor.constraint(equalTo: contentView.topAnchor, constant: UIDevice.isiPhone ? 30.0 : 70.0),
                 name.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10),
                 name.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10),
                 
                 image.topAnchor.constraint(equalTo: name.bottomAnchor, constant: 10),
                 image.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10),
                 image.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10),
-                image.heightAnchor.constraint(equalToConstant: 200)
+                image.heightAnchor.constraint(equalToConstant: UIDevice.isiPhone ? 200 : bounds.height / 2.2)
             ])
         }
     

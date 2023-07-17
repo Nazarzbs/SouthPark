@@ -29,9 +29,9 @@ final class SPEpisodeListView: UIView {
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 10, right: 10)
-        layout.minimumLineSpacing = 35 // Adjust the vertical spacing between cells
-           
+        layout.sectionInset = UIEdgeInsets(top:  20, left: 10, bottom: 0, right: 10)
+        
+        layout.minimumLineSpacing = UIDevice.isiPhone ? 35 : 60
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.isHidden = true
         collectionView.alpha = 0
@@ -68,7 +68,7 @@ final class SPEpisodeListView: UIView {
             spinner.centerXAnchor.constraint(equalTo: centerXAnchor),
             spinner.centerYAnchor.constraint(equalTo: centerYAnchor),
             
-            collectionView.topAnchor.constraint(equalTo: topAnchor, constant: 0),
+            collectionView.topAnchor.constraint(equalTo: topAnchor),
             collectionView.leftAnchor.constraint(equalTo: leftAnchor),
             collectionView.rightAnchor.constraint(equalTo: rightAnchor),
             collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),

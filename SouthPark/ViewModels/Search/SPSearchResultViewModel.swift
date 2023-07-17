@@ -10,7 +10,7 @@ import Foundation
 // Abstracted our View model to be a struct instead enum that give ability to have property and methods 
 final class SPSearchResultsViewModel {
     public private(set) var results: SPSearchResultsType
-    let next: String?
+    var next: String?
     
     init(results: SPSearchResultsType, next: String?) {
         self.results = results
@@ -42,6 +42,7 @@ final class SPSearchResultsViewModel {
             case .success(let responseModel):
                 let moreResults = responseModel.data
                 let info = responseModel.links
+                strongSelf.next = info.next // Capture new pagination url
                 
                 let additionalLocations = moreResults.compactMap({
                     return SPLocationTableViewCellViewModel(location: $0)
@@ -97,6 +98,7 @@ final class SPSearchResultsViewModel {
                 case .success(let responseModel):
                     let moreResults = responseModel.data
                     let info = responseModel.links
+                    strongSelf.next = info.next // Capture new pagination url
                     
                     let additionalResults = moreResults.compactMap({
                         return SPCharacterCollectionViewCellViewModel(characterName: $0.name, characterOccupation: $0.occupation ?? "Not given", characterImageName: $0.name, id: $0.id)
@@ -128,6 +130,7 @@ final class SPSearchResultsViewModel {
                 case .success(let responseModel):
                     let moreResults = responseModel.data
                     let info = responseModel.links
+                    strongSelf.next = info.next // Capture new pagination url
                     
                     let additionalResults = moreResults.compactMap({
                         return SPCharacterEpisodeCollectionViewCellViewModel(episodeDataUrl: URL(string: "https://spapi.dev/api/episodes/" + "\($0.id)"))
