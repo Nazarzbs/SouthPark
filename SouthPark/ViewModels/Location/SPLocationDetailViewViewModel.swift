@@ -22,7 +22,7 @@ final class SPLocationDetailViewViewModel {
     
     enum SectionType {
         case location(viewModel: SPLocationTableViewCellViewModel)
-        case episodes(viewModels: [SPLocationEpisodesDetailCellViewModel])
+        case episodes(viewModels: [SPCharacterEpisodeCollectionViewCellViewModel])
     }
     
     public weak var delegate: SPLocationDetailViewViewModelDelegate?
@@ -64,7 +64,7 @@ final class SPLocationDetailViewViewModel {
         cellViewModels = [
             .location(viewModel: SPLocationTableViewCellViewModel(location: location)),
             .episodes(viewModels: episodes.compactMap({
-                return SPLocationEpisodesDetailCellViewModel(episodeDataUrl: URL(string: "https://spapi.dev/api/episodes/" + "\($0.id)"))
+                return SPCharacterEpisodeCollectionViewCellViewModel(episodeDataUrl: URL(string: "https://spapi.dev/api/episodes/" + "\($0.id)"))
             }))
         ]
     }

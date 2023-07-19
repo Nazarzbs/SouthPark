@@ -27,6 +27,7 @@ final class SPCharacterDetailVIew: UIView {
     init(frame: CGRect, viewModel: SPCharacterDetailVIewViewModel) {
         self.viewModel = viewModel
         super.init(frame: frame)
+        viewModel.delegate = self
         translatesAutoresizingMaskIntoConstraints = false
         let collectionView = createCollectionView()
         self.collectionView = collectionView
@@ -61,7 +62,7 @@ final class SPCharacterDetailVIew: UIView {
         
         collectionView.register(SPCharacterPhotoCollectionViewCell.self, forCellWithReuseIdentifier: SPCharacterPhotoCollectionViewCell.cellIdentifier)
         collectionView.register(SPCharacterInfoCollectionViewCell.self, forCellWithReuseIdentifier: SPCharacterInfoCollectionViewCell.cellIdentifier)
-        collectionView.register(SPCharacterEpisodeCollectionViewCell.self, forCellWithReuseIdentifier: SPCharacterEpisodeCollectionViewCell.cellIdentifier)
+        collectionView.register(SPEpisodeCollectionViewCell.self, forCellWithReuseIdentifier: SPEpisodeCollectionViewCell.cellIdentifier)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }
@@ -75,6 +76,16 @@ final class SPCharacterDetailVIew: UIView {
             return viewModel.createInformationSectionLayout()
         case .episodes:
             return viewModel.createEpisodesSectionLayout()
+        }
+    }
+}
+
+extension SPCharacterDetailVIew: SPCharacterDetailVIewViewModelDelegate {
+    
+    //Update episodes and family name after fetch 
+    func didFetchFamilies() {
+        DispatchQueue.main.async {
+            self.collectionView?.reloadItems(at: [IndexPath(row: 6, section: 1), IndexPath(row: 0, section: 2), IndexPath(row: 1, section: 2)])
         }
     }
 }

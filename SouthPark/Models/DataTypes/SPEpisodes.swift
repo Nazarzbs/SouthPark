@@ -11,7 +11,7 @@ struct SPEpisodesData: Codable {
     let data: SPEpisode
 }
 
-struct SPEpisode: Codable, SPEpisodeDataRender, SPLocationDetailEpisodeDataRender {
+struct SPEpisode: Codable, SPEpisodeDataRender {
     let id: Int
     let name: String
     let season: Int

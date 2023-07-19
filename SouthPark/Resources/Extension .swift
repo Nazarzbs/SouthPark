@@ -19,3 +19,9 @@ extension UIView {
 extension UIDevice {
     static let isiPhone = UIDevice.current.userInterfaceIdiom == .phone
 }
+
+extension UIView {
+    var isDarkModeEnabled: Bool {
+        return traitCollection.userInterfaceStyle == .dark
+    }
+}

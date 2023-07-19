@@ -4,7 +4,6 @@
 //
 //  Created by Nazar on 23.05.2023.
 //
-
 import UIKit
 
 final class SPCharacterInfoCollectionViewCell: UICollectionViewCell {
@@ -13,85 +12,74 @@ final class SPCharacterInfoCollectionViewCell: UICollectionViewCell {
     private let valueLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 0
-    
-        label.font = .systemFont(ofSize: UIDevice.isiPhone ? 22 : 38, weight: .light)
+        label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
+        label.numberOfLines = 2
+        label.font = SPConstants.setFont(fontSize: 18, isBold: true)
+        label.textColor = SPConstants.basicTextColor
         return label
     }()
     
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-       
         label.textAlignment = .center
-       
-        label.font = .systemFont(ofSize: UIDevice.isiPhone ? 20 : 35, weight: .light)
+        label.font = SPConstants.setFont(fontSize: 11, isBold: false)
+        label.textColor = SPConstants.secondaryTextColor
         return label
     }()
     
     private let iconImageView: UIImageView = {
-        let icon = UIImageView()
-        icon.translatesAutoresizingMaskIntoConstraints = false
-        icon.contentMode = .scaleAspectFit
-        return icon
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
     }()
     
-    private let titleContainerView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .secondarySystemBackground
-        return view
-    }()
-    
-    // MARK: - Init
+    //MARK: - Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.backgroundColor = .tertiarySystemBackground
-        contentView.layer.cornerRadius = 9
-        contentView.layer.masksToBounds = true
-        contentView.addSubviews(titleContainerView, valueLabel, iconImageView)
-        titleContainerView.addSubview(titleLabel)
-        setUpConstraints()
+        contentView.backgroundColor = SPConstants.midBackgroundColor
+        contentView.layer.cornerRadius = 8
+        contentView.addSubviews(valueLabel, titleLabel, iconImageView)
+        addConstraints()
     }
     
     required init?(coder: NSCoder) {
-        fatalError()
+        fatalError("Unsupported")
     }
     
-    private func setUpConstraints() {
+    private func addConstraints() {
         NSLayoutConstraint.activate([
-            titleContainerView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
-            titleContainerView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
-            titleContainerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            titleContainerView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.33),
+            iconImageView.heightAnchor.constraint(equalToConstant: 40),
+            iconImageView.widthAnchor.constraint(equalToConstant: 50),
+            iconImageView.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0),
+            iconImageView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -30),
             
-            titleLabel.leftAnchor.constraint(equalTo: titleContainerView.leftAnchor),
-            titleLabel.rightAnchor.constraint(equalTo: titleContainerView.rightAnchor),
-            titleLabel.topAnchor.constraint(equalTo: titleContainerView.topAnchor),
-            titleLabel.bottomAnchor.constraint(equalTo: titleContainerView.bottomAnchor),
+            valueLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 4),
+            valueLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -4),
+            valueLabel.topAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: 4),
             
-            iconImageView.heightAnchor.constraint(equalToConstant: 30),
-            iconImageView.widthAnchor.constraint(equalToConstant: 30),
-            iconImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 35),
-            iconImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 20),
-            
-            valueLabel.leftAnchor.constraint(equalTo: iconImageView.rightAnchor, constant: 10),
-            valueLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10),
-            valueLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
-            valueLabel.bottomAnchor.constraint(equalTo: titleContainerView.topAnchor)
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0),
+            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0),
+            titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -6),
+            titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0),
         ])
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        valueLabel.text = nil
+        titleLabel.text = nil
+        iconImageView.image = nil
     }
     
     public func configure(with viewModel: SPCharacterInfoCollectionViewCellViewModel) {
         titleLabel.text = viewModel.title
         valueLabel.text = viewModel.displayValue
+        valueLabel.textColor = viewModel.tintColor
         iconImageView.image = viewModel.iconImage
         iconImageView.tintColor = viewModel.tintColor
-        titleLabel.textColor = viewModel.tintColor
     }
 }

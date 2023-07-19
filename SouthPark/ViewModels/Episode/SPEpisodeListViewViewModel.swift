@@ -134,9 +134,8 @@ extension SPEpisodeListViewViewModel: UICollectionViewDataSource, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let bounds = UIScreen.main.bounds
-        let width = (bounds.width-40)
-       
-        return CGSize(width: width, height: UIDevice.isiPhone ? width * 0.95 : width * 0.75)
+        let width = (bounds.width-8)
+        return CGSize(width: width, height: UIDevice.isiPhone ? width * 0.42 : width * 0.75)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

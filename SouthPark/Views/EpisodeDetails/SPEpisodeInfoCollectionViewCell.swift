@@ -48,9 +48,6 @@ class SPEpisodeInfoCollectionViewCell: UICollectionViewCell {
     private func setUpLayer() {
         layer.cornerRadius = 8
         layer.masksToBounds = true
-        layer.borderWidth = 1
-        layer.borderColor = UIColor.secondaryLabel.cgColor
-       
     }
     
     private func addConstraints() {

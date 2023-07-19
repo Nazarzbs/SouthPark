@@ -126,7 +126,7 @@ extension SPFamiliesView: SPFamiliesCollectionViewViewModelDelegate {
         
         var height: CGFloat = 0
         if UIDevice.isiPhone {
-            height = 280
+            height = 240
         } else {
             height = 480
         }
@@ -140,7 +140,7 @@ extension SPFamiliesView: SPFamiliesCollectionViewViewModelDelegate {
         let headerSupplementary = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
         
         // Define footer
-        let footerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(30))
+        let footerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(20))
         let footerSupplementary = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: footerSize, elementKind: UICollectionView.elementKindSectionFooter, alignment: .bottom)
         
         let section = NSCollectionLayoutSection(group: group)

@@ -27,7 +27,6 @@
 		CE2849562A426335002D9922 /* SPLocationDetailViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2849552A426335002D9922 /* SPLocationDetailViewViewModel.swift */; };
 		CE2849582A4393F2002D9922 /* SPLocationDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2849572A4393F2002D9922 /* SPLocationDetailCollectionViewCell.swift */; };
 		CE28495A2A44E2BA002D9922 /* SPLocationEpisodesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2849592A44E2BA002D9922 /* SPLocationEpisodesCollectionViewCell.swift */; };
-		CE28495C2A44E4B8002D9922 /* SPLocationEpisodesDetailCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE28495B2A44E4B8002D9922 /* SPLocationEpisodesDetailCellViewModel.swift */; };
 		CE2F71C62A3A1CFC0094954D /* SPEpisodeImageCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2F71C52A3A1CFC0094954D /* SPEpisodeImageCollectionViewCellViewModel.swift */; };
 		CE2F71C82A3A1F630094954D /* SPEpisodeImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2F71C72A3A1F630094954D /* SPEpisodeImageCollectionViewCell.swift */; };
 		CE2F71CA2A3A39980094954D /* SPEpisodeDescriptionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2F71C92A3A39980094954D /* SPEpisodeDescriptionCollectionViewCell.swift */; };
@@ -84,6 +83,7 @@
 		CECDD3582A1940CD000E2ADB /* SPCharacterDetailVIewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECDD3572A1940CD000E2ADB /* SPCharacterDetailVIewViewModel.swift */; };
 		CECDD35C2A195A42000E2ADB /* SPFooterLoadingCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECDD35B2A195A42000E2ADB /* SPFooterLoadingCollectionReusableView.swift */; };
 		CECDD3602A1BE3FE000E2ADB /* SPImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECDD35F2A1BE3FE000E2ADB /* SPImageLoader.swift */; };
+		CEDA4A112A65B9AC00EE8657 /* SPConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDA4A102A65B9AC00EE8657 /* SPConstants.swift */; };
 		CEE1F4E62A63139400EFE406 /* SPTableLoadingFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE1F4E52A63139400EFE406 /* SPTableLoadingFooterView.swift */; };
 		CEE2279B2A2E47F9000C86C6 /* SPEpisodeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE2279A2A2E47F9000C86C6 /* SPEpisodeDetailViewController.swift */; };
 		CEE2279F2A2FCC55000C86C6 /* SPAPICacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE2279E2A2FCC55000C86C6 /* SPAPICacheManager.swift */; };
@@ -116,7 +116,6 @@
 		CE2849552A426335002D9922 /* SPLocationDetailViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPLocationDetailViewViewModel.swift; sourceTree = "<group>"; };
 		CE2849572A4393F2002D9922 /* SPLocationDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPLocationDetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		CE2849592A44E2BA002D9922 /* SPLocationEpisodesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPLocationEpisodesCollectionViewCell.swift; sourceTree = "<group>"; };
-		CE28495B2A44E4B8002D9922 /* SPLocationEpisodesDetailCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPLocationEpisodesDetailCellViewModel.swift; sourceTree = "<group>"; };
 		CE2F71C52A3A1CFC0094954D /* SPEpisodeImageCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPEpisodeImageCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
 		CE2F71C72A3A1F630094954D /* SPEpisodeImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPEpisodeImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		CE2F71C92A3A39980094954D /* SPEpisodeDescriptionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPEpisodeDescriptionCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -175,6 +174,7 @@
 		CECDD3572A1940CD000E2ADB /* SPCharacterDetailVIewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPCharacterDetailVIewViewModel.swift; sourceTree = "<group>"; };
 		CECDD35B2A195A42000E2ADB /* SPFooterLoadingCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPFooterLoadingCollectionReusableView.swift; sourceTree = "<group>"; };
 		CECDD35F2A1BE3FE000E2ADB /* SPImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPImageLoader.swift; sourceTree = "<group>"; };
+		CEDA4A102A65B9AC00EE8657 /* SPConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPConstants.swift; sourceTree = "<group>"; };
 		CEE1F4E52A63139400EFE406 /* SPTableLoadingFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPTableLoadingFooterView.swift; sourceTree = "<group>"; };
 		CEE2279A2A2E47F9000C86C6 /* SPEpisodeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPEpisodeDetailViewController.swift; sourceTree = "<group>"; };
 		CEE2279E2A2FCC55000C86C6 /* SPAPICacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPAPICacheManager.swift; sourceTree = "<group>"; };
@@ -244,7 +244,6 @@
 				CE2849322A3F3508002D9922 /* SPLocationViewViewModel.swift */,
 				CE2849452A3F9E48002D9922 /* SPLocationTableViewCellViewModel.swift */,
 				CE2849552A426335002D9922 /* SPLocationDetailViewViewModel.swift */,
-				CE28495B2A44E4B8002D9922 /* SPLocationEpisodesDetailCellViewModel.swift */,
 			);
 			path = Location;
 			sourceTree = "<group>";
@@ -361,6 +360,7 @@
 		CE8F39422A0D30EA00BD8042 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CEDA4A102A65B9AC00EE8657 /* SPConstants.swift */,
 				CE8F392A2A0D2FFC00BD8042 /* AppDelegate.swift */,
 				CE8F392C2A0D2FFC00BD8042 /* SceneDelegate.swift */,
 				CE8F39352A0D2FFE00BD8042 /* LaunchScreen.storyboard */,
@@ -671,6 +671,7 @@
 				CE8F392B2A0D2FFC00BD8042 /* AppDelegate.swift in Sources */,
 				CE26258E2A5D8A190024CEC9 /* SPNoSearchResultsView.swift in Sources */,
 				CECDD35C2A195A42000E2ADB /* SPFooterLoadingCollectionReusableView.swift in Sources */,
+				CEDA4A112A65B9AC00EE8657 /* SPConstants.swift in Sources */,
 				CE1737782A5CBA8900B4ADD1 /* SPSearchView.swift in Sources */,
 				CE7BFB0B2A52157100614C97 /* SPFamiliesCollectionViewCell.swift in Sources */,
 				CE8F392D2A0D2FFC00BD8042 /* SceneDelegate.swift in Sources */,
@@ -679,7 +680,6 @@
 				CE7BFB0D2A535E8B00614C97 /* SPFamiliesCollectionViewCellViewModel.swift in Sources */,
 				CE0C91352A34AA8800E8CE90 /* SPSearchViewController.swift in Sources */,
 				CE98A2F52A0E8364001E54F3 /* SPRelatives.swift in Sources */,
-				CE28495C2A44E4B8002D9922 /* SPLocationEpisodesDetailCellViewModel.swift in Sources */,
 				CE2F71CA2A3A39980094954D /* SPEpisodeDescriptionCollectionViewCell.swift in Sources */,
 				CE2508FF2A5F41D7006AD13D /* SPSearchResultViewModel.swift in Sources */,
 				CE88838D2A4CD417002C6998 /* FamilyNameHeaderCollectionReusableView.swift in Sources */,

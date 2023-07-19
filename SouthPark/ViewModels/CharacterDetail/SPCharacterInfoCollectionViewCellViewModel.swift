@@ -23,7 +23,7 @@ final class SPCharacterInfoCollectionViewCellViewModel {
     static let shortDateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
-        formatter.timeStyle = .short
+        formatter.timeStyle = .none
         formatter.timeZone = .current
         return formatter
     }()
@@ -35,7 +35,7 @@ final class SPCharacterInfoCollectionViewCellViewModel {
     public var displayValue: String {
         if value.isEmpty { return "None" }
        
-        if let date = Self.dateFormatter.date(from: value), type == .created_at || type == .updated_at  {
+        if let date = Self.dateFormatter.date(from: value), type == .created_at  {
             return Self.shortDateFormatter.string(from: date)
         }
         return value
@@ -59,16 +59,16 @@ final class SPCharacterInfoCollectionViewCellViewModel {
         case family
         case episodes
         case created_at
-        case updated_at
+//        case updated_at
         
         var tintColor: UIColor {
             switch self {
             case .age:
-                return .systemBlue
-            case .sex:
                 return .systemRed
+            case .sex:
+                return .systemGreen
             case .relatives:
-                return .systemCyan
+                return .systemYellow
             case .occupation:
                 return .systemMint
             case .grade:
@@ -78,11 +78,9 @@ final class SPCharacterInfoCollectionViewCellViewModel {
             case .family:
                 return .systemOrange
             case .episodes:
-                return .systemYellow
+                return .systemBlue
             case .created_at:
-                return .systemTeal
-            case .updated_at:
-                return .systemBrown
+                return .systemPurple
             }
         }
         
@@ -92,8 +90,6 @@ final class SPCharacterInfoCollectionViewCellViewModel {
                 return rawValue.uppercased()
             case .episodes:
                 return "EPISODES COUNT"
-            case .updated_at:
-                return "UPDATED"
             case .created_at:
                 return "CREATED"
             }
@@ -102,25 +98,39 @@ final class SPCharacterInfoCollectionViewCellViewModel {
         var iconImage: UIImage? {
             switch self {
             case .age:
-                return UIImage(systemName: "bell")
+                let config = UIImage.SymbolConfiguration(hierarchicalColor: .systemRed)
+                let image = UIImage(systemName: "cross.circle.fill", withConfiguration: config)
+                return image
             case .sex:
-                return UIImage(systemName: "bell")
+                let config = UIImage.SymbolConfiguration(hierarchicalColor: .systemGreen)
+                let image = UIImage(systemName: "person.fill.viewfinder", withConfiguration: config)
+                return image
             case .relatives:
-                return UIImage(systemName: "bell")
+                let config = UIImage.SymbolConfiguration(hierarchicalColor: .systemYellow)
+                let image = UIImage(systemName: "tree.circle.fill", withConfiguration: config)
+                return image
             case .occupation:
-                return UIImage(systemName: "bell")
+                let config = UIImage.SymbolConfiguration(hierarchicalColor: .systemMint)
+                let image = UIImage(systemName: "person.crop.square.filled.and.at.rectangle", withConfiguration: config)
+                return image
             case .grade:
-                return UIImage(systemName: "bell")
+                let config = UIImage.SymbolConfiguration(hierarchicalColor: .systemPink)
+                let image = UIImage(systemName: "graduationcap.circle", withConfiguration: config)
+                return image
             case .religion:
-                return UIImage(systemName: "bell")
+                let config = UIImage.SymbolConfiguration(hierarchicalColor: .systemBrown)
+                let image = UIImage(systemName: "mountain.2.fill", withConfiguration: config)
+                return image
             case .family:
-                return UIImage(systemName: "bell")
+                return UIImage(systemName: "figure.2.and.child.holdinghands")
             case .episodes:
-                return UIImage(systemName: "bell")
-            case .updated_at:
-                return UIImage(systemName: "bell")
+                let config = UIImage.SymbolConfiguration(hierarchicalColor: .systemBlue)
+                let image = UIImage(systemName: "sparkles.tv", withConfiguration: config)
+                return image
             case .created_at:
-                return UIImage(systemName: "bell")
+                let config = UIImage.SymbolConfiguration(hierarchicalColor: .systemPurple)
+                let image = UIImage(systemName: "clock.circle.fill", withConfiguration: config)
+                return image
             }
         }
     }

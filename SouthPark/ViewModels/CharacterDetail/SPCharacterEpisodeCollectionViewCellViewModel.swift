@@ -15,7 +15,6 @@ protocol SPEpisodeDataRender {
     var season: Int { get }
     var air_date: String { get }
     var thumbnail_url: String { get }
-    var description: String { get }
 }
 
 final class SPCharacterEpisodeCollectionViewCellViewModel: Hashable, Equatable {

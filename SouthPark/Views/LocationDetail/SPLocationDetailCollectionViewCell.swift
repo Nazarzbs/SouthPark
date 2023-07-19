@@ -8,81 +8,128 @@
 import UIKit
 
 class SPLocationDetailCollectionViewCell: UICollectionViewCell {
-        static let cellIdentifier = "SPLocationCollectionViewCell"
+    static let cellIdentifier = "SPLocationCollectionViewCell"
+    
+    private var name: UILabel = {
+        let label = UILabel()
+        label.layer.zPosition = 3
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
+        label.font = SPConstants.setFont(fontSize: UIDevice.isiPhone ? 30 : 60, isBold: true)
         
-        private var name: UILabel = {
-            let label = UILabel()
-            label.translatesAutoresizingMaskIntoConstraints = false
-            label.textAlignment = .center
-            
-            if UIDevice.isiPhone {
-                label.font = .systemFont(ofSize: 30, weight: .medium)
-            } else {
-                label.font = .systemFont(ofSize: 60, weight: .medium)
-            }
-          
-            return label
-        }()
-        
-        private var image: UIImageView = {
-            let imageView = UIImageView()
-            imageView.contentMode = .scaleAspectFit
-            imageView.translatesAutoresizingMaskIntoConstraints = false
-            return imageView
-         }()
-        
-        //MARK: - init
+        return label
+    }()
+    
+    private var image: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 8
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
+    let detailBlurView: UIVisualEffectView = {
+        let view = UIVisualEffectView(effect: UIBlurEffect(style: .systemUltraThinMaterial))
+        view.layer.zPosition = 2
+        view.alpha = 0.9
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.clipsToBounds = true
+        return view
+    }()
+    
+    let detailViewColorView: UIView = {
+        let view = UIView()
+        view.alpha = 0.01
+        view.layer.zPosition = 1
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.clipsToBounds = true
+        return view
+    }()
+    
+    //MARK: - init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.addSubviews(name, image)
+
+        image.addSubviews(detailViewColorView, detailBlurView)
+        setupGradientView(view: detailViewColorView)
         addConstraints()
     }
-
-        
-        required init?(coder: NSCoder) {
-            fatalError("init(coder:) has not been implemented")
-        }
-
-            private func addConstraints() {
-                NSLayoutConstraint.activate([
-                    image.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0),
-                    image.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10),
-                    image.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10),
-                    
-                    name.topAnchor.constraint(equalTo: image.bottomAnchor, constant: 0),
-                    name.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10),
-                    name.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10),
-                    name.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
-                ])
-            }
-        
-        override func prepareForReuse() {
-            super.prepareForReuse()
-            name.text = nil
-            image.image = nil
-        }
-        
-        
-        public func configure(with viewModel: SPLocationTableViewCellViewModel) {
-            name.text = viewModel.name
+    
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func addConstraints() {
+        NSLayoutConstraint.activate([
+            image.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0),
+            image.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10),
+            image.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10),
+            image.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0),
             
-            viewModel.fetchImage { [weak self] result in
-                switch result {
-                case .success(let data):
-                    DispatchQueue.main.async {
-                        let image = UIImage(data: data)
-                        self?.image.image = image
-                    }
-                case .failure(let error):
-                    print(String(describing: error))
-                    DispatchQueue.main.async {
-                        self?.image.image = UIImage(named: "CharactersDefault")
-                    }
-                    break
+            name.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10),
+            name.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10),
+            name.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
+            
+            detailViewColorView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0),
+            detailViewColorView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+            detailViewColorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+            detailViewColorView.heightAnchor.constraint(equalToConstant: 48),
+            
+            detailBlurView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0),
+            detailBlurView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+            detailBlurView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+            detailBlurView.heightAnchor.constraint(equalToConstant: 48),
+        ])
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        name.text = nil
+        image.image = nil
+    }
+    
+    
+    public func configure(with viewModel: SPLocationTableViewCellViewModel) {
+        name.text = viewModel.name
+        
+        viewModel.fetchImage { [weak self] result in
+            switch result {
+            case .success(let data):
+                DispatchQueue.main.async {
+                    let image = UIImage(data: data)
+                    self?.image.image = image
                 }
+            case .failure(let error):
+                print(String(describing: error))
+                DispatchQueue.main.async {
+                    self?.image.image = UIImage(named: "CharactersDefault")
+                }
+                break
             }
         }
     }
+    
+    private func setupGradientView(view: UIView) {
+        let gradientLayer = CAGradientLayer()
+        var coverColors: [CGColor] = []
+        
+        let bottomColor: CGColor = UIColor.clear.cgColor
+        let topColor: CGColor = UIColor.clear.withAlphaComponent(0.0).cgColor
+        coverColors.append(topColor)
+        coverColors.append(bottomColor)
+        
+        gradientLayer.frame = view.bounds
+        gradientLayer.colors = coverColors
+        gradientLayer.locations = [0.0, 0.70]
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+        gradientLayer.frame.size = CGSize(width: contentView.frame.width, height: 48)
+        view.layer.insertSublayer(gradientLayer, at: 0)
+    }
+}
 
 

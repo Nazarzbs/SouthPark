@@ -107,7 +107,7 @@ extension SPLocationView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let bounds = UIScreen.main.bounds
        
-        return UIDevice.isiPhone ? 270 : bounds.height / 1.7
+        return UIDevice.isiPhone ? 240 : bounds.height / 1.7
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

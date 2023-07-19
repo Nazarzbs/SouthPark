@@ -205,7 +205,7 @@ extension SPSearchResultsView: UICollectionViewDataSource, UICollectionViewDeleg
         
         // Episode size
         let width = (bounds.width-20)
-        return CGSize(width: width, height: width * 0.95)
+        return CGSize(width: width, height: width * 0.33)
         
     }
     

@@ -163,11 +163,11 @@ extension SPLocationDetailView {
         var fractionalWidth: CGFloat = 0
         var height: CGFloat = 0
         if UIDevice.isiPhone {
-            height = 200
+            height = 125
             fractionalWidth = 0.5
         } else {
             fractionalWidth = 0.33
-            height = 300
+            height = 270
         }
         let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(fractionalWidth), heightDimension: .fractionalHeight(1.0)))
         item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 8, bottom: 10, trailing: 8)
@@ -182,7 +182,7 @@ extension SPLocationDetailView {
         
         var height: CGFloat = 0
         if UIDevice.isiPhone {
-            height = 280
+            height = 205
         } else {
             height = width * 0.75
         }

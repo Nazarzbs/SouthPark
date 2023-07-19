@@ -87,7 +87,7 @@ extension SPCharacterDetailViewController: UICollectionViewDelegate, UICollectio
             cell.configure(with: viewModels[indexPath.row])
             return cell
         case .episodes(viewModels: let viewModels):
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SPCharacterEpisodeCollectionViewCell.cellIdentifier, for: indexPath) as? SPCharacterEpisodeCollectionViewCell else { fatalError()}
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SPEpisodeCollectionViewCell.cellIdentifier, for: indexPath) as? SPEpisodeCollectionViewCell else { fatalError()}
             let viewModel = viewModels[indexPath.row]
             cell.configure(with: viewModel)
     
