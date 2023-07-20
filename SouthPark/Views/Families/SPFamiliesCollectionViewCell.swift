@@ -21,7 +21,7 @@ class SPFamiliesCollectionViewCell: UICollectionViewCell {
         private let nameLabel: UILabel = {
             let label =  UILabel()
             label.textColor = .label
-           
+            label.adjustsFontSizeToFitWidth = true
             label.font = SPConstants.setFont(fontSize: UIDevice.isiPhone ? 17 : 40, isBold: true)
             label.translatesAutoresizingMaskIntoConstraints = false
             return label
@@ -31,7 +31,8 @@ class SPFamiliesCollectionViewCell: UICollectionViewCell {
             let label =  UILabel()
             label.textColor = .label
             label.numberOfLines = 0
-        
+            
+            label.adjustsFontSizeToFitWidth = true
             label.font = SPConstants.setFont(fontSize: UIDevice.isiPhone ? 14 : 28, isBold: false)
             label.translatesAutoresizingMaskIntoConstraints = false
             return label
@@ -41,6 +42,8 @@ class SPFamiliesCollectionViewCell: UICollectionViewCell {
      private let detailBlurView: UIVisualEffectView = {
          let view = UIVisualEffectView(effect: UIBlurEffect(style: .systemChromeMaterial))
          view.layer.zPosition = 3
+         view.alpha = 0.7
+         view.layer.cornerRadius = 12
          view.backgroundColor = UIColor(named: "midBackgroundColor")
          view.translatesAutoresizingMaskIntoConstraints = false
          view.clipsToBounds = true
@@ -49,9 +52,9 @@ class SPFamiliesCollectionViewCell: UICollectionViewCell {
      
      private let detailViewColorView: UIView = {
          let view = UIView()
-         view.alpha = 0.37
+         view.alpha = 0.1
          view.layer.zPosition = 2
-         
+         view.layer.cornerRadius = 12
          view.translatesAutoresizingMaskIntoConstraints = false
          view.clipsToBounds = true
          return view
@@ -78,28 +81,26 @@ class SPFamiliesCollectionViewCell: UICollectionViewCell {
         
         private func setUpLayer() {
             contentView.layer.cornerRadius = 8
-            contentView.layer.shadowColor = UIColor.label.cgColor
-            contentView.layer.shadowOffset =  CGSize(width: -2, height: 2)
-            contentView.layer.shadowOpacity = 0.4
+//            contentView.layer.shadowColor = UIColor.label.cgColor
+//            contentView.layer.shadowOffset =  CGSize(width: -2, height: 2)
+//            contentView.layer.shadowOpacity = 0.4
         }
         
         private func addConstraints() {
             NSLayoutConstraint.activate([
-                characterOccupationLabel.heightAnchor.constraint(equalToConstant: 35),
-                nameLabel.heightAnchor.constraint(equalToConstant: 25),
-                
-                characterOccupationLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 7),
-                characterOccupationLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -7),
-                nameLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 7),
-                nameLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -7),
-                
-                characterOccupationLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -3),
-                nameLabel.bottomAnchor.constraint(equalTo: characterOccupationLabel.topAnchor),
                 
                 imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
                 imageView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
                 imageView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
-                imageView.bottomAnchor.constraint(equalTo: nameLabel.topAnchor, constant: -3),
+                imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
+                
+                nameLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 7),
+                nameLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -7),
+                nameLabel.bottomAnchor.constraint(equalTo: characterOccupationLabel.topAnchor),
+                
+                characterOccupationLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 7),
+                characterOccupationLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -7),
+                characterOccupationLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -2),
             ])
         }
         
@@ -138,12 +139,12 @@ extension SPFamiliesCollectionViewCell {
             detailViewColorView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0),
             detailViewColorView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0),
             detailViewColorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0),
-            detailViewColorView.heightAnchor.constraint(equalToConstant: 70),
+            detailViewColorView.heightAnchor.constraint(equalToConstant: 50),
 
             detailBlurView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0),
             detailBlurView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0),
             detailBlurView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0),
-            detailBlurView.heightAnchor.constraint(equalToConstant: 70),
+            detailBlurView.heightAnchor.constraint(equalToConstant: 50),
             
         ])
     }
@@ -164,7 +165,7 @@ extension SPFamiliesCollectionViewCell {
         gradientLayer.locations = [0.3, 0.70]
         gradientLayer.startPoint = CGPoint(x: 0, y: 0)
         gradientLayer.endPoint = CGPoint(x: 0, y: 1)
-        gradientLayer.frame.size = CGSize(width: contentView.frame.width, height: 70)
+        gradientLayer.frame.size = CGSize(width: contentView.frame.width, height: 50)
         view.layer.insertSublayer(gradientLayer, at: 0)
     }
 }

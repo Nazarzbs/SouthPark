@@ -13,7 +13,10 @@ final class SPLocationTableViewCell: UITableViewCell {
     private var name: UILabel = {
         let label = UILabel()
         label.layer.zPosition = 3
-        label.font = SPConstants.setFont(fontSize: UIDevice.isiPhone ? 24 : 48, isBold: true)
+        label.numberOfLines = 2
+        //label.backgroundColor = .red
+        label.textAlignment = .center
+        label.font = SPConstants.setFont(fontSize: UIDevice.isiPhone ? 20 : 48, isBold: true)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -21,7 +24,9 @@ final class SPLocationTableViewCell: UITableViewCell {
     private var image: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.zPosition = 1
-        imageView.contentMode = .scaleToFill
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = 12
+        imageView.clipsToBounds = true
         imageView.image = UIImage(named: "EpisodesDefault")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -31,9 +36,7 @@ final class SPLocationTableViewCell: UITableViewCell {
         let view = UIVisualEffectView(effect: UIBlurEffect(style: .systemChromeMaterial))
         view.layer.zPosition = 2
         view.alpha = 0.7
-        //view.layer.cornerRadius = 0
-        //view.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
-       // view.backgroundColor = UIColor(named: "midBackgroundColor")
+        view.layer.cornerRadius = 12
         view.translatesAutoresizingMaskIntoConstraints = false
         view.clipsToBounds = true
         return view
@@ -44,7 +47,7 @@ final class SPLocationTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubviews(name, image, blurView)
-        contentView.layer.cornerRadius = 8
+        contentView.layer.cornerRadius = 12
         addConstraints()
         accessoryType = .disclosureIndicator
     }
@@ -54,22 +57,21 @@ final class SPLocationTableViewCell: UITableViewCell {
     }
 
         private func addConstraints() {
-            let bounds = UIScreen.main.bounds
-            
+           
             NSLayoutConstraint.activate([
-                name.topAnchor.constraint(equalTo: contentView.topAnchor, constant: UIDevice.isiPhone ? 4 : 70.0),
-                name.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 15),
+                name.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -40),
+                name.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10),
                 name.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10),
                 
-                image.topAnchor.constraint(equalTo: contentView.topAnchor, constant: UIDevice.isiPhone ? 0.0 : 70.0),
-                image.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10),
-                image.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10),
-                image.heightAnchor.constraint(equalToConstant: UIDevice.isiPhone ? 200 : bounds.height / 2.2),
-                
-                blurView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0),
-                blurView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-                blurView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-                blurView.heightAnchor.constraint(equalToConstant: 40),
+                image.topAnchor.constraint(equalTo: contentView.topAnchor),
+                image.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 8),
+                image.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: 0),
+                image.heightAnchor.constraint(equalToConstant: 200),
+ 
+                blurView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -40),
+                blurView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
+                blurView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0),
+                blurView.heightAnchor.constraint(equalTo: name.heightAnchor, constant: 2),
             ])
         }
     

@@ -10,16 +10,23 @@ import UIKit
 class SPEpisodeInfoCollectionViewCell: UICollectionViewCell {
     static let cellIdentifier = "SPEpisodeInfoCollectionViewCell"
     
+    private let iconImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 20, weight: .medium)
+        label.font = SPConstants.setFont(fontSize: 18, isBold: true)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private let valueLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 20, weight: .regular)
+        label.font = SPConstants.setFont(fontSize: 18, isBold: true)
         label.textAlignment = .right
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -28,8 +35,8 @@ class SPEpisodeInfoCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.backgroundColor = .secondarySystemBackground
-        contentView.addSubviews(titleLabel, valueLabel)
+        contentView.backgroundColor = UIColor(named: "midBackgroundForDetail")
+        contentView.addSubviews(titleLabel, valueLabel, iconImageView)
        
         setUpLayer()
         addConstraints()
@@ -53,15 +60,16 @@ class SPEpisodeInfoCollectionViewCell: UICollectionViewCell {
     private func addConstraints() {
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 4),
-            titleLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10),
+            titleLabel.leftAnchor.constraint(equalTo: iconImageView.rightAnchor, constant: 28),
             titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -4),
             
             valueLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 4),
             valueLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10),
             valueLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -4),
             
-            titleLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.47),
-            valueLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.47),
+            iconImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            iconImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 20),
+            iconImageView.heightAnchor.constraint(equalToConstant: 40),
         ])
 
     }
@@ -69,6 +77,7 @@ class SPEpisodeInfoCollectionViewCell: UICollectionViewCell {
     func configure(with viewModel: SPEpisodeInfoCollectionViewCellViewModel) {
         titleLabel.text = viewModel.title
         valueLabel.text = viewModel.value
+        iconImageView.image = viewModel.iconImageView
     }
     
 }

@@ -18,20 +18,20 @@ class SPLocationEpisodesCollectionViewCell: UICollectionViewCell {
         label.layer.zPosition = 5
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .left
-        label.font = SPConstants.setFont(fontSize: 10, isBold: false)
+        label.font = SPConstants.setFont(fontSize: 12, isBold: false)
         label.textColor = .label
         return label
     }()
     
-    private let episodeLabel: UILabel = {
-        let label = UILabel()
-        label.layer.zPosition = 6
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .left
-        label.font = SPConstants.setFont(fontSize: 10, isBold: false)
-        label.textColor = .label
-        return label
-    }()
+//    private let episodeLabel: UILabel = {
+//        let label = UILabel()
+//        label.layer.zPosition = 6
+//        label.translatesAutoresizingMaskIntoConstraints = false
+//        label.textAlignment = .left
+//        label.font = SPConstants.setFont(fontSize: 10, isBold: false)
+//        label.textColor = .label
+//        return label
+//    }()
     
     private let nameLabel: UILabel = {
         let label = UILabel()
@@ -95,7 +95,7 @@ class SPLocationEpisodesCollectionViewCell: UICollectionViewCell {
         override init(frame: CGRect) {
             super.init(frame: frame)
             contentView.layer.cornerRadius = 12
-            contentView.addSubviews(seasonLabel, nameLabel, airDateLabel, imageOuterView, episodeLabel)
+            contentView.addSubviews(seasonLabel, nameLabel, airDateLabel, imageOuterView)
             imageOuterView.addSubview(thumbnailImageView)
             imageOuterView.addSubview(detailBlurView)
             addConstraints()
@@ -121,14 +121,10 @@ class SPLocationEpisodesCollectionViewCell: UICollectionViewCell {
             
             seasonLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
             seasonLabel.widthAnchor.constraint(equalToConstant: 60),
-            seasonLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 3),
+            seasonLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
 
-            episodeLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
-            episodeLabel.widthAnchor.constraint(equalToConstant: 60),
-            episodeLabel.topAnchor.constraint(equalTo: seasonLabel.bottomAnchor, constant: 3),
-            
             nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
-            nameLabel.topAnchor.constraint(equalTo: seasonLabel.bottomAnchor, constant: -10),
+            nameLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             nameLabel.heightAnchor.constraint(equalToConstant: 100),
             nameLabel.widthAnchor.constraint(equalToConstant: bounds.width / 2.2),
             
@@ -148,7 +144,7 @@ class SPLocationEpisodesCollectionViewCell: UICollectionViewCell {
             super.prepareForReuse()
             nameLabel.text = nil
             seasonLabel.text = nil
-            episodeLabel.text = nil
+//            episodeLabel.text = nil
             airDateLabel.text = nil
             thumbnailImageView.image = nil
         }
@@ -158,8 +154,8 @@ class SPLocationEpisodesCollectionViewCell: UICollectionViewCell {
           
             viewModel.registerForData { [weak self] (data, imageData)  in
                 self?.nameLabel.text = data.name
-                self?.seasonLabel.text = "Season \(data.season)"
-                self?.episodeLabel.text = "Episode \(data.episode)"
+                self?.seasonLabel.text = "S\(data.season) • E\(data.episode)"
+//                self?.episodeLabel.text = "Episode \(data.episode)"
                 self?.airDateLabel.text = "Aired on:\n"+data.air_date
                 guard let data = imageData else { return }
                 self?.thumbnailImageView.image = UIImage(data: data)

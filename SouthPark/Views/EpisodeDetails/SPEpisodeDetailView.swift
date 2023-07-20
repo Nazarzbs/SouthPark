@@ -84,9 +84,10 @@ final class SPEpisodeDetailView: UIView {
         collectionView.register(SPEpisodeImageCollectionViewCell.self, forCellWithReuseIdentifier: SPEpisodeImageCollectionViewCell.cellIdentifier)
         collectionView.register(SPEpisodeDescriptionCollectionViewCell.self, forCellWithReuseIdentifier: SPEpisodeDescriptionCollectionViewCell.cellIdentifier)
         collectionView.register(SPEpisodeInfoCollectionViewCell.self, forCellWithReuseIdentifier: SPEpisodeInfoCollectionViewCell.cellIdentifier)
-        collectionView.register(SPCharacterCollectionViewCell.self, forCellWithReuseIdentifier: SPCharacterCollectionViewCell.cellIdentifier)
+        collectionView.register(SPEpisodeChracterCollectionViewCell.self, forCellWithReuseIdentifier: SPEpisodeChracterCollectionViewCell.cellIdentifier)
         collectionView.register(SPEpisodeWikiCollectionViewCell.self, forCellWithReuseIdentifier: SPEpisodeWikiCollectionViewCell.cellIdentifier)
         collectionView.register(SPEpisodeLocationCollectionViewCell.self, forCellWithReuseIdentifier: SPEpisodeLocationCollectionViewCell.cellIdentifier)
+        collectionView.register(SPEpisodeDetailSectionNameHeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SPEpisodeDetailSectionNameHeaderCollectionReusableView.identifier)
         return collectionView
     }
     
@@ -146,7 +147,7 @@ extension SPEpisodeDetailView: UICollectionViewDelegate, UICollectionViewDataSou
             
         case .characters(let viewModels):
             let cellViewModel = viewModels[indexPath.row]
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SPCharacterCollectionViewCell.cellIdentifier, for: indexPath) as? SPCharacterCollectionViewCell else { fatalError() }
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SPEpisodeChracterCollectionViewCell.cellIdentifier, for: indexPath) as? SPEpisodeChracterCollectionViewCell else { fatalError() }
             cell.configure(with: cellViewModel)
             return cell
         case .wikiUrl(viewModels: let viewModels):
@@ -186,6 +187,18 @@ extension SPEpisodeDetailView: UICollectionViewDelegate, UICollectionViewDataSou
             guard let location = viewModel.location(at: indexPath.row) else { return }
             delegate?.spLocationDetailView(self, didSelect: location)
         }
+    }
+    
+    // MARK: - Supplementary view header
+
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SPEpisodeDetailSectionNameHeaderCollectionReusableView.identifier, for: indexPath) as! SPEpisodeDetailSectionNameHeaderCollectionReusableView
+        if indexPath.section == 4 {
+            header.label.text = "Locations"
+        } else if indexPath.section == 5 {
+            header.label.text = "Characters"
+        }
+            return header
     }
 }
 
@@ -232,8 +245,12 @@ extension SPEpisodeDetailView {
             subitems = [item, item, item]
         }
        
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.3)) , subitems: subitems)
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.25)) , subitems: subitems)
         let section = NSCollectionLayoutSection(group: group)
+        // Define header
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.8), heightDimension: .estimated(100))
+        let headerSupplementary = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+        section.boundarySupplementaryItems = [headerSupplementary]
         return section
     }
     
@@ -277,6 +294,10 @@ extension SPEpisodeDetailView {
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(UIDevice.isiPhone ? 0.8 : 0.3), heightDimension: .estimated(200)), subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .groupPaging
+        // Define header
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.8), heightDimension: .estimated(100))
+        let headerSupplementary = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+        section.boundarySupplementaryItems = [headerSupplementary]
         return section
     }
 }

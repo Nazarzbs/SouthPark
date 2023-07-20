@@ -49,10 +49,10 @@ class SPEpisodeImageCollectionViewCell: UICollectionViewCell {
     
     private func addConstraints() {
         NSLayoutConstraint.activate([
-           imageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 1),
-           imageView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 1),
-           imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 1),
-           imageView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: 1),
+           imageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0),
+           imageView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 0),
+           imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0),
+           imageView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: 0),
         ])
 
     }

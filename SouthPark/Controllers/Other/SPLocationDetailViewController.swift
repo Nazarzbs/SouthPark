@@ -31,7 +31,7 @@ final class SPLocationDetailViewController: UIViewController, SPLocationDetailVi
         super.viewDidLoad()
         detailView.delegate = self
         title = "Location"
-       
+        view.backgroundColor = .systemBackground
         view.addSubview(detailView)
         addConstraints()
         

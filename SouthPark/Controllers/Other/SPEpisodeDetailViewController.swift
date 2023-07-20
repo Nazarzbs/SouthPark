@@ -31,7 +31,7 @@ final class SPEpisodeDetailViewController: UIViewController, SPEpisodeDetailView
         super.viewDidLoad()
         detailView.delegate = self
         title = "Episode"
-       
+        view.backgroundColor = .systemBackground
         view.addSubview(detailView)
         addConstraints()
         

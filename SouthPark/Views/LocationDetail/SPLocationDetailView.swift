@@ -35,12 +35,13 @@ final class SPLocationDetailView: UIView {
         return spinner
     }()
     
+    private var numberOfEpisodes = 0
     //MARK: - init
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = .systemBackground
+       // backgroundColor = .systemBackground
         let collectionView = createCollectionView()
         addSubviews(collectionView, spinner)
         self.collectionView = collectionView
@@ -83,6 +84,7 @@ final class SPLocationDetailView: UIView {
         collectionView.register(SPLocationEpisodesCollectionViewCell.self, forCellWithReuseIdentifier: SPLocationEpisodesCollectionViewCell.cellIdentifier)
         
         collectionView.register(SPLocationDetailCollectionViewCell.self, forCellWithReuseIdentifier: SPLocationDetailCollectionViewCell.cellIdentifier)
+        collectionView.register(SPLocationDetailSectionNameHeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SPLocationDetailSectionNameHeaderCollectionReusableView.identifier)
        
         return collectionView
     }
@@ -105,6 +107,7 @@ extension SPLocationDetailView: UICollectionViewDelegate, UICollectionViewDataSo
         
         switch sectionType {
         case .episodes(viewModels: let viewModels):
+            numberOfEpisodes = viewModels.count
             return viewModels.count
         case .location(viewModel: _):
             return 1
@@ -144,6 +147,14 @@ extension SPLocationDetailView: UICollectionViewDelegate, UICollectionViewDataSo
             break
         }
     }
+    
+    // MARK: - Supplementary view header
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SPLocationDetailSectionNameHeaderCollectionReusableView.identifier, for: indexPath) as! SPLocationDetailSectionNameHeaderCollectionReusableView
+        header.label.text = "Episodes"
+        return header
+    }
 }
 
 extension SPLocationDetailView {
@@ -173,6 +184,11 @@ extension SPLocationDetailView {
         item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 8, bottom: 10, trailing: 8)
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(height)), subitems: [item, item, item])
         let section = NSCollectionLayoutSection(group: group)
+        
+        // Define header
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.8), heightDimension: .estimated(numberOfEpisodes == 0 ? 0 : 100))
+        let headerSupplementary = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+        section.boundarySupplementaryItems = [headerSupplementary]
         return section
     }
     

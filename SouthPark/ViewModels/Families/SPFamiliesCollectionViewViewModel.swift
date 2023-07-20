@@ -113,9 +113,9 @@ extension SPFamiliesCollectionViewViewModel: UICollectionViewDataSource, UIColle
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SPFamiliesCollectionViewCell.cellIdentifier, for: indexPath) as? SPFamiliesCollectionViewCell else { fatalError("Unsupported cell")}
-       
+        
         guard let characterURL = URL(string: families[indexPath.section].characters[indexPath.row]) else { fatalError() }
-    
+        
         guard let request = SPRequest(url: characterURL) else { return cell }
         
         if SPService.shared.cacheManager.cachedResponse(for: request.endpoint, url: request.url) != nil {
@@ -123,13 +123,13 @@ extension SPFamiliesCollectionViewViewModel: UICollectionViewDataSource, UIColle
             self.fetchInProgress.remove(indexPath)
             // cell.configure(with: cachedData)
             cell.configure(with: SPFamiliesCollectionViewCellViewModel(characterDataUrl: characterURL))
-                } else if !fetchInProgress.contains(indexPath) {
-                        // Configure the cell
-                    cell.configure(with: SPFamiliesCollectionViewCellViewModel(characterDataUrl: characterURL))
-                    
-                    // Add the indexPath to fetchInProgress to indicate that a fetch is in progress
-                    fetchInProgress.insert(indexPath)
-                }
+        } else if !fetchInProgress.contains(indexPath) {
+            // Configure the cell
+            cell.configure(with: SPFamiliesCollectionViewCellViewModel(characterDataUrl: characterURL))
+            
+            // Add the indexPath to fetchInProgress to indicate that a fetch is in progress
+            fetchInProgress.insert(indexPath)
+        }
         return cell
     }
     
@@ -155,8 +155,8 @@ extension SPFamiliesCollectionViewViewModel: UICollectionViewDataSource, UIColle
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
        
         if kind == UICollectionView.elementKindSectionHeader {
-            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: FamilyNameHeaderCollectionReusableView.identifier, for: indexPath) as! FamilyNameHeaderCollectionReusableView
-            header.label.text = families[indexPath.section].name 
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SPFamilyNameHeaderCollectionReusableView.identifier, for: indexPath) as! SPFamilyNameHeaderCollectionReusableView
+            header.label.text = families[indexPath.section].name
             return header
         } else if kind == UICollectionView.elementKindSectionFooter, indexPath.section == (families.count) - 1 {
             footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SPFooterLoadingCollectionReusableView.identifier, for: indexPath) as? SPFooterLoadingCollectionReusableView

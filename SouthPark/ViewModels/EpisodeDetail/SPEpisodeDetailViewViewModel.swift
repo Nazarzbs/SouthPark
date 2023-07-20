@@ -77,21 +77,28 @@ final class SPEpisodeDetailViewViewModel {
         let episode = dataTuple.episode.data
         let characters = dataTuple.characters
         let locations = dataTuple.locations
+        
+        let config = UIImage.SymbolConfiguration(hierarchicalColor: .label)
+        
         cellViewModels = [
             .episodeImage(viewModel: SPEpisodeImageCollectionViewCellViewModel(imageUrlString: episode.thumbnail_url)),
            
             .description(viewModels: [
-                .init(title: "Description", value: episode.description),
-            ]),
-            .information(viewModels: [
-                .init(title: "Episode Name", value: episode.name),
-                .init(title: "Air Date", value: episode.air_date),
-                .init(title: "Episode", value: "Season: \(episode.season)\nEpisode: \(episode.episode)"),
-                .init(title: "Locations", value: "\(episode.locations.count)"),
-                .init(title: "Characters", value: "\(episode.characters.count)"),
+                .init(title: "Description", value: episode.description, iconImageView: nil),
             ]),
             .wikiUrl(viewModels: [
-                .init(title: "🔎 Episode Wiki:", value: episode.wiki_url)
+                .init(title: "Wiki:", value: episode.wiki_url, iconImageView: nil )
+            ]),
+            .information(viewModels: [
+                .init(title: "Episode Name", value: episode.name, iconImageView: UIImage(systemName: "sparkles.tv", withConfiguration: config)),
+                
+                .init(title: "Air Date", value: episode.air_date, iconImageView: UIImage(systemName: "clock.circle", withConfiguration: config)),
+                
+                .init(title: "Episode", value: "Season: \(episode.season)\nEpisode: \(episode.episode)", iconImageView: UIImage(systemName: "tv.circle", withConfiguration: config)),
+                
+                .init(title: "Locations", value: "\(episode.locations.count)", iconImageView: UIImage(systemName: "globe.europe.africa", withConfiguration: config)),
+                
+                .init(title: "Characters", value: "\(episode.characters.count)", iconImageView: UIImage(systemName: "person.and.background.dotted", withConfiguration: config)),
             ]),
             .locations(viewModels: locations.compactMap({
                 return SPEpisodeLocationsDetailCellViewModel(location: $0)

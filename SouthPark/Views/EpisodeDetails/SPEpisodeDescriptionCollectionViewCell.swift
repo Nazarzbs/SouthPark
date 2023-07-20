@@ -12,14 +12,14 @@ class SPEpisodeDescriptionCollectionViewCell: UICollectionViewCell {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 20, weight: .bold)
+        label.font = SPConstants.setFont(fontSize: 20, isBold: true)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private let valueLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 20, weight: .regular)
+        label.font = SPConstants.setFont(fontSize: 18, isBold: false)
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -27,7 +27,7 @@ class SPEpisodeDescriptionCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.backgroundColor = .secondarySystemBackground
+        contentView.backgroundColor = UIColor(named: "midBackgroundForDetail")
         contentView.addSubviews(titleLabel, valueLabel)
         setUpLayer()
         addConstraints()

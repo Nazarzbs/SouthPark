@@ -22,7 +22,7 @@ class SPEpisodeWikiCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.layer.zPosition = 2
         label.font = .systemFont(ofSize: 15, weight: .regular)
-        label.textAlignment = .right
+        label.textAlignment = .left
         label.numberOfLines = 0
         label.textColor = .link
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -55,17 +55,15 @@ class SPEpisodeWikiCollectionViewCell: UICollectionViewCell {
     
     private func addConstraints() {
         NSLayoutConstraint.activate([
-            
-            iconImageView.heightAnchor.constraint(equalToConstant: 50),
-            iconImageView.widthAnchor.constraint(equalToConstant: 50),
+            iconImageView.widthAnchor.constraint(equalToConstant: 30),
             
             valueLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 4),
-            valueLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 20),
+            valueLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10),
             valueLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -4),
-            valueLabel.rightAnchor.constraint(lessThanOrEqualTo: iconImageView.leftAnchor, constant: 4),
+            valueLabel.rightAnchor.constraint(lessThanOrEqualTo: contentView.rightAnchor, constant: -10),
             
             iconImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 4),
-            iconImageView.rightAnchor.constraint(equalTo:  contentView.rightAnchor, constant: -10),
+            iconImageView.leftAnchor.constraint(equalTo: valueLabel.rightAnchor, constant: 10),
             
             iconImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -4),
         ])
@@ -76,6 +74,6 @@ class SPEpisodeWikiCollectionViewCell: UICollectionViewCell {
         let config = UIImage.SymbolConfiguration(hierarchicalColor: .systemBlue)
         let image = UIImage(systemName: "arrowshape.turn.up.forward.circle.fill", withConfiguration: config)
         iconImageView.image = image
-        valueLabel.text = viewModel.value
+        valueLabel.text = "\(viewModel.value)"
     }
 }

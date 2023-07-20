@@ -73,6 +73,8 @@ extension SPCharacterDetailViewController: UICollectionViewDelegate, UICollectio
             return viewModels.count
         case .episodes(let viewModels):
             return viewModels.count
+        case .relatives(viewModels: let viewModels):
+            return viewModels.count
         }
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -92,6 +94,11 @@ extension SPCharacterDetailViewController: UICollectionViewDelegate, UICollectio
             cell.configure(with: viewModel)
     
             return cell
+        case .relatives(viewModels: let viewModels):
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SPCharacterRelativesCollectionViewCell.cellIdentifier, for: indexPath) as? SPCharacterRelativesCollectionViewCell else { fatalError()}
+            let viewModel = viewModels[indexPath.row]
+            cell.configure(with: viewModel)
+            return cell
         }
     }
     
@@ -105,6 +112,20 @@ extension SPCharacterDetailViewController: UICollectionViewDelegate, UICollectio
             let selection = episodes[indexPath.row]
             let vc = SPEpisodeDetailViewController(url: URL(string: selection))
             navigationController?.pushViewController(vc, animated: true)
+        case .relatives(viewModels: let viewModels):
+            break
         }
+    }
+    
+    // MARK: - Supplementary view header
+
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SPCharacterDetailSectionNameHeaderCollectionReusableView.identifier, for: indexPath) as! SPCharacterDetailSectionNameHeaderCollectionReusableView
+        if indexPath.section == 2 {
+            header.label.text = "Episodes"
+        } else {
+            header.label.text = "Relatives"
+        }
+            return header
     }
 }

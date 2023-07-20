@@ -25,7 +25,7 @@ final class SPCharacterInfoCollectionViewCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         label.font = SPConstants.setFont(fontSize: 11, isBold: false)
-        label.textColor = SPConstants.secondaryTextColor
+        label.textColor = .secondaryLabel
         return label
     }()
     
@@ -40,7 +40,7 @@ final class SPCharacterInfoCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.backgroundColor = SPConstants.midBackgroundColor
+        contentView.backgroundColor = UIColor(named: "midBackgroundForDetail")
         contentView.layer.cornerRadius = 8
         contentView.addSubviews(valueLabel, titleLabel, iconImageView)
         addConstraints()

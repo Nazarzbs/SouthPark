@@ -26,7 +26,6 @@ final class SPLocationView: UIView {
                 self.tableView.alpha = 1
             }
             
-            
             DispatchQueue.main.async {
                 self.viewModel?.registerDidFinishPaginationBlock { [weak self] in
                     self?.tableView.tableFooterView = nil
@@ -56,6 +55,7 @@ final class SPLocationView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
+        layer.cornerRadius = 12
         addSubviews(tableView, spinner)
         spinner.startAnimating()
         addConstraints()

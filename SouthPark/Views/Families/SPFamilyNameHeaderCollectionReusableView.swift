@@ -1,5 +1,5 @@
 //
-//  FamilyNameHeaderCollectionReusableView.swift
+//  SPFamilyNameHeaderCollectionReusableView.swift
 //  SouthPark
 //
 //  Created by Nazar on 28.06.2023.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FamilyNameHeaderCollectionReusableView: UICollectionReusableView {
+class SPFamilyNameHeaderCollectionReusableView: UICollectionReusableView {
     static let identifier = "FamilyNameHeaderCollectionReusableView"
     
     let label: UILabel = {
@@ -18,7 +18,7 @@ class FamilyNameHeaderCollectionReusableView: UICollectionReusableView {
         } else {
             label.font = UIFont.systemFont(ofSize: 40, weight: .bold)
         }
-      
+        label.text = "Default Text"
         label.textColor = .label
         return label
     }()

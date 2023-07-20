@@ -22,11 +22,10 @@ class SPEpisodeLocationCollectionViewCell: UICollectionViewCell {
     private let nameLabel: UILabel = {
         let label =  UILabel()
         label.layer.zPosition = 2
-        
+        label.font = SPConstants.setFont(fontSize: 20, isBold: true)
         label.textColor = .label
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.font = .systemFont(ofSize: 20, weight: .medium)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

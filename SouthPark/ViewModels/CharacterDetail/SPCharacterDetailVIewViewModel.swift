@@ -32,6 +32,8 @@ final class SPCharacterDetailVIewViewModel {
         case information(viewModels: [SPCharacterInfoCollectionViewCellViewModel])
         
         case episodes(viewModels: [SPCharacterEpisodeCollectionViewCellViewModel])
+        
+        case relatives(viewModels: [SPCharacterRelativesCollectionViewCellViewModel])
     }
     
     public var family: SPFamilies? {
@@ -39,6 +41,7 @@ final class SPCharacterDetailVIewViewModel {
             setUpSections()
         }
     }
+    
     public var sections: [SectionType] = []
     
     //MARK: - Init
@@ -67,7 +70,11 @@ final class SPCharacterDetailVIewViewModel {
             ]),
             .episodes(viewModels: character.episodes.compactMap ({
                 return SPCharacterEpisodeCollectionViewCellViewModel(episodeDataUrl: URL(string: $0))
+            })),
+            .relatives(viewModels: character.relatives.compactMap({
+                return SPCharacterRelativesCollectionViewCellViewModel(relation: $0.relation, characterUrlString: $0.url)
             }))
+            
         ]
     }
     
@@ -106,7 +113,35 @@ final class SPCharacterDetailVIewViewModel {
         item.contentInsets = NSDirectionalEdgeInsets(top: 15, leading: 5, bottom: 5, trailing: 8)
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.9), heightDimension: .estimated(UIDevice.isiPhone ? 200 : 400)) , subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
+        
+        // Define header
+        
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.8), heightDimension: .estimated(episodes.isEmpty ? 0 : 100))
+        let headerSupplementary = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+        section.boundarySupplementaryItems = [headerSupplementary]
         section.orthogonalScrollingBehavior = .groupPaging
+        return section
+    }
+    
+    func createCharacterLayout() -> NSCollectionLayoutSection {
+       
+        let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(UIDevice.isiPhone ? 0.33 : 0.33), heightDimension: .fractionalHeight(1)))
+        item.contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 5, bottom: 10, trailing: 5)
+        
+        var subitems: [NSCollectionLayoutItem] = []
+        if UIDevice.isiPhone {
+            subitems = [item, item, item]
+        } else {
+            subitems = [item, item, item]
+        }
+       
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.3)) , subitems: subitems)
+        let section = NSCollectionLayoutSection(group: group)
+        
+        // Define header
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.8), heightDimension: .estimated(character.relatives.isEmpty ? 0 : 100))
+        let headerSupplementary = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+        section.boundarySupplementaryItems = [headerSupplementary]
         return section
     }
     

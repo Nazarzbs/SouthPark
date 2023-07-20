@@ -59,7 +59,6 @@ class SPEpisodeCollectionViewCell: UICollectionViewCell {
     private let thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.zPosition = 1
-//        imageView.layer.cornerRadius = 12
         imageView.clipsToBounds = true
         imageView.backgroundColor = UIColor(named: "activeBackgroundColor")
         imageView.contentMode = .scaleToFill
@@ -96,8 +95,7 @@ class SPEpisodeCollectionViewCell: UICollectionViewCell {
         
         override init(frame: CGRect) {
             super.init(frame: frame)
-//            backgroundColor = UIColor(named: "midBackgroundColorAlfa1")
-            contentView.layer.cornerRadius = 12
+            contentView.layer.cornerRadius = 8
             contentView.addSubviews(seasonLabel, nameLabel, airDateLabel, imageOuterView, episodeLabel)
             imageOuterView.addSubview(thumbnailImageView)
             imageOuterView.addSubview(detailBlurView)
@@ -184,7 +182,7 @@ class SPEpisodeCollectionViewCell: UICollectionViewCell {
         coverColors.append(trailingColor)
         gradientLayer.frame = view.bounds
         gradientLayer.colors = coverColors
-        gradientLayer.locations = [0.25, 0.60]
+        gradientLayer.locations = [0.35, 0.80]
         gradientLayer.startPoint = CGPoint(x: 0, y: 0)
         gradientLayer.endPoint = CGPoint(x: 1, y: 0)
         gradientLayer.frame.size = CGSize(width: contentView.frame.width, height: contentView.frame.height)

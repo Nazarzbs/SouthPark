@@ -35,9 +35,15 @@
 		CE2F71DC2A3B882A0094954D /* SPSettingsOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2F71DB2A3B882A0094954D /* SPSettingsOption.swift */; };
 		CE2F71E02A3B918D0094954D /* SPSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2F71DF2A3B918D0094954D /* SPSettingsView.swift */; };
 		CE2F71E42A3D15370094954D /* SPEpisodeWikiCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2F71E32A3D15370094954D /* SPEpisodeWikiCollectionViewCell.swift */; };
+		CE46FE982A68872B00A32439 /* SPCharacterRelativesCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46FE972A68872B00A32439 /* SPCharacterRelativesCollectionViewCellViewModel.swift */; };
+		CE46FE9A2A688F8300A32439 /* SPCharacterRelativesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46FE992A688F8300A32439 /* SPCharacterRelativesCollectionViewCell.swift */; };
+		CE46FE9C2A68AC0600A32439 /* SPCharacterDetailSectionNameHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46FE9B2A68AC0600A32439 /* SPCharacterDetailSectionNameHeaderCollectionReusableView.swift */; };
+		CE46FE9E2A69957400A32439 /* SPEpisodeDetailSectionNameHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46FE9D2A69957400A32439 /* SPEpisodeDetailSectionNameHeaderCollectionReusableView.swift */; };
+		CE46FEA02A699D5C00A32439 /* SPLocationDetailSectionNameHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46FE9F2A699D5C00A32439 /* SPLocationDetailSectionNameHeaderCollectionReusableView.swift */; };
+		CE46FEA22A69A89100A32439 /* SPEpisodeChracterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46FEA12A69A89100A32439 /* SPEpisodeChracterCollectionViewCell.swift */; };
 		CE7BFB0B2A52157100614C97 /* SPFamiliesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7BFB0A2A52157100614C97 /* SPFamiliesCollectionViewCell.swift */; };
 		CE7BFB0D2A535E8B00614C97 /* SPFamiliesCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7BFB0C2A535E8B00614C97 /* SPFamiliesCollectionViewCellViewModel.swift */; };
-		CE88838D2A4CD417002C6998 /* FamilyNameHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88838C2A4CD417002C6998 /* FamilyNameHeaderCollectionReusableView.swift */; };
+		CE88838D2A4CD417002C6998 /* SPFamilyNameHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88838C2A4CD417002C6998 /* SPFamilyNameHeaderCollectionReusableView.swift */; };
 		CE8F392B2A0D2FFC00BD8042 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F392A2A0D2FFC00BD8042 /* AppDelegate.swift */; };
 		CE8F392D2A0D2FFC00BD8042 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F392C2A0D2FFC00BD8042 /* SceneDelegate.swift */; };
 		CE8F392F2A0D2FFC00BD8042 /* SPTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F392E2A0D2FFC00BD8042 /* SPTabBarController.swift */; };
@@ -124,9 +130,15 @@
 		CE2F71DB2A3B882A0094954D /* SPSettingsOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPSettingsOption.swift; sourceTree = "<group>"; };
 		CE2F71DF2A3B918D0094954D /* SPSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPSettingsView.swift; sourceTree = "<group>"; };
 		CE2F71E32A3D15370094954D /* SPEpisodeWikiCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPEpisodeWikiCollectionViewCell.swift; sourceTree = "<group>"; };
+		CE46FE972A68872B00A32439 /* SPCharacterRelativesCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPCharacterRelativesCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
+		CE46FE992A688F8300A32439 /* SPCharacterRelativesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPCharacterRelativesCollectionViewCell.swift; sourceTree = "<group>"; };
+		CE46FE9B2A68AC0600A32439 /* SPCharacterDetailSectionNameHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPCharacterDetailSectionNameHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		CE46FE9D2A69957400A32439 /* SPEpisodeDetailSectionNameHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPEpisodeDetailSectionNameHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		CE46FE9F2A699D5C00A32439 /* SPLocationDetailSectionNameHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPLocationDetailSectionNameHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		CE46FEA12A69A89100A32439 /* SPEpisodeChracterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPEpisodeChracterCollectionViewCell.swift; sourceTree = "<group>"; };
 		CE7BFB0A2A52157100614C97 /* SPFamiliesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPFamiliesCollectionViewCell.swift; sourceTree = "<group>"; };
 		CE7BFB0C2A535E8B00614C97 /* SPFamiliesCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPFamiliesCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
-		CE88838C2A4CD417002C6998 /* FamilyNameHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyNameHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		CE88838C2A4CD417002C6998 /* SPFamilyNameHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPFamilyNameHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		CE8F39272A0D2FFC00BD8042 /* SouthPark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SouthPark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE8F392A2A0D2FFC00BD8042 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE8F392C2A0D2FFC00BD8042 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -251,9 +263,10 @@
 		CE28494D2A425AF0002D9922 /* LocationDetail */ = {
 			isa = PBXGroup;
 			children = (
-				CE2849572A4393F2002D9922 /* SPLocationDetailCollectionViewCell.swift */,
 				CE28494E2A425B32002D9922 /* SPLocationDetailView.swift */,
+				CE2849572A4393F2002D9922 /* SPLocationDetailCollectionViewCell.swift */,
 				CE2849592A44E2BA002D9922 /* SPLocationEpisodesCollectionViewCell.swift */,
+				CE46FE9F2A699D5C00A32439 /* SPLocationDetailSectionNameHeaderCollectionReusableView.swift */,
 			);
 			path = LocationDetail;
 			sourceTree = "<group>";
@@ -436,6 +449,8 @@
 				CEA238572A1D519E00C598ED /* SPCharacterPhotoCollectionViewCell.swift */,
 				CEA238552A1D518D00C598ED /* SPCharacterInfoCollectionViewCell.swift */,
 				CEA238592A1D51BE00C598ED /* SPCharacterEpisodeCollectionViewCell.swift */,
+				CE46FE992A688F8300A32439 /* SPCharacterRelativesCollectionViewCell.swift */,
+				CE46FE9B2A68AC0600A32439 /* SPCharacterDetailSectionNameHeaderCollectionReusableView.swift */,
 			);
 			path = CharacterDetails;
 			sourceTree = "<group>";
@@ -456,6 +471,7 @@
 				CEA2385E2A1D532500C598ED /* SPCharacterPhotoCollectionViewCellViewModel.swift */,
 				CEA2385C2A1D531700C598ED /* SPCharacterInfoCollectionViewCellViewModel.swift */,
 				CEA238602A1D533400C598ED /* SPCharacterEpisodeCollectionViewCellViewModel.swift */,
+				CE46FE972A68872B00A32439 /* SPCharacterRelativesCollectionViewCellViewModel.swift */,
 			);
 			path = CharacterDetail;
 			sourceTree = "<group>";
@@ -469,6 +485,8 @@
 				CE2F71C92A3A39980094954D /* SPEpisodeDescriptionCollectionViewCell.swift */,
 				CE2F71E32A3D15370094954D /* SPEpisodeWikiCollectionViewCell.swift */,
 				CE9E57302A4880810033365D /* SPEpisodeLocationCollectionViewCell.swift */,
+				CE46FE9D2A69957400A32439 /* SPEpisodeDetailSectionNameHeaderCollectionReusableView.swift */,
+				CE46FEA12A69A89100A32439 /* SPEpisodeChracterCollectionViewCell.swift */,
 			);
 			path = EpisodeDetails;
 			sourceTree = "<group>";
@@ -489,7 +507,7 @@
 			children = (
 				CEBB6C1B2A4C532400F67197 /* SPFamiliesView.swift */,
 				CE7BFB0A2A52157100614C97 /* SPFamiliesCollectionViewCell.swift */,
-				CE88838C2A4CD417002C6998 /* FamilyNameHeaderCollectionReusableView.swift */,
+				CE88838C2A4CD417002C6998 /* SPFamilyNameHeaderCollectionReusableView.swift */,
 			);
 			path = Families;
 			sourceTree = "<group>";
@@ -610,9 +628,11 @@
 				CECDD3542A193DB9000E2ADB /* SPCharacterDetailViewController.swift in Sources */,
 				CE98A3072A114D63001E54F3 /* SPCharacterListView.swift in Sources */,
 				CEE227A32A2FD12C000C86C6 /* SPEpisodeDetailViewViewModel.swift in Sources */,
+				CE46FE9C2A68AC0600A32439 /* SPCharacterDetailSectionNameHeaderCollectionReusableView.swift in Sources */,
 				CEA238582A1D519E00C598ED /* SPCharacterPhotoCollectionViewCell.swift in Sources */,
 				CE98A3032A10F9D1001E54F3 /* SPGetAllCharactersResponse.swift in Sources */,
 				CE8F395B2A0D344900BD8042 /* SPEpisodeViewController.swift in Sources */,
+				CE46FEA22A69A89100A32439 /* SPEpisodeChracterCollectionViewCell.swift in Sources */,
 				CE98A30F2A117CAF001E54F3 /* Extension .swift in Sources */,
 				CE2625922A5D8A4A0024CEC9 /* SPSearchInputView.swift in Sources */,
 				CE2849382A3F7AC8002D9922 /* SPGetAllLocationsResponse.swift in Sources */,
@@ -655,6 +675,7 @@
 				CE2F71DC2A3B882A0094954D /* SPSettingsOption.swift in Sources */,
 				CE2F71D42A3B86760094954D /* SPSettingsCellViewModel.swift in Sources */,
 				CE98A2FB2A0E8700001E54F3 /* SPCharacterGender.swift in Sources */,
+				CE46FE9E2A69957400A32439 /* SPEpisodeDetailSectionNameHeaderCollectionReusableView.swift in Sources */,
 				CE28494F2A425B32002D9922 /* SPLocationDetailView.swift in Sources */,
 				CEA238562A1D518D00C598ED /* SPCharacterInfoCollectionViewCell.swift in Sources */,
 				CE2849562A426335002D9922 /* SPLocationDetailViewViewModel.swift in Sources */,
@@ -675,14 +696,17 @@
 				CE1737782A5CBA8900B4ADD1 /* SPSearchView.swift in Sources */,
 				CE7BFB0B2A52157100614C97 /* SPFamiliesCollectionViewCell.swift in Sources */,
 				CE8F392D2A0D2FFC00BD8042 /* SceneDelegate.swift in Sources */,
+				CE46FEA02A699D5C00A32439 /* SPLocationDetailSectionNameHeaderCollectionReusableView.swift in Sources */,
 				CEE227B02A32416A000C86C6 /* SPEpisodeListView.swift in Sources */,
+				CE46FE982A68872B00A32439 /* SPCharacterRelativesCollectionViewCellViewModel.swift in Sources */,
 				CE9E57312A4880810033365D /* SPEpisodeLocationCollectionViewCell.swift in Sources */,
 				CE7BFB0D2A535E8B00614C97 /* SPFamiliesCollectionViewCellViewModel.swift in Sources */,
 				CE0C91352A34AA8800E8CE90 /* SPSearchViewController.swift in Sources */,
+				CE46FE9A2A688F8300A32439 /* SPCharacterRelativesCollectionViewCell.swift in Sources */,
 				CE98A2F52A0E8364001E54F3 /* SPRelatives.swift in Sources */,
 				CE2F71CA2A3A39980094954D /* SPEpisodeDescriptionCollectionViewCell.swift in Sources */,
 				CE2508FF2A5F41D7006AD13D /* SPSearchResultViewModel.swift in Sources */,
-				CE88838D2A4CD417002C6998 /* FamilyNameHeaderCollectionReusableView.swift in Sources */,
+				CE88838D2A4CD417002C6998 /* SPFamilyNameHeaderCollectionReusableView.swift in Sources */,
 				CEBB6C152A4C50E600F67197 /* SPFamiliesCollectionViewViewModel.swift in Sources */,
 				CE8F395D2A0D345E00BD8042 /* SPFamilyViewController.swift in Sources */,
 			);

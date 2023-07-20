@@ -63,6 +63,9 @@ final class SPCharacterDetailVIew: UIView {
         collectionView.register(SPCharacterPhotoCollectionViewCell.self, forCellWithReuseIdentifier: SPCharacterPhotoCollectionViewCell.cellIdentifier)
         collectionView.register(SPCharacterInfoCollectionViewCell.self, forCellWithReuseIdentifier: SPCharacterInfoCollectionViewCell.cellIdentifier)
         collectionView.register(SPEpisodeCollectionViewCell.self, forCellWithReuseIdentifier: SPEpisodeCollectionViewCell.cellIdentifier)
+        collectionView.register(SPCharacterRelativesCollectionViewCell.self, forCellWithReuseIdentifier: SPCharacterRelativesCollectionViewCell.cellIdentifier)
+        
+        collectionView.register(SPCharacterDetailSectionNameHeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SPCharacterDetailSectionNameHeaderCollectionReusableView.identifier)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }
@@ -76,6 +79,8 @@ final class SPCharacterDetailVIew: UIView {
             return viewModel.createInformationSectionLayout()
         case .episodes:
             return viewModel.createEpisodesSectionLayout()
+        case .relatives:
+            return viewModel.createCharacterLayout()
         }
     }
 }

@@ -58,7 +58,7 @@ final class SPFamiliesView: UIView {
         
         collectionView.register(FamilyNameFooterCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: FamilyNameFooterCollectionReusableView.identifier)
         
-        collectionView.register(FamilyNameHeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: FamilyNameHeaderCollectionReusableView.identifier)
+        collectionView.register(SPFamilyNameHeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SPFamilyNameHeaderCollectionReusableView.identifier)
         
         collectionView.register(SPFamiliesCollectionViewCell.self, forCellWithReuseIdentifier: SPFamiliesCollectionViewCell.cellIdentifier)
         
@@ -133,7 +133,7 @@ extension SPFamiliesView: SPFamiliesCollectionViewViewModelDelegate {
         
         let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0)))
         item.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 5, bottom: 20, trailing: 8)
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.45), heightDimension: .estimated( height)), subitems: [item])
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.45), heightDimension: .estimated(height)), subitems: [item, item])
         
         // Define header
         let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.8), heightDimension: .estimated(100))
