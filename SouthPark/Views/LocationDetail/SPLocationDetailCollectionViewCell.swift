@@ -33,6 +33,7 @@ class SPLocationDetailCollectionViewCell: UICollectionViewCell {
         let view = UIVisualEffectView(effect: UIBlurEffect(style: .systemUltraThinMaterial))
         view.layer.zPosition = 2
         view.alpha = 0.9
+        view.layer.cornerRadius = 12
         view.translatesAutoresizingMaskIntoConstraints = false
         view.clipsToBounds = true
         return view
@@ -42,6 +43,7 @@ class SPLocationDetailCollectionViewCell: UICollectionViewCell {
         let view = UIView()
         view.alpha = 0.01
         view.layer.zPosition = 1
+        view.layer.cornerRadius = 12
         view.translatesAutoresizingMaskIntoConstraints = false
         view.clipsToBounds = true
         return view
@@ -72,17 +74,17 @@ class SPLocationDetailCollectionViewCell: UICollectionViewCell {
             
             name.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10),
             name.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10),
-            name.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
+            name.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
             
-            detailViewColorView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0),
+            detailViewColorView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0),
             detailViewColorView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
             detailViewColorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            detailViewColorView.heightAnchor.constraint(equalToConstant: 48),
+            detailViewColorView.heightAnchor.constraint(equalToConstant: UIDevice.isiPhone ? 48 : 78),
             
-            detailBlurView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0),
+            detailBlurView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0),
             detailBlurView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
             detailBlurView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            detailBlurView.heightAnchor.constraint(equalToConstant: 48),
+            detailBlurView.heightAnchor.constraint(equalToConstant: UIDevice.isiPhone ? 48 : 78),
         ])
     }
     
@@ -127,7 +129,7 @@ class SPLocationDetailCollectionViewCell: UICollectionViewCell {
         gradientLayer.locations = [0.0, 0.70]
         gradientLayer.startPoint = CGPoint(x: 0, y: 0)
         gradientLayer.endPoint = CGPoint(x: 0, y: 1)
-        gradientLayer.frame.size = CGSize(width: contentView.frame.width, height: 48)
+        gradientLayer.frame.size = CGSize(width: contentView.frame.width, height: UIDevice.isiPhone ? 48 : 78)
         view.layer.insertSublayer(gradientLayer, at: 0)
     }
 }

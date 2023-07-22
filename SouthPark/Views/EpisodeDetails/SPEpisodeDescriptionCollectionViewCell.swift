@@ -12,14 +12,14 @@ class SPEpisodeDescriptionCollectionViewCell: UICollectionViewCell {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = SPConstants.setFont(fontSize: 20, isBold: true)
+        label.font = SPConstants.setFont(fontSize: UIDevice.isiPhone ? 20 : 36, isBold: true)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private let valueLabel: UILabel = {
         let label = UILabel()
-        label.font = SPConstants.setFont(fontSize: 18, isBold: false)
+        label.font = SPConstants.setFont(fontSize: UIDevice.isiPhone ? 18 : 24, isBold: false)
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -46,7 +46,7 @@ class SPEpisodeDescriptionCollectionViewCell: UICollectionViewCell {
     private func setUpLayer() {
         layer.cornerRadius = 8
         layer.masksToBounds = true
-        layer.borderWidth = 1
+        layer.borderWidth = 0.2
         layer.borderColor = UIColor.secondaryLabel.cgColor
     }
     
@@ -56,9 +56,9 @@ class SPEpisodeDescriptionCollectionViewCell: UICollectionViewCell {
             titleLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             
             valueLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
-            valueLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -4),
+            valueLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: UIDevice.isiPhone ? -4 : -15),
             valueLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 4),
-            valueLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 8),
+            valueLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: UIDevice.isiPhone ? 8 : 15),
         ])
 
     }

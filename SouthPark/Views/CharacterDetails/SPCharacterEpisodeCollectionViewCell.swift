@@ -7,126 +7,187 @@
 
 import UIKit
 
-final class SPCharacterEpisodeCollectionViewCell: UICollectionViewCell {
+class SPCharacterEpisodeCollectionViewCell: UICollectionViewCell {
+    
     static let cellIdentifier = "SPCharacterEpisodeCollectionViewCell"
     
     var prepareForReuseImage = false
-   
+    
     private let seasonLabel: UILabel = {
         let label = UILabel()
+        label.layer.zPosition = 5
         label.translatesAutoresizingMaskIntoConstraints = false
-        
-        label.font = .systemFont(ofSize: UIDevice.isiPhone ? 18 : 36, weight: .semibold)
+        label.textAlignment = .left
+        label.font = SPConstants.setFont(fontSize: UIDevice.isiPhone ? 12 : 20, isBold: false)
+        label.textColor = .label
+        return label
+    }()
+    
+    private let episodeLabel: UILabel = {
+        let label = UILabel()
+        label.layer.zPosition = 6
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .left
+        label.font = SPConstants.setFont(fontSize: UIDevice.isiPhone ? 12 : 20, isBold: false)
+        label.textColor = .label
         return label
     }()
     
     private let nameLabel: UILabel = {
         let label = UILabel()
+        label.layer.zPosition = 8
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .center
+        label.textAlignment = .left
+        label.contentMode = .topLeft
+        label.numberOfLines = 0
+        label.adjustsFontSizeToFitWidth = true
+        label.font = SPConstants.setFont(fontSize: UIDevice.isiPhone ? 18 : 36, isBold: true)
+        label.textColor = .label
         
-        label.font = .systemFont(ofSize: UIDevice.isiPhone ? 20 : 40, weight: .semibold)
         return label
     }()
     
     private let airDateLabel: UILabel = {
         let label = UILabel()
+        label.layer.zPosition = 8
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = SPConstants.setFont(fontSize: UIDevice.isiPhone ? 12 : 24, isBold: false)
+        label.textColor = .label
         
-        label.font = .systemFont(ofSize: UIDevice.isiPhone ? 14 : 20, weight: .semibold)
         return label
     }()
     
-//    private let descriptionLabel: UILabel = {
-//        let label = UILabel()
-//        label.translatesAutoresizingMaskIntoConstraints = false
-//        label.numberOfLines = 0
-//        label.font = .systemFont(ofSize: 16, weight: .light)
-//       // label.adjustsFontSizeToFitWidth = true
-//        return label
-//    }()
-    
     private let thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        // To not overflow
+        imageView.layer.zPosition = 1
         imageView.clipsToBounds = true
+        imageView.backgroundColor = UIColor(named: "activeBackgroundColor")
+        imageView.contentMode = .scaleToFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(named: "EpisodesDefault")
         return imageView
     }()
     
-    // MARK: - Init
+    private let imageOuterView: UIView = {
+        let view = UIView()
+        view.layer.zPosition = 3
+        
+        view.layer.cornerRadius = 12
+        view.clipsToBounds = true
+        view.backgroundColor = UIColor(named: "midBackgroundColorAlfa1")
+        view.contentMode = .scaleToFill
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setUpLayer()
-        contentView.backgroundColor = .secondarySystemBackground
-        contentView.addSubviews(seasonLabel, thumbnailImageView, nameLabel, airDateLabel)
-        setUpConstraints()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError()
-    }
-    
-    private func setUpLayer() {
-        contentView.layer.cornerRadius = 8
-        contentView.layer.shadowColor = UIColor.label.cgColor
-        contentView.layer.shadowOpacity = 0.4
-        contentView.layer.shadowOffset =  CGSize(width: -2, height: 2)
-    }
-    
-    private func setUpConstraints() {
-
+    private let detailBlurView: UIVisualEffectView = {
+        let view = UIVisualEffectView(effect: UIBlurEffect(style: .systemChromeMaterial))
+        view.layer.zPosition = 3
+        view.alpha = 0.05
+        //view.layer.cornerRadius = 0
+        //view.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+//        view.backgroundColor = UIColor(named: "midBackgroundColor")
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.clipsToBounds = true
+        return view
+    }()
+        
+        // MARK: - Init
+        
+        override init(frame: CGRect) {
+            super.init(frame: frame)
+            contentView.layer.cornerRadius = 8
+            contentView.addSubviews(seasonLabel, nameLabel, airDateLabel, imageOuterView, episodeLabel)
+            imageOuterView.addSubview(thumbnailImageView)
+            imageOuterView.addSubview(detailBlurView)
+            addConstraints()
+            setupGradientView(view: imageOuterView)
+        }
+        
+        required init?(coder: NSCoder) {
+            fatalError()
+        }
+        
+    private func addConstraints() {
         NSLayoutConstraint.activate([
             
-            nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: UIDevice.isiPhone ? 4 : 12),
+            imageOuterView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0),
+            imageOuterView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0),
+            imageOuterView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0),
+            imageOuterView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0),
+            
+            thumbnailImageView.leadingAnchor.constraint(equalTo: imageOuterView.leadingAnchor, constant: 70),
+            thumbnailImageView.trailingAnchor.constraint(equalTo: imageOuterView.trailingAnchor, constant: 0),
+            thumbnailImageView.bottomAnchor.constraint(equalTo: imageOuterView.bottomAnchor, constant: 0),
+            thumbnailImageView.topAnchor.constraint(equalTo: imageOuterView.topAnchor, constant: 0),
+            
+            seasonLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
            
-            nameLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            seasonLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            seasonLabel.heightAnchor.constraint(equalToConstant: 30),
+            
+            episodeLabel.leadingAnchor.constraint(equalTo: seasonLabel.trailingAnchor, constant: 8),
+            episodeLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            episodeLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            episodeLabel.heightAnchor.constraint(equalToConstant: 30),
+            
             nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
-            nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
+            nameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            nameLabel.widthAnchor.constraint(equalToConstant: bounds.width / 2.2),
+            nameLabel.heightAnchor.constraint(equalToConstant: bounds.height / 2.2),
             
-            thumbnailImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            thumbnailImageView.heightAnchor.constraint(equalToConstant: UIDevice.isiPhone ? 180 : 360),
-            thumbnailImageView.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: UIDevice.isiPhone ? 4 : 12),
-            thumbnailImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
-            thumbnailImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
+            airDateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
+            airDateLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -32),
+            airDateLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -4),
+            airDateLabel.heightAnchor.constraint(equalToConstant: 20),
             
-//            descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
-//            descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
-//           
-//            descriptionLabel.topAnchor.constraint(equalTo: thumbnailImageView.bottomAnchor, constant: 8),
+            detailBlurView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0),
+            detailBlurView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0),
+            detailBlurView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0),
+            detailBlurView.widthAnchor.constraint(equalToConstant: bounds.width / 3),
             
-            seasonLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
-            seasonLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-        
-            airDateLabel.topAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 6),
-            airDateLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
     }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        nameLabel.text = nil
-        seasonLabel.text = nil
-        airDateLabel.text = nil
-//        descriptionLabel.text = nil
-        thumbnailImageView.image = nil
         
-    }
-    
-    //Called every single time when cell is dequeued and we don't want fetching data every single time, we will use flag (have we fetch data for that episode? and if we haven't we go fetch, if we already fetching we don't want redundantly fetch)
-    public func configure(with viewModel: SPCharacterEpisodeCollectionViewCellViewModel) {
-      
-        viewModel.registerForData { [weak self] (data, imageData)  in
-            self?.nameLabel.text = data.name
-            self?.seasonLabel.text = "Episode: "+"S0\(data.season)E0\(data.episode)"
-            self?.airDateLabel.text = "Aired on: "+data.air_date
-//            self?.descriptionLabel.text = data.description
-            guard let data = imageData else { return }
-            self?.thumbnailImageView.image = UIImage(data: data)
+        override func prepareForReuse() {
+            super.prepareForReuse()
+            nameLabel.text = nil
+            seasonLabel.text = nil
+            episodeLabel.text = nil
+            airDateLabel.text = nil
+            thumbnailImageView.image = nil
         }
-        viewModel.fetchEpisode()
+        
+        //Called every single time when cell is dequeued and we don't want fetching data every single time, we will use flag (have we fetch data for that episode? and if we haven't we go fetch, if we already fetching we don't want redundantly fetch)
+        public func configure(with viewModel: SPCharacterEpisodeCollectionViewCellViewModel) {
+          
+            viewModel.registerForData { [weak self] (data, imageData)  in
+                self?.nameLabel.text = data.name
+                self?.seasonLabel.text = "Season \(data.season)"
+                self?.episodeLabel.text = "Episode \(data.episode)"
+                self?.airDateLabel.text = "Aired on: "+data.air_date
+                guard let data = imageData else { return }
+                self?.thumbnailImageView.image = UIImage(data: data)
+            }
+            viewModel.fetchEpisode()
+        }
+    
+    private func setupGradientView(view: UIView) {
+        let gradientLayer = CAGradientLayer()
+        var coverColors: [CGColor] = []
+        
+        let leadingColor: CGColor = UIColor(named: "midBackgroundColorAlfa1")!.cgColor
+        let trailingColor: CGColor = UIColor(named: "midBackgroundColorAlfa0.1")!.cgColor
+       
+        coverColors.append(leadingColor)
+        coverColors.append(trailingColor)
+        gradientLayer.frame = view.bounds
+        gradientLayer.colors = coverColors
+        gradientLayer.locations = [0.35, 0.80]
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 1, y: 0)
+        gradientLayer.frame.size = CGSize(width: contentView.frame.width, height: contentView.frame.height)
+        gradientLayer.zPosition = 2
+        view.layer.insertSublayer(gradientLayer, at: 0)
     }
 }

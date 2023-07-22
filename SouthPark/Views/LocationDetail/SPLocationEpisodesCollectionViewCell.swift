@@ -18,7 +18,7 @@ class SPLocationEpisodesCollectionViewCell: UICollectionViewCell {
         label.layer.zPosition = 5
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .left
-        label.font = SPConstants.setFont(fontSize: 12, isBold: false)
+        label.font = SPConstants.setFont(fontSize: 20, isBold: false)
         label.textColor = .label
         return label
     }()
@@ -40,7 +40,8 @@ class SPLocationEpisodesCollectionViewCell: UICollectionViewCell {
         label.textAlignment = .left
         label.contentMode = .topLeft
         label.numberOfLines = 0
-        label.font = SPConstants.setFont(fontSize: UIDevice.isiPhone ? 11 : 36, isBold: true)
+        label.adjustsFontSizeToFitWidth = true
+        label.font = SPConstants.setFont(fontSize: UIDevice.isiPhone ? 11 : 26, isBold: true)
         label.textColor = .label
         
         return label
@@ -51,7 +52,7 @@ class SPLocationEpisodesCollectionViewCell: UICollectionViewCell {
         label.layer.zPosition = 8
         label.numberOfLines = 2
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = SPConstants.setFont(fontSize: 9, isBold: false)
+        label.font = SPConstants.setFont(fontSize: 15, isBold: false)
         label.textColor = .label
         
         return label
@@ -115,18 +116,18 @@ class SPLocationEpisodesCollectionViewCell: UICollectionViewCell {
             imageOuterView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0),
             
             thumbnailImageView.leadingAnchor.constraint(equalTo: imageOuterView.leadingAnchor, constant: 70),
-            thumbnailImageView.trailingAnchor.constraint(equalTo: imageOuterView.trailingAnchor, constant: 0),
+            thumbnailImageView.trailingAnchor.constraint(equalTo: imageOuterView.trailingAnchor, constant: 8),
             thumbnailImageView.bottomAnchor.constraint(equalTo: imageOuterView.bottomAnchor, constant: 0),
             thumbnailImageView.topAnchor.constraint(equalTo: imageOuterView.topAnchor, constant: 0),
             
             seasonLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
-            seasonLabel.widthAnchor.constraint(equalToConstant: 60),
+            seasonLabel.widthAnchor.constraint(equalToConstant: UIDevice.isiPhone ? 60 : 100),
             seasonLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
 
             nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
             nameLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             nameLabel.heightAnchor.constraint(equalToConstant: 100),
-            nameLabel.widthAnchor.constraint(equalToConstant: bounds.width / 2.2),
+            nameLabel.widthAnchor.constraint(equalToConstant: bounds.width / 2),
             
             airDateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
             airDateLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -32),

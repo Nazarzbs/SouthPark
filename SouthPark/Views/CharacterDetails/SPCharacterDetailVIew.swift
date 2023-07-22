@@ -62,7 +62,7 @@ final class SPCharacterDetailVIew: UIView {
         
         collectionView.register(SPCharacterPhotoCollectionViewCell.self, forCellWithReuseIdentifier: SPCharacterPhotoCollectionViewCell.cellIdentifier)
         collectionView.register(SPCharacterInfoCollectionViewCell.self, forCellWithReuseIdentifier: SPCharacterInfoCollectionViewCell.cellIdentifier)
-        collectionView.register(SPEpisodeCollectionViewCell.self, forCellWithReuseIdentifier: SPEpisodeCollectionViewCell.cellIdentifier)
+        collectionView.register(SPCharacterEpisodeCollectionViewCell.self, forCellWithReuseIdentifier: SPCharacterEpisodeCollectionViewCell.cellIdentifier)
         collectionView.register(SPCharacterRelativesCollectionViewCell.self, forCellWithReuseIdentifier: SPCharacterRelativesCollectionViewCell.cellIdentifier)
         
         collectionView.register(SPCharacterDetailSectionNameHeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SPCharacterDetailSectionNameHeaderCollectionReusableView.identifier)
@@ -90,7 +90,7 @@ extension SPCharacterDetailVIew: SPCharacterDetailVIewViewModelDelegate {
     //Update episodes and family name after fetch 
     func didFetchFamilies() {
         DispatchQueue.main.async {
-            self.collectionView?.reloadItems(at: [IndexPath(row: 6, section: 1), IndexPath(row: 0, section: 2), IndexPath(row: 1, section: 2)])
+            self.collectionView?.reloadItems(at: [IndexPath(row: 6, section: 1), IndexPath(row: 0, section: 2), IndexPath(row: 1, section: 2), IndexPath(row: 2, section: 2)])
         }
     }
 }

@@ -41,7 +41,7 @@ class SPEpisodeImageCollectionViewCell: UICollectionViewCell {
     
     private func setUpLayer() {
         layer.masksToBounds = true
-        layer.borderWidth = 1
+        layer.borderWidth = 0.2
         layer.cornerRadius = 8
         layer.borderColor = UIColor.secondaryLabel.cgColor
        

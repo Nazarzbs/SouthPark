@@ -21,7 +21,7 @@ class SPEpisodeWikiCollectionViewCell: UICollectionViewCell {
     private let valueLabel: UILabel = {
         let label = UILabel()
         label.layer.zPosition = 2
-        label.font = .systemFont(ofSize: 15, weight: .regular)
+        label.font = .systemFont(ofSize: UIDevice.isiPhone ? 15 : 22, weight: .regular)
         label.textAlignment = .left
         label.numberOfLines = 0
         label.textColor = .link
@@ -55,7 +55,7 @@ class SPEpisodeWikiCollectionViewCell: UICollectionViewCell {
     
     private func addConstraints() {
         NSLayoutConstraint.activate([
-            iconImageView.widthAnchor.constraint(equalToConstant: 30),
+            iconImageView.widthAnchor.constraint(equalToConstant: UIDevice.isiPhone ? 30 : 60),
             
             valueLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 4),
             valueLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10),

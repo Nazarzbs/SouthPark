@@ -15,7 +15,7 @@ final class SPCharacterInfoCollectionViewCell: UICollectionViewCell {
         label.textAlignment = .center
         label.adjustsFontSizeToFitWidth = true
         label.numberOfLines = 2
-        label.font = SPConstants.setFont(fontSize: 18, isBold: true)
+        label.font = SPConstants.setFont(fontSize: UIDevice.isiPhone ? 18 : 20, isBold: true)
         label.textColor = SPConstants.basicTextColor
         return label
     }()
@@ -24,7 +24,7 @@ final class SPCharacterInfoCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
-        label.font = SPConstants.setFont(fontSize: 11, isBold: false)
+        label.font = SPConstants.setFont(fontSize: UIDevice.isiPhone ? 11 : 15, isBold: false)
         label.textColor = .secondaryLabel
         return label
     }()
@@ -57,8 +57,8 @@ final class SPCharacterInfoCollectionViewCell: UICollectionViewCell {
             iconImageView.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0),
             iconImageView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -30),
             
-            valueLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 4),
-            valueLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -4),
+            valueLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0),
+            valueLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0),
             valueLabel.topAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: 4),
             
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0),

@@ -90,7 +90,7 @@ final class SPEpisodeDetailViewViewModel {
                 .init(title: "Wiki:", value: episode.wiki_url, iconImageView: nil )
             ]),
             .information(viewModels: [
-                .init(title: "Episode Name", value: episode.name, iconImageView: UIImage(systemName: "sparkles.tv", withConfiguration: config)),
+                .init(title: "Name", value: episode.name, iconImageView: UIImage(systemName: "sparkles.tv", withConfiguration: config)),
                 
                 .init(title: "Air Date", value: episode.air_date, iconImageView: UIImage(systemName: "clock.circle", withConfiguration: config)),
                 

@@ -19,14 +19,14 @@ class SPEpisodeInfoCollectionViewCell: UICollectionViewCell {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = SPConstants.setFont(fontSize: 18, isBold: true)
+        label.font = SPConstants.setFont(fontSize: UIDevice.isiPhone ? 18 : 24, isBold: true)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private let valueLabel: UILabel = {
         let label = UILabel()
-        label.font = SPConstants.setFont(fontSize: 18, isBold: true)
+        label.font = SPConstants.setFont(fontSize: UIDevice.isiPhone ? 18 : 24, isBold: false)
         label.textAlignment = .right
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -60,16 +60,18 @@ class SPEpisodeInfoCollectionViewCell: UICollectionViewCell {
     private func addConstraints() {
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 4),
-            titleLabel.leftAnchor.constraint(equalTo: iconImageView.rightAnchor, constant: 28),
+            titleLabel.leftAnchor.constraint(equalTo: iconImageView.rightAnchor, constant: 24),
             titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -4),
             
             valueLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 4),
             valueLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10),
             valueLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -4),
+            valueLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+            valueLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: UIDevice.isiPhone ? 0.47 : 0.6),
             
             iconImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
             iconImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 20),
-            iconImageView.heightAnchor.constraint(equalToConstant: 40),
+            iconImageView.heightAnchor.constraint(equalToConstant: UIDevice.isiPhone ? 40 : 55),
         ])
 
     }

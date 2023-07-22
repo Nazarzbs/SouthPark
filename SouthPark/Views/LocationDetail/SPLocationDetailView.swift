@@ -8,7 +8,7 @@
 import UIKit
 
 protocol SPLocationDetailViewDelegate: AnyObject {
-    func spLocationDetailView(_ detailView: SPLocationDetailView, didSelect episode: SPEpisode)
+    func spLocationDetailView(_ detailView: SPLocationDetailView, didSelect episodeAt: SPEpisode)
 }
 
 final class SPLocationDetailView: UIView {
@@ -178,10 +178,10 @@ extension SPLocationDetailView {
             fractionalWidth = 0.5
         } else {
             fractionalWidth = 0.33
-            height = 270
+            height = 250
         }
         let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(fractionalWidth), heightDimension: .fractionalHeight(1.0)))
-        item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 8, bottom: 10, trailing: 8)
+        item.contentInsets = NSDirectionalEdgeInsets(top: UIDevice.isiPhone ? 10 : 15, leading: UIDevice.isiPhone ? 8 : 14, bottom: UIDevice.isiPhone ? 10 : 15, trailing: UIDevice.isiPhone ? 8 : 14)
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(height)), subitems: [item, item, item])
         let section = NSCollectionLayoutSection(group: group)
         
@@ -200,7 +200,7 @@ extension SPLocationDetailView {
         if UIDevice.isiPhone {
             height = 205
         } else {
-            height = width * 0.75
+            height = width * 0.6
         }
         
         let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1.0)))

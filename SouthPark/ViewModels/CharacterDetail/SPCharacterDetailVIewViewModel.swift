@@ -99,9 +99,9 @@ final class SPCharacterDetailVIewViewModel {
     }
     
     public func createInformationSectionLayout() -> NSCollectionLayoutSection {
-        let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.33), heightDimension: .fractionalHeight(1.0)))
+        let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.25), heightDimension: .fractionalHeight(1.0)))
         item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 2, bottom: 2, trailing: 2)
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(130)) , subitems: [item, item, item])
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(UIDevice.isiPhone ? 130 : 160)) , subitems: UIDevice.isiPhone ? [item, item, item] : [item, item, item, item])
         let section = NSCollectionLayoutSection(group: group)
        
         return section
@@ -111,7 +111,7 @@ final class SPCharacterDetailVIewViewModel {
     
         let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0)))
         item.contentInsets = NSDirectionalEdgeInsets(top: 15, leading: 5, bottom: 5, trailing: 8)
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.9), heightDimension: .estimated(UIDevice.isiPhone ? 200 : 400)) , subitems: [item])
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(UIDevice.isiPhone ? 0.9 : 0.4), heightDimension: .estimated(UIDevice.isiPhone ? 200 : 300)) , subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
         
         // Define header
@@ -125,14 +125,14 @@ final class SPCharacterDetailVIewViewModel {
     
     func createCharacterLayout() -> NSCollectionLayoutSection {
        
-        let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(UIDevice.isiPhone ? 0.33 : 0.33), heightDimension: .fractionalHeight(1)))
+        let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(UIDevice.isiPhone ? 0.33 : 0.25), heightDimension: .fractionalHeight(1)))
         item.contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 5, bottom: 10, trailing: 5)
         
         var subitems: [NSCollectionLayoutItem] = []
         if UIDevice.isiPhone {
             subitems = [item, item, item]
         } else {
-            subitems = [item, item, item]
+            subitems = [item, item, item, item]
         }
        
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.3)) , subitems: subitems)

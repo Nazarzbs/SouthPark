@@ -10,7 +10,7 @@ import UIKit
 /// Interface to relay location view events
 
 protocol SPLocationViewDelegate: AnyObject {
-    func spLocationView(_ locationView: SPLocationView, didSelect location: SPLocation)
+    func spLocationView(_ locationView: SPLocationView, didSelect didSelectLocationAt: Int)
 }
 
 final class SPLocationView: UIView {
@@ -94,9 +94,8 @@ final class SPLocationView: UIView {
 extension SPLocationView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        guard let locationModel = viewModel?.location(at: indexPath.row) else { return }
-        
-        delegate?.spLocationView(self, didSelect: locationModel)
+       
+        delegate?.spLocationView(self, didSelect: indexPath.row)
     }
 }
 
@@ -107,7 +106,7 @@ extension SPLocationView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let bounds = UIScreen.main.bounds
        
-        return UIDevice.isiPhone ? 240 : bounds.height / 1.7
+        return UIDevice.isiPhone ? 240 : bounds.height / 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

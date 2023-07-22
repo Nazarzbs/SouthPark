@@ -27,17 +27,6 @@ class SPFamiliesCollectionViewCell: UICollectionViewCell {
             return label
         }()
         
-        private let characterOccupationLabel: UILabel = {
-            let label =  UILabel()
-            label.textColor = .label
-            label.numberOfLines = 0
-            
-            label.adjustsFontSizeToFitWidth = true
-            label.font = SPConstants.setFont(fontSize: UIDevice.isiPhone ? 14 : 28, isBold: false)
-            label.translatesAutoresizingMaskIntoConstraints = false
-            return label
-        }()
-    
     //MARK: - Gradient
      private let detailBlurView: UIVisualEffectView = {
          let view = UIVisualEffectView(effect: UIBlurEffect(style: .systemChromeMaterial))
@@ -67,7 +56,7 @@ class SPFamiliesCollectionViewCell: UICollectionViewCell {
             super.init(frame: frame)
             contentView.backgroundColor = .secondarySystemBackground
             //We add it to the content view because it takes care of safe aria for us, if we added it to the cell directly but its not conceptually correct
-            contentView.addSubviews(imageView, nameLabel, characterOccupationLabel)
+            contentView.addSubviews(imageView, nameLabel)
             addConstraints()
             imageView.addSubviews(detailViewColorView, detailBlurView)
             addConstraintsForBlurView()
@@ -81,9 +70,6 @@ class SPFamiliesCollectionViewCell: UICollectionViewCell {
         
         private func setUpLayer() {
             contentView.layer.cornerRadius = 8
-//            contentView.layer.shadowColor = UIColor.label.cgColor
-//            contentView.layer.shadowOffset =  CGSize(width: -2, height: 2)
-//            contentView.layer.shadowOpacity = 0.4
         }
         
         private func addConstraints() {
@@ -96,11 +82,8 @@ class SPFamiliesCollectionViewCell: UICollectionViewCell {
                 
                 nameLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 7),
                 nameLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -7),
-                nameLabel.bottomAnchor.constraint(equalTo: characterOccupationLabel.topAnchor),
+                nameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 8),
                 
-                characterOccupationLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 7),
-                characterOccupationLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -7),
-                characterOccupationLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -2),
             ])
         }
         
@@ -113,14 +96,12 @@ class SPFamiliesCollectionViewCell: UICollectionViewCell {
             super.prepareForReuse()
             imageView.image = nil
             nameLabel.text = nil
-            characterOccupationLabel.text = nil
         }
         
     public func configure(with viewModel: SPFamiliesCollectionViewCellViewModel) {
       
         viewModel.registerForData { [weak self] (data, imageData)  in
             self?.nameLabel.text = data.name
-            self?.characterOccupationLabel.text = data.occupation
             if let data = imageData {
                 self?.imageView.image = UIImage(data: data)
             } else {

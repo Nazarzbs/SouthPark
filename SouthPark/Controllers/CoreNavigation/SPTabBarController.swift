@@ -14,6 +14,7 @@ final class SPTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setUpTabs()
     }
 

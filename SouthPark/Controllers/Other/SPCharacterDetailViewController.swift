@@ -70,7 +70,7 @@ extension SPCharacterDetailViewController: UICollectionViewDelegate, UICollectio
         case .photo(_):
             return 1
         case .information(let viewModels):
-            return viewModels.count
+            return UIDevice.isiPhone ? viewModels.count : viewModels.count - 1 
         case .episodes(let viewModels):
             return viewModels.count
         case .relatives(viewModels: let viewModels):
@@ -89,7 +89,7 @@ extension SPCharacterDetailViewController: UICollectionViewDelegate, UICollectio
             cell.configure(with: viewModels[indexPath.row])
             return cell
         case .episodes(viewModels: let viewModels):
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SPEpisodeCollectionViewCell.cellIdentifier, for: indexPath) as? SPEpisodeCollectionViewCell else { fatalError()}
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SPCharacterEpisodeCollectionViewCell.cellIdentifier, for: indexPath) as? SPCharacterEpisodeCollectionViewCell else { fatalError()}
             let viewModel = viewModels[indexPath.row]
             cell.configure(with: viewModel)
     

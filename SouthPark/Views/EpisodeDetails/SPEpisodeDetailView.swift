@@ -224,12 +224,13 @@ extension SPEpisodeDetailView {
     }
     
     func createInfoLayout() -> NSCollectionLayoutSection {
-        let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
+        let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(UIDevice.isiPhone ? 1 : 0.5), heightDimension: .fractionalHeight(1)))
         
-        item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
+        item.contentInsets = NSDirectionalEdgeInsets(top: UIDevice.isiPhone ? 10 : 20, leading: UIDevice.isiPhone ? 10 : 20, bottom: UIDevice.isiPhone ? 10 : 20, trailing: UIDevice.isiPhone ? 10 : 20)
         
-        let group = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(80)), subitems: [item])
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(UIDevice.isiPhone ? 80 : 140)), subitems: UIDevice.isiPhone ? [item] : [item, item])
         let section = NSCollectionLayoutSection(group: group)
+        
         return section
     }
     
@@ -282,7 +283,7 @@ extension SPEpisodeDetailView {
         
         item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 10, trailing: 10)
         
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(60)), subitems: [item])
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(UIDevice.isiPhone ? 60 : 70)), subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
         return section
     }
@@ -291,7 +292,7 @@ extension SPEpisodeDetailView {
        
         let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0)))
         item.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 5, bottom: 20, trailing: 8)
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(UIDevice.isiPhone ? 0.8 : 0.3), heightDimension: .estimated(200)), subitems: [item])
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(UIDevice.isiPhone ? 0.8 : 0.4), heightDimension: .estimated(UIDevice.isiPhone ? 200 : 300)), subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .groupPaging
         // Define header

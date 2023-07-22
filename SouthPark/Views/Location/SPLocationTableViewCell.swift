@@ -24,7 +24,7 @@ final class SPLocationTableViewCell: UITableViewCell {
     private var image: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.zPosition = 1
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         imageView.layer.cornerRadius = 12
         imageView.clipsToBounds = true
         imageView.image = UIImage(named: "EpisodesDefault")
@@ -59,16 +59,16 @@ final class SPLocationTableViewCell: UITableViewCell {
         private func addConstraints() {
            
             NSLayoutConstraint.activate([
-                name.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -40),
+                name.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: UIDevice.isiPhone ? -40 : -80),
                 name.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10),
                 name.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10),
                 
                 image.topAnchor.constraint(equalTo: contentView.topAnchor),
                 image.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 8),
                 image.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: 0),
-                image.heightAnchor.constraint(equalToConstant: 200),
+                image.heightAnchor.constraint(equalToConstant: UIDevice.isiPhone ? 200 : 640),
  
-                blurView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -40),
+                blurView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: UIDevice.isiPhone ? -40 : -80),
                 blurView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
                 blurView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0),
                 blurView.heightAnchor.constraint(equalTo: name.heightAnchor, constant: 2),

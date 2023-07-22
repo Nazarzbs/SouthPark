@@ -48,8 +48,8 @@ final class SPLocationViewController: UIViewController, SPLocationViewViewModelD
     }
     
     //MARK: - RMLocationDelegate
-    func spLocationView(_ locationView: SPLocationView, didSelect location: SPLocation) {
-        let vc = SPLocationDetailViewController(url: URL(string: "https://spapi.dev/api/locations/" + "\(location.id)"))
+    func spLocationView(_ locationView: SPLocationView, didSelect locationAt: Int) {
+        let vc = SPLocationDetailViewController(url: URL(string: "https://spapi.dev/api/locations/" + "\(locationAt + 1)"))
         vc.navigationItem.largeTitleDisplayMode = .never
         navigationController?.pushViewController(vc, animated: true)
     }
